@@ -1,0 +1,8 @@
+CSS Overflow:
+
+"Content"- "overflow is a property that controls what happens when the content of an element overflows its containing box"
+
+-Visible: overflows the container
+-Hidden: Content is not Visible
+-Scroll: Scroll bar will be added
+-auto: overflow is there, scroll bar will be added else normal.

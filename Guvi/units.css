@@ -1,0 +1,32 @@
+#parent{
+    width: 75%;
+    border: 2px solid black;
+    /* color: rgb(170, 152, 152); */
+    /* margin: 10rem; */
+}
+#red{
+    width: 50%;
+    background-color: red;
+}
+#blue{
+    width: 50vw;
+    background-color: blue;
+}
+#green{
+    width: 10rem;
+    background-color: green;
+}
+#yellow{
+    width: 200px;
+    background-color: yellow;
+}
+html{
+    font-size: 20px;
+}
+div{
+    margin: 10px;
+    color: rgb(170, 152, 152);
+}
+p{
+  width: 60ch;  
+}

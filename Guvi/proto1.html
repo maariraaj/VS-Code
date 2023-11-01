@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class personClass{
+            name="Mari";
+            displayName(){
+                console.log("display name method!!!");
+            }
+        }
+        const personPrototype={
+            greet: function(){
+                console.log("Hello, I am Groot!");
+            }
+        };
+        console.log(personPrototype.__proto__);
+        personPrototype.greet();
+
+        function person(){
+            console.log("From person function");
+        }
+        var foo=person();
+    </script>
+</body>
+</html>

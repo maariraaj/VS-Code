@@ -1,0 +1,15 @@
+CSS Grid:
+
+-> A layout model for creating responsive design.
+->Multiple rows and columns(2Dimensional)
+->An element can be made as grid container with "display:grid", all its direct children will be its grid items.
+
+
+Properties:
+grid-container:
+*grid-template columns:
+*grid-template rows:
+*grid-template areas:
+
+grid-items:
+justify-content, align-content, align-items, justify-items, place-items,gap, grid-column, grid-row, grid-area

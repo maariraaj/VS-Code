@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     class animal{
+            constructor(){
+                this.moves=true;
+            }
+        };
+        class rabbit extends animal{
+            constructor(){
+                super();
+                this.eats=true;
+            }
+        };
+        class lion extends rabbit{
+            constructor(){
+                super();
+                console.log(this+"Checking this keyword inside lion class");
+                this.kills=true;
+            }
+            getMessage(){
+                console.log(this+"checking this keyword inside getMessage function");
+            }
+        }; 
+        let Lion=new lion();
+        console.log(this+"checking this keyword outside the class");
+        Lion.getMessage();
+        function getMsgOutside(){
+            console.log(this+"checking this keyword inside getMsgOutside function");
+        };
+        getMsgOutside(); 
+    </script>
+</body>
+</html>

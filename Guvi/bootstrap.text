@@ -1,0 +1,19 @@
+BOOTSTRAP:
+
+CSS library for RWD- Responsive Web Design
+
+Bootstrap: to build fast and responsive websites/application.
+It is a CSS library with less codes.
+
+
+1. How to set up bootstrap?
+    ->Using CDN(Content Delivery Network).
+    ->go to "getbootstrap.com". and copy CDN and paste it into html.
+2.Layout(predefined class):
+    ->responsive mobile-first fluid grid system that scales upto 12 as device/viewport size increases.
+
+3.Container:
+    ->It is a centered, fixed width.
+    ->Container-fluid: Viewport entire widthwill be occupied.
+    ->Container with break points:
+        *Provides containers that have a maximum width for specific breakpoints to make more responsive.

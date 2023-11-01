@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //     let animal={
+    //         moves:true,
+    //     };
+
+    //     let rabbit={
+    //         eats:true,
+    //     };
+    //     rabbit.__proto__=animal;
+    //     console.log(rabbit.moves);
+
+        class animal{
+            constructor(){
+                this.moves=true;
+            }
+        };
+        class rabbit extends animal{
+            constructor(){
+                super();
+                this.eats=true;
+            }
+        };
+        class lion extends rabbit{
+            constructor(){
+                super();
+                this.kills=true;
+            }
+        };
+
+        //Must call super constructor in derived class before accessing 'this'.
+
+        let Rabbit=new rabbit();
+        let Lion=new lion();
+
+        //"new" keyword in JavaScript is used to create an instance of an object that has a constructor function. On calling the constructor function with 'new' operator, the following actions are taken: A new empty object is created.
+        console.log(Rabbit.moves);
+        console.log(Lion.moves);
+        console.log(Lion.eats);
+
+
+     </script>
+</body>
+</html>

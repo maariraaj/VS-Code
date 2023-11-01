@@ -1,0 +1,11 @@
+main{
+    color: brown;
+    border: 2px solid aquamarine;
+}
+button{
+    /* all: unset; */
+    color: inherit; 
+    border: inherit; 
+    /* border: unset; */
+    
+}

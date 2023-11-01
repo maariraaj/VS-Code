@@ -1,0 +1,64 @@
+p{
+    font-size: 1.75rem;
+    margin: 1.5rem;
+    padding: 1rem;
+    border: 2px solid black;
+}
+body > p{
+    background-color: aqua;
+}
+#box{
+    position: fixed;
+    z-index: 5;
+    left: 200px;
+    top: 10px;
+    width: 15rem;
+    height: 10rem;
+    border: 2px dotted black;
+    background-color: bisque;
+}
+/* #box{
+    position: static;
+    width: 15rem;
+    height: 10rem;
+    border: 2px dotted black;
+    background-color: bisque;
+} */
+    /* #box{
+    position: relative;
+    left: 200px;
+    bottom: 10px;
+    width: 15rem;
+    height: 10rem;
+    border: 2px dotted black;
+    background-color: bisque; 
+    }  */
+
+    /* #box{
+        position: sticky;
+        left: 200px;
+        top: 10px;
+        width: 15rem;
+        height: 10rem;
+        border: 2px dotted black;
+        background-color: bisque;
+    } */
+    section{
+        position: relative;
+    }
+
+    /* #box{
+        position:absolute;
+        right: 100px;
+        top: 10px;
+        width: 15rem;
+        height: 10rem;
+        border: 2px dotted black;
+        background-color: bisque;
+    } */
+
+#long{
+    position: relative;
+    background-color:aquamarine ;
+    z-index: 4;
+}

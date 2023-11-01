@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // arrow function does not have THIS keyword
+        
+        //The "this" keyword inside the outer function points to the "window object".
+
+        //Now, when the inner function uses the "this" keyword, it actually referenced the scope of the outer function.
+
+        //Since the inner function gets its "this" reference from the outer function which now points to the global object, the inner function also starts pointing to the global object
+
+
+
+
+        // const obj={
+        //     name:"Guvi",
+        //     greet:function(){
+        //         console.log(this.name);
+        //     }
+        // };
+        // obj.greet();
+
+        // var name="Raj";
+        // const obj={
+        //     name:"Guvi",
+        //     greet:function(){
+        //         console.log("outer:",this.name);
+        //         let print=function(){
+        //             console.log("inner:",this.name);
+        //         };
+        //         print();
+        //     }
+        // };
+        // obj.greet();
+
+        // var name="Raj";
+        // const obj={
+        //     name:"Guvi",
+        //     greet:()=>{
+        //         console.log("outer:",this.name);
+        //         let print=()=>{
+        //             console.log("inner:",this.name);
+        //         };
+        //         print();
+        //     }
+        // };
+        // obj.greet();
+
+
+        // var name="Raj";
+        // const obj={
+        //     name:"Guvi",
+        //     greet:function(){
+        //         console.log("outer:",this.name);
+        //         let print=()=>{
+        //             console.log("inner:",this.name);
+        //         };
+        //         print();
+        //     }
+        // };
+        // obj.greet();
+
+
+        var name="Raj";
+        const obj={
+            name:"Guvi",
+            greet:()=>{
+                console.log("outer:",this.name);
+                let print=function(){
+                    console.log("inner:",this.name);
+                };
+                print();
+            }
+        };
+        obj.greet();
+
+
+        //inside object
+        
+        // function()     ---->   function()
+        //(points to obj)         (points to window obj)
+
+        //function()    -----> ()=> {}
+        //(points to obj)      (points to obj(parant function()))
+
+        //()=>{}               ------> ()=>{}
+        //(points to window obj)     (points to window obj)
+
+        //()=>{}         -------> function()
+        //(points to obj)      (points to obj(parant function()))
+
+
+
+    </script>
+</body>
+</html>

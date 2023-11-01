@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample 4</title>
+</head>
+<body>
+    <script>
+        var request=new XMLHttpRequest();
+request.open('GET',"https://restcountries.com/v3.1/all");
+request.send();
+request.onload=function (){
+    var countryData=JSON.parse(this.response);
+    let a=[];
+    let details=countryData.forEach(x => {
+        a.push(x.population)
+    });
+let result=a.reduce(function(accumulator,currentValue){
+    // console.log("Accumulator:",accumulator," CurrentValue:", currentValue);
+    return accumulator + currentValue;
+});
+
+console.log(result);
+    }
+    </script>
+</body>
+</html>

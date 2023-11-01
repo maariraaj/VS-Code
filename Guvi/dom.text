@@ -1,0 +1,16 @@
+DOM: Document Object Model
+
+Browser -> Interact with HTML -> represented as tree structure.
+
+
+=> Use javascript to change the content, structure or style of the page.
+
+
+
+DOM Manipulation:
+ -> use javascript to change the content, structure or styles of the page.
+
+ =>Getting elements
+ =>Setting attribute
+ =>Adding and removing elements.
+  

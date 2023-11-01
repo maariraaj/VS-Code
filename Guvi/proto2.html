@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     let animal={
+        moves:true,
+        eats:true,
+        sleep:true,
+     };
+    
+     let rabbit={
+        jump:true,
+     };
+     
+     let lion={
+        kills:true,
+     };
+
+     rabbit.__proto__=animal;
+     lion.__proto__=animal;  
+    
+     
+   //   console.log(rabbit.eats);
+   //   console.log(rabbit.sleep);
+   //   console.log(lion.eats); 
+   //   console.log(lion.kills);
+   console.log(lion.sleep);  
+    </script>
+</body>
+</html>

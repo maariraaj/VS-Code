@@ -1,0 +1,26 @@
+FLEXBOX:
+-> A layout model also known as flexible BOX layout module.
+->Particularly useful for building responsive designs.
+->Row and column layout.
+->A element can be made a flex container with "display:flex" -> direct children(flex items).
+
+Some of the most common properties used to layout flex items are:
+* flex-direction: row/column/row-reverse/column-reverse
+*justify-content: flex-start/flex-end/centre/space-around/space-between/space-evenly
+*align-items: flex-start/flex-end,...
+*flex-wrap: wrap/nowrap/wrap-reverse,...
+*align-content
+*flex-flow: flex-direction/flex-wrap
+*gap
+
+
+
+
+
+SOme flex items example:
+*align-self
+*flex-basis
+*flex-shrink
+*flex-grow
+*flex
+*order

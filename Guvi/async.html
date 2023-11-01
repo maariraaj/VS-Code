@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Programming</title>
+</head>
+<body>
+    <h1>Async Programming</h1>
+    <h2>Topics covered:</h2>
+    <ol>
+        <li> Callback</li>
+        <li>What's the callback? - call stack, web API, event loop, queue</li>
+        <li>Use and its purpose of the callback</li>
+        <li>Pain of callback</li>
+    </ol>
+
+    <!-- <script src="async1.js"></script> -->
+    <script src="async2.js"></script>
+
+    <!-- <button onclick="longProcessFunction()">
+    It is a long process!
+    </button>
+    <button onclick="alertFunction()">
+    alert
+    </button>
+    <script type="text/javascript">
+        function longProcessFunction(){
+           setTimeout(()=>{
+            var i=0;
+            while(i<9999999999){
+                i+=1;
+            }
+            alert("Done!!!!");
+           },5000);
+        }
+        function alertFunction(){
+            alert("Hi from ALERT function");
+        } -->
+
+        <!-- Callback: -->
+
+        <button onclick="longProcessFunction(alertFunction)">
+            It is a long process!
+            </button>
+            <button>
+            alert
+            </button>
+            <script type="text/javascript">
+                function longProcessFunction(alertFunction){
+                   setTimeout(()=>{
+                    var i=0;
+                    while(i<9999999999){
+                        i+=1;
+                    }
+                    alert("Done!!!!");
+                    alertFunction();
+                   },5000);
+                }
+                function alertFunction(){
+                    alert("Hi from ALERT function");
+                }
+    </script>
+
+</body>
+</html>

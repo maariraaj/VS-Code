@@ -1,0 +1,15 @@
+ASYNC
+
+=> Javascript is a single threaded synchronous language which executes all the code line by line in the order in which it is written.
+
+=> Asynchronous programming is a technique that enables your program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished. 
+Once that task has finished, your program is presented with the result.
+
+=>Synchronous processing uses only one thread where it executes all operations in succession. 
+In contrast, each asynchronous operation is done in a different thread that reports back to the main thread with the result when complete or with an error in case of failure, leaving that thread open to process other requests.
+
+=> In async programming, you can do tasks without waiting for a task to complete its execution.
+
+=> Running the code in the background essentially means running them inside "Web API's.
+
+
