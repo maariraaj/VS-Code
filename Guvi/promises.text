@@ -1,0 +1,20 @@
+PROMISES: (Asynchronous Programming)
+    A promise is an object which makes the result produced by the producer code
+    available to the consumer code.
+
+    There are 2 tyoes of code in Async programming.
+        =>Producer code:
+            * The code that produces some result.
+            * The producer code is contained inside the promise object.
+            * The producer code which is inside the promise object contains resolve and reject callbacks.
+            * The producer code is executed as soon as the promise object is created.
+              You do not need to explicitly call the producer code.
+        =>Consumer code:
+            The code that consumes the result produced by the producer code.
+
+    
+    Syntax:
+
+        let promiseObj = new Promise((resolve, reject)=>{
+            //Producer code
+        });
