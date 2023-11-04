@@ -30,7 +30,7 @@ function getDressed(callback){
     return new Promise((resolve)=>{
         setTimeout(()=>{
             resolve();
-        },1000);
+        },5000);
     })
 }
 
@@ -51,12 +51,24 @@ function goOut(){
 //     console.error("An error occured:",err);
 // });
 
-
+ 
 //USING AWAIT
 
+// async function startDay(){
+//     await getDressed();
+//     await eatBreakfast();
+//     goOut();
+// }
+// startDay()
+
 async function startDay(){
-    await getDressed();
-    await eatBreakfast();
-    goOut();
+    try{
+        await getDressed();
+        await eatBreakfast();
+        goOut();
+    }
+    catch(err){
+        console.log("An error occured",err);
+    }
 }
-startDay()
+startDay();

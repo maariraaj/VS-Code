@@ -1,0 +1,19 @@
+ASYNC and AWAIT:
+
+ASYNC:
+
+    1.Introduced in ES8(ES2017)
+    2.Internally based on Promises
+    3.Even more readable as compared to Promises
+
+    "When the keyword "async" is prepared to a function, 
+    assume that a promise is returned from that function.
+
+
+AWAIT:
+
+    1. "await" keyword makes the code wait until the promise is 
+        either resolved or rejected.
+    2.  It is a better way of writing code than using the "then()"
+        method to handle the success of the promise.
+    3.  The await keyword does not handle the rejection of the promise.
