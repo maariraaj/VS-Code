@@ -1,0 +1,70 @@
+body{
+    background-color: aquamarine;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#todo{
+    max-width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: palegreen;
+    box-shadow: 0 0 10px green;
+    border-radius: 8px;
+}
+
+#taskInput{
+    padding: 10px;
+    border: 1px solid greenyellow;
+    border-radius: 8px;
+    background-color: springgreen;
+}
+
+#btnDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#addTask{
+    width: 28%;
+    align-items: center;
+    margin: 10px auto;
+    padding: 10px; 
+    background-color:rgb(230, 3, 128);
+    border: 1px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: rgb(216, 230, 216);
+}
+#addTask:hover{
+    background-color: orangered;
+}
+#taskList li{
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: plum;
+    border: 1px solid silver;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#taskList li input[type="checkBox"]{
+    margin-right: 10px;
+}
+#taskList li button{
+    padding: 5px 10px;
+    background-color: orchid;
+    border: 1px solid purple;
+    color: aliceblue;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#taskList li button:hover{
+    background-color: darkmagenta;
+}
+#taskList li.completed{
+    background-color: darkorchid;
+    text-decoration: line-through; 
+}

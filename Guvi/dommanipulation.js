@@ -63,3 +63,37 @@ function changeAll(){
         item.setAttribute("class", "firstLi large");
     })
 }
+
+const p=document.createElement("p");
+// const text=document.createTextNode("This is the CIty Of BIYEMR");
+// p.appendChild(text);
+p.innerText="This is the CIty Of BIYEMR";
+// document.body.append(p);
+
+const p1=document.createElement("p");
+// const text1=document.createTextNode("This is the CIty Of BETEKAY");
+// p1.appendChild(text1);
+p1.innerText="This is the CIty Of BETEKAY";
+
+
+// document.body.appendChild(p,p1);
+// document.body.append(p,p1);
+
+// document.getElementById("scrollable").append(p);
+// document.getElementById("scrollable").prepend(p);
+document.getElementById("scrollable").prepend(p,p1);
+
+
+// document.getElementById("scrollable").innerHTML +="<p>!!!!!!!!</p>";
+
+const txt=document.getElementById("text");
+console.log("InnerText:", txt.innerText);
+console.log("InnerHTML:", txt.innerHTML);
+console.log("TextContent:", txt.textContent);
+
+document.getElementById("text").innerHTML +=`<div id="text">
+Text Div
+    <p>Text 1</p>
+    <p>Text 2</p>
+    <p>Text 3</p>
+</div>`;
