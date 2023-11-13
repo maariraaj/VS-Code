@@ -19,8 +19,8 @@
 //     try{
 //         let a=10;
 //         let b="Prabha";
-//         // let c=a+b;
-//         const c=a+b;
+//         let c=a+b;
+//         //const c=a+b;
 //         console.log(c);
 //         c=a+b+70;
 //         console.log(c);
@@ -36,8 +36,8 @@ let promiseObj=new Promise((resolve, reject)=>{
     try{
         let a=10;
         let b="Prabha";
-        //let c=a+b;
-        const c=a+b;
+        let c=a+b;
+        //const c=a+b;
         c=a+b+70;
         resolve(c);
         }
@@ -45,7 +45,7 @@ let promiseObj=new Promise((resolve, reject)=>{
         reject("Error occured in showName function",error);
     }
 });
-// console.log(promiseObj);
+ console.log(promiseObj);
 
 
 promiseObj.then(
