@@ -1,0 +1,28 @@
+Navigating on command lines:
+
+cd -> to go to the parent folder
+
+cd filename -> to go to the specific folder
+
+cd .. -> to go to the previous folder
+
+pwd -> to show the current directory
+
+dir -> to display all the folders/files in the current folder
+
+mkdir -> to create a folder
+
+vite -> to setup our React application
+
+        "vite" is a french word.
+
+        vite: development server to run/start your React application on your local machine.
+
+        command: npm vite@latest projectName -- --template react
+                or
+                npm vite@latest 
+                
+                cd projectName
+                npm install
+                npm run dev
+                
