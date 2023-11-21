@@ -20,7 +20,7 @@ vite -> to setup our React application
 
         command: npm vite@latest projectName -- --template react (or)  npm vite@versionNumber projectName -- --template react
                 (or)
-                npm vite@latest 
+                npm create vite@latest 
                 
                 cd projectName
                 npm install
