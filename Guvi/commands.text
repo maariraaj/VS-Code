@@ -18,7 +18,7 @@ vite -> to setup our React application
 
         vite: development server to run/start your React application on your local machine.
 
-        command: npm vite@latest projectName -- --template react (or)  npm vite@versionNumber projectName -- --template react
+        command: npm create vite@latest projectName -- --template react (or)  npm create vite@versionNumber projectName -- --template react
                 (or)
                 npm create vite@latest 
                 
