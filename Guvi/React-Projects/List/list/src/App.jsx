@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div>
-      <h1>React-working with Lists!</h1>
+      {/* <h1>React-working with Lists!</h1>
       <ul>
         {list.map((item,index)=>{
           return <li key={item.ObjID}>
@@ -38,13 +38,31 @@ function App() {
             <span>{item.points}</span>
             </li>
         })}
-      </ul>
-      <div className="card" id='main'>
-        <img src="..." class="card-img-top" alt="..."/>
+      </ul> */}
+      {/* <div className="card" id='main'>
+        <img src="..." className="card-img-top" alt="..."/>
         <div className="card-body">
           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
+      </div> */}
+
+      <h1>React - Working with list</h1>
+      <div className='card-container'>
+        {list.map((item, i)=>(
+          <div className='card m-3' key={i}>
+            <div className='card-body'>
+              <h5 className='card-title'>{item.title}</h5>
+              <p className='card-text'>
+                <span>
+                  <a rel='noreferrer' target='_blank' href={item.url}>{item.url}
+                  </a>
+                </span>
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
+
     </div>
   );
 }
