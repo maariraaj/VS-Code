@@ -14,7 +14,6 @@ function App() {
     <div>
       <MyButton onClick={handleClick} onMouseOut={()=>{console.log("MouseOut Event!!");}}>Click Me</MyButton>
       <MyButton onClick={handleClick}>Save Me</MyButton>
-
       <State/>
     </div>
   ) 
@@ -28,15 +27,18 @@ function handleClick(){
 //Custom Components!!
 
 function MyButton(props){
-  // console.log("Spread Operator: ", {...props});
+  //console.log("Spread Operator: ", {...props});
   return (
-    // <button onClick={props.onClick} onMouseOut={props.onMouseOut} style={{color: 'red', backgroundColor: 'White'}}>
-    //   {props.children}
-    // </button>
-
-    <button {...props} style={{color: 'red', backgroundColor: 'White'}}>
+    <div>
+    <button onClick={props.onClick} onMouseOut={props.onMouseOut} style={{color: 'red', backgroundColor: 'White'}}>
       {props.children}
     </button>
+    
+    </div>
+
+    // <button {...props} style={{color: 'red', backgroundColor: 'White'}}>
+    //   {props.children}
+    // </button>
   )
 }
 
