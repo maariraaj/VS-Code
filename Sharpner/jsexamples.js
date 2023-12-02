@@ -1,3 +1,5 @@
+//JAVASCRIPT EXAMPLES:
+
 //Print the largest number 
 
 // let a=5, b=6, c=3;
@@ -144,3 +146,67 @@
 // }
 // console.log(sum);
 
+
+//Maximum in an array
+
+// const arr=[5,4,-1,8,12,54,6];
+// let max=arr[0];
+// for(let i=0;i<arr.length;i++){
+//     if(arr[i]>max){
+//         max=arr[i];
+//     }
+// }console.log(max);
+
+
+//store first n prime numbers in an array
+
+// let n=20;
+// let arr=[];
+// let x=2;
+// while(arr.length<n){
+//     let flag=true;
+//     for(let i=2;i<x;i++){
+//         if(x%i==0){
+//             flag=false;
+//             break;
+//         }
+//     }if(flag){
+//         arr.push(x);  
+//     }x+=1;
+// }console.log(arr);
+
+
+//find the maximum sum subarray
+
+// let arr=[5,2,-4,-5, 3,-1,2,3,1];
+// let max=arr[0];
+//        for(let i=0;i<arr.length;i++){
+//            for(let j=i;j<arr.length;j++){
+//                let sum=0;
+//                for( let k=i;k<=j;k++){
+//                    sum=sum+arr[k];
+//                }
+//            if(max<sum){
+//                max=sum;
+//            }
+//        }
+//    }console.log("Maximum Sum Subarray:",max);
+
+//another method without using j and k loop
+
+function maxSubarraySum(arr) {
+    let maxEndingHere = arr[0];
+    let maxSoFar = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
+        maxSoFar = Math.max(maxSoFar, maxEndingHere);
+    }
+
+    return maxSoFar;
+}
+
+// Example usage:
+const array = [5,2,-4,-5, 3,-1,2,3,1];
+const result = maxSubarraySum(array);
+console.log("Maximum Sum Subarray:", result);
