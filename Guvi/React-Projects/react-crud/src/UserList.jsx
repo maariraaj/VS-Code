@@ -2,7 +2,10 @@ import React from 'react'
 import Header from './Header';
 import {Link} from 'react-router-dom';
 
-function UserList({userList}) {
+function UserList({userList, deleteUserHandler}) {
+    const onDeleteClick=(userId)=>{
+        deleteUserHandler(userId);
+    }
   return (
     <div>
         <Header heading='User List'/>
@@ -29,7 +32,9 @@ function UserList({userList}) {
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
                                         <td>
-                                            <button type='button' className='btn btn-warning'>Delete</button>
+                                            <button type='button' className='btn btn-warning' onClick={()=>{
+                                                onDeleteClick(item.id)
+                                            }} >Delete</button>
                                         </td>
                                     </tr>
                                 ))}
