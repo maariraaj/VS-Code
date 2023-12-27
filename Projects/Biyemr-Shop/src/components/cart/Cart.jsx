@@ -6,6 +6,8 @@ import CartItem from './CartItem';
 const Cart=(props)=>{
     const contextItems=useContext(CartContext);
 
+    const subtotal= `₹ ${contextItems.total.toFixed(2)}`
+
     const handleClearItem=()=>{
         contextItems.clearItem();
     }
@@ -23,7 +25,7 @@ const Cart=(props)=>{
     return(
         <div className={styles.cartContainer}>
             <header className={styles.cartHeader}>
-                <button className={styles.cartCloseBtn}>
+                <button onClick={props.onClose} className={styles.cartCloseBtn}>
                     &times;
                 </button>
                 <h2>Cart</h2>
@@ -42,15 +44,16 @@ const Cart=(props)=>{
                                 id={item.id}
                                 name={item.name}
                                 image={item.image}
+                                price={item.price}
                                 quantity={item.quantity} 
-                                onAdd={() => handleIncrements(item.id)}
-                                onRemove={()=> handleDecrements(item.id)} />
+                                onAdd={()=>handleIncrements(item.id)}
+                                onRemove={()=>handleDecrements(item.id)} />
                         })}
                     </ul>
                 )}
                 <div className={styles.total}>
                     <span>Total</span>
-                    <span>0</span>
+                    <span>{subtotal}</span>
                 </div>
                 <div className={styles.cartDivider}></div>
                 <button className={styles.checkoutBtn}>Check Out</button>

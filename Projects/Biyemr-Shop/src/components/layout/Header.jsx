@@ -2,12 +2,12 @@ import logo from '../../assets/img/logo.png';
 import styles from './Header.module.css';
 import CartButton from './CartButton';
 
-const Header = () => {
+const Header = ({onToggle}) => {
   return (
     <header className={styles.header}>
       <nav className={styles['nav-items']}>
         <img src={logo} alt='logo biyemr' />
-        <CartButton />
+        <CartButton onClick={onToggle} />
       </nav>
       <div className={styles.content}>
         <h2>The World's No.1 <span className={styles['text-color']}>Shopping</span> site</h2>

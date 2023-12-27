@@ -1,6 +1,7 @@
 .cartContainer{
     background-color: #c1c1c1;
     width: 430px;
+    height: 100%;
 }
 .cartHeader{
     display: flex;

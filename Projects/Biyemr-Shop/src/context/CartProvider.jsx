@@ -17,7 +17,7 @@ const cartReducer=(state, action)=>{
                     if(item.id === id){
                         return{
                             ...item,
-                            quantity: item.quamtity + quantity
+                            quantity: item.quantity + quantity
                         }
                     }
                     return item;
@@ -85,7 +85,7 @@ const CartProvider=({children})=>{
     }
     const handleRemoveItem=(id)=>{
         dispatch({
-            type: 'remover_from_cart',
+            type: 'remove_from_cart',
             id: id
         })
     }
