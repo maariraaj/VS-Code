@@ -2,7 +2,7 @@ import React from 'react';
 import data from './components/back/Data/Data';
 import Header from './components/front/Header/Header';
 import {BrowserRouter as Router} from 'react-router-dom';
-import Routes from './components/front/Routes/Routess';
+import Routes from './components/front/Routes/Routes';
 
 const App = () => {
 
@@ -11,7 +11,7 @@ const App = () => {
     <div>
       <Router>
       <Header />
-      <Routes />
+      <Routes productItems={productItems} />
       </Router>
     </div>
   )

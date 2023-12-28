@@ -5,6 +5,7 @@ const data={
             name:"Beats Headphone",
             price:999,
             image:"./pics/beats.jpg"
+            // image:"../../../../public/picsbeats.jpg"
         },
         {
             id:"2",
@@ -53,7 +54,7 @@ const data={
             name:"Asus Laptop",
             price:1299,
             image:"./pics/asus.jpg"
-        },
+        }
     ]
 }
 
