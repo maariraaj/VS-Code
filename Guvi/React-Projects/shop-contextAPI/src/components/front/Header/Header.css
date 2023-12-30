@@ -14,8 +14,9 @@
 .logo{
     text-decoration: none;
     text-transform: uppercase;
-    color: white;
+    color: red;
     padding-left: 40px;
+    font-family: 'Nunito', sans-serif;
 }
 
 .header-links{

@@ -5,7 +5,6 @@ const data={
             name:"Beats Headphone",
             price:999,
             image:"./pics/beats.jpg"
-            // image:"../../../../public/picsbeats.jpg"
         },
         {
             id:"2",
