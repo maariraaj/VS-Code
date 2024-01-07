@@ -18,7 +18,7 @@ const mean={
 }
 
 function App() {
-  const [course, setCourse]=useState(mern);
+  const [course, setCourse]=useState(mean);
   const changeCourse=()=>{
     if(course===mern){
       setCourse(mean);
