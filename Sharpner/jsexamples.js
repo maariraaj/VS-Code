@@ -3,9 +3,9 @@
 //Print the largest number 
 
 // let a=5, b=6, c=3;
-// if(a>=b && a>=c){
+// if(a>b && a>c){
 //     console.log("A is the largest");
-// }else if(b>=c){
+// }else if(b>c){
 //     console.log("B is the largest");
 // }else{
 //     console.log("C is the largest");
@@ -37,7 +37,7 @@
 // let x=1;
 // let n=49;
 // let i=3;
-// while(x<=49){
+// while(x<=n){
 //     console.log(x);
 //     x+=i;
 //     i+=2;
@@ -185,6 +185,19 @@
 //     }x+=1;
 // }console.log(arr);
 
+
+//write the code to print all the subarrays possible
+
+// let arr=[1,2,3,4,5];
+
+// for(var i=0;i<arr.length;i++){
+//     for(var j=i;j<arr.length;j++){
+//         var str="";
+//         for( var k=i;k<=j;k++){
+//             str=str+arr[k];
+//         }console.log(str);
+//     }
+// }
 
 //find the maximum sum subarray
 
