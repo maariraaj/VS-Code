@@ -159,7 +159,7 @@
 
 //Maximum in an array
 
-// const arr=[5,4,-1,8,12,54,6];
+// const arr=[5,5,4,-1];
 // let max=arr[0];
 // for(let i=0;i<arr.length;i++){
 //     if(arr[i]>max){
@@ -190,14 +190,29 @@
 
 // let arr=[1,2,3,4,5];
 
-// for(var i=0;i<arr.length;i++){
-//     for(var j=i;j<arr.length;j++){
-//         var str="";
-//         for( var k=i;k<=j;k++){
+// for(let i=0;i<arr.length;i++){
+//     for(let j=i;j<arr.length;j++){
+//         let str="";
+//         // let str=[];
+//         for( let k=i;k<=j;k++){
 //             str=str+arr[k];
+//             // str.push(arr[k]);
 //         }console.log(str);
 //     }
 // }
+
+//another method wthout using k loop
+
+// const arr = [1, 2, 3, 4];
+
+// for (let i = 0; i < arr.length; i++) {
+//     for (let j = i; j < arr.length; j++) {
+//     const subarray = arr.slice(i, j + 1);
+//     console.log(subarray);
+//     }
+// }
+  
+
 
 //find the maximum sum subarray
 
