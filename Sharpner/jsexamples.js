@@ -168,7 +168,7 @@
 // }console.log(max);
 
 
-//store first n prime numbers in an array
+//store first n no. of prime numbers in an array
 
 // let n=20;
 // let arr=[];
@@ -185,6 +185,24 @@
 //     }x+=1;
 // }console.log(arr);
 
+
+//store first n prime number
+
+// let arr=[];
+
+// for(let num=2;num<10;num++){
+//     let flag=true;
+//     for(let i=2;i<num;i++){
+//         if(num%i===0){
+//             flag=false;
+//             break;
+//         }
+//     }if(flag){
+//         arr.push(num)
+//     }
+// }
+
+// console.log(arr);
 
 //write the code to print all the subarrays possible
 
@@ -224,7 +242,7 @@
 //         for( let k=i;k<=j;k++){
 //             sum=sum+arr[k];
 //         }
-//         if(max<sum){
+//         if(sum>max){
 //             max=sum;
 //         }
 //     }
@@ -332,12 +350,12 @@
 
 //Insertion Sort
 
-// let arr=[5,7,-3,43,69,96,-69];
+// let arr=[5,7,-3,43,6,-4,3];
 
 // for(let i=1;i<arr.length;i++){
 //     let temp=arr[i];
 //     let j=i-1;
-//     while(j>=0 && temp>arr[j]){
+//     while(j>=0 && temp<arr[j]){
 //         temp=arr[j+1];
 //         arr[j+1]=arr[j];
 //         arr[j]=temp;
@@ -377,7 +395,7 @@
 // for(let i=0;i<x.length;i++){
 //     console.log(x[i]);
 // };
-//to know ASCII value of a character
+// // to know ASCII value of a character
 // let a=x.charCodeAt(0);
 // console.log(a);
 
@@ -396,4 +414,54 @@
 //         max=arr[i].length;
 //     }
 // }console.log(max);
+
+
+//Extract numbers from a string
+
+// let s="abc123dfgh69";
+// let a = ["1","2","3","4","5","6","7","8","9","0"];
+// let b = "";
+// let c = [];
+// for(let i=0;i<s.length;i++){
+//     if(a.includes(s[i]) && a.includes(s[i+1])){
+//         b=b+s[i];
+//     }else if(a.includes(s[i]) && a.includes(s[i+1])==false) {
+//         b=b+s[i];
+//         c.push(b);
+//         b = "";
+//     }
+// }
+// console.log(c);
+// console.log(b);
+
+
+//Find no. of set bits(1's) in a number:
+// let num=19;
+// let count=0;
+// for(let i=0;i<32;i++){
+//     if(((num>>i)&1)==1){
+//         count += 1;
+//     }
+// }console.log(count);
+
+
+//find alternating bit (if two adjacent bits will always have different values)
+
+// let n=5;
+// let flag=1;
+// while(n>0){
+//     let x=n&1;
+//     let y=((n>>1)&1);
+//     if(x ^ y ==0){
+//         flag=0;
+//         console.log(false);
+//     }
+//     n=n>>1;
+// }
+// if(flag==1){
+//     console.log(true);
+// }
+
+
+//Convert a Number to Hexadecimal
 
