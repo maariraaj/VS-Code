@@ -383,6 +383,44 @@
 // }console.log(arr);
 
 
+//Rotate the array to the right by k steps, where k is non-negative.
+//(try to solve in time complexity 0(n) with extra space)
+
+// let arr = [1, 2, 3, 4, 5];
+// let k = 2;
+
+
+// // Check if array is empty or if rotation is not needed
+// if (arr.length === 0 || k % arr.length === 0) {
+//     return arr;
+// }
+
+// // Normalize rotation if it's greater than array length
+// k = k % arr.length;
+
+// // Reverse the entire array
+// reverse(arr, 0, arr.length - 1);
+
+// // Reverse the first part up to K
+// reverse(arr, 0, k - 1);
+
+// // Reverse the remaining part from K to end
+// reverse(arr, k, arr.length - 1);
+
+// // console.log("Original Array:", array);
+// console.log("Rotated Array:", arr);
+
+
+// function reverse(arr, start, end) {
+//     while (start < end) {
+//         let temp = arr[start];
+//         arr[start] = arr[end];
+//         arr[end] = temp;
+//         start++;
+//         end--;
+//     }
+// }
+
 //String
 
 // let x="Mariraj";
@@ -418,7 +456,7 @@
 
 //Extract numbers from a string
 
-// let s="abc123dfgh69";
+// let s="I have 3 apples and 5 oranges, totaling 8 fruits.";
 // let a = ["1","2","3","4","5","6","7","8","9","0"];
 // let b = "";
 // let c = [];
@@ -432,7 +470,60 @@
 //     }
 // }
 // console.log(c);
-// console.log(b);
+
+//Another Method
+
+// let inputString = "I have 3 apples and 5 oranges, totaling 8 fruits.";
+// let numbersArray = [];
+// let currentNumber = '';
+
+// // Iterate through each character of the input string
+// for (let i = 0; i < inputString.length; i++) {
+//     let char = inputString.charAt(i);
+
+//     // Check if the character is a digit
+//     if (!isNaN(parseInt(char))) {
+//         currentNumber += char; // Add the digit to the current number string
+//     } else if (currentNumber !== '') 
+//         // If the current number string is not empty, add it to the numbersArray
+//         {
+//             numbersArray.push(currentNumber);
+//             currentNumber = ''; // Reset the current number string
+//         }
+    
+// }
+
+// // Add the last number if the string ends with a number
+// if (currentNumber !== '') {
+//     numbersArray.push(currentNumber);
+// }
+
+// console.log(numbersArray);
+
+
+//find the number of characters required to add to make it a palindrome
+
+// const str = "abcb";
+
+// if (isPalindrome(str)) {
+//     console.log(0); 
+// } else {
+//     console.log(minCharsToAdd(str));
+// }
+
+// function isPalindrome(s) {
+//     return s === s.split('').reverse().join('');
+// }
+
+// function minCharsToAdd(s) {
+//     let count = 0;
+//     while (!isPalindrome(s)) {
+//         s = s.slice(0, -1);
+//         count++;
+//     }
+//     return count;
+// }
+
 
 
 //Find no. of set bits(1's) in a number:
@@ -463,5 +554,28 @@
 // }
 
 
-//Convert a Number to Hexadecimal
+// first, by the number of set bits (1s) in the binary representation of each element (with fewer set bits coming first), and second, if there's a tie in the bit count, by the numerical value (with smaller values coming first)
+
+// let arr=[5, 3, 7, 10, 15];
+// for (let i = 0; i < arr.length; i++){
+//     for (let j = i + 1; j < arr.length; j++){
+//         let count1 = 0, n1 = arr[i];
+//         while (n1 > 0) {
+//             count1 += n1 & 1;
+//             n1= n1>> 1;
+//         }
+//         let count2 = 0, n2 = arr[j];
+//         while (n2 > 0) {
+//             count2 += n2 & 1;
+//             n2= n2 >> 1;
+//         }
+//         if (count1 > count2 || (count1 == count2 && arr[i] > arr[j])) {
+//             let temp = arr[i];
+//             arr[i] = arr[j];
+//             arr[j] = temp;
+//         }
+//     }
+// }
+// console.log(arr); 
+
 
