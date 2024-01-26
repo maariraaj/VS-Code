@@ -34,21 +34,13 @@
 
 //Print the following series using while loop 1 4 9 16 25 36 …. n
 
-// let x=1;
-// let n=49;
-// let i=3;
-// while(x<=n){
-//     console.log(x);
-//     x+=i;
-//     i+=2;
-// }
-
 // let i=1;
 // let n=49;
 // while(i*i<=n){
 //     console.log(i*i);
 //     i=i+1;
 // }
+
 
 //whether a person has failed or passed using ternary Operator.
 
@@ -125,8 +117,7 @@
 // while(n>0){
 //     x=n%10;
 //     console.log(x);
-//     n-=x;
-//     n/=10;
+//     n=Math.floor(n/10);
 // }
 
 // Armstrong number: a number in which all the sum of cubes of digits is equal to the number
@@ -386,13 +377,13 @@
 //Rotate the array to the right by k steps, where k is non-negative.
 //(try to solve in time complexity 0(n) with extra space)
 
-// let arr = [1, 2, 3, 4, 5];
-// let k = 2;
+// let arr = [1, 2, 3, 4,5];
+// let k = 5;
 
 
 // // Check if array is empty or if rotation is not needed
 // if (arr.length === 0 || k % arr.length === 0) {
-//     return arr;
+//     console.log(arr); ;
 // }
 
 // // Normalize rotation if it's greater than array length
@@ -400,14 +391,15 @@
 
 // // Reverse the entire array
 // reverse(arr, 0, arr.length - 1);
+// console.log(arr);
 
 // // Reverse the first part up to K
 // reverse(arr, 0, k - 1);
+// console.log(arr);
 
 // // Reverse the remaining part from K to end
 // reverse(arr, k, arr.length - 1);
 
-// // console.log("Original Array:", array);
 // console.log("Rotated Array:", arr);
 
 
@@ -452,6 +444,7 @@
 //         max=arr[i].length;
 //     }
 // }console.log(max);
+// //console.log(arr);
 
 
 //Extract numbers from a string
@@ -473,21 +466,23 @@
 
 //Another Method
 
-// let inputString = "I have 3 apples and 5 oranges, totaling 8 fruits.";
-// let numbersArray = [];
+// let str = "I have 35 apples and 655 oranges, totaling 690 fruits69";
+// let arr = [];
 // let currentNumber = '';
 
 // // Iterate through each character of the input string
-// for (let i = 0; i < inputString.length; i++) {
-//     let char = inputString.charAt(i);
-
+// for (let i = 0; i < str.length; i++) {
+//     let char = str.charAt(i);
+//     //console.log("char", char);
 //     // Check if the character is a digit
 //     if (!isNaN(parseInt(char))) {
 //         currentNumber += char; // Add the digit to the current number string
+//         //console.log("currentNumber", currentNumber);
 //     } else if (currentNumber !== '') 
-//         // If the current number string is not empty, add it to the numbersArray
+//         // If the current number string is not empty, add it to the arr
 //         {
-//             numbersArray.push(currentNumber);
+//             arr.push(currentNumber);
+//            // console.log("array", arr);
 //             currentNumber = ''; // Reset the current number string
 //         }
     
@@ -495,15 +490,15 @@
 
 // // Add the last number if the string ends with a number
 // if (currentNumber !== '') {
-//     numbersArray.push(currentNumber);
+//     arr.push(currentNumber);
 // }
 
-// console.log(numbersArray);
+// console.log(arr);
 
 
 //find the number of characters required to add to make it a palindrome
 
-// const str = "abcb";
+// const str = "abcd";
 
 // if (isPalindrome(str)) {
 //     console.log(0); 
