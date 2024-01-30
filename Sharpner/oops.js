@@ -48,6 +48,43 @@
 // my_nexon.print_attributes();
 
 
+//Class without using constructor:
+//conditions:
+//1 - 'getInfo()' which takes the salary, number of hours of work per day of employee as parameter and initializes the attributes. (Note there is no constructor instead getInfo method is used)
+
+// 2 - 'AddSal()' which adds 10 to salary of the employee if it is less than 500. (note you don't have to print or return anything)
+
+// 3 - 'AddWork()' which adds 5 to salary of employee if the working_hours is more than 6 hours. (note you don't have to print or return anything)
+
+// class Employee
+// {
+//     //Write the code here
+//     getInfo(sal, wh){
+//        this.salary=sal;
+//        this.wh=wh; 
+//     }
+//     AddSal(){
+//         if(this.salary<500){
+//             this.salary += 10;
+//         }
+//     }
+//     AddWork(){
+//         if(this.wh>5){
+//             this.salary += 5;
+//         }
+//     }
+// }
+// let t=new Employee();
+// t.getInfo(400,7);
+// t.AddSal();
+// t.AddWork();
+// console.log(t.salary);
+// let x=new Employee();
+// x.getInfo(600,8);
+// x.AddSal();
+// x.AddWork();
+// console.log(x.salary);
+
 //STATIC
 
 // class College{
@@ -62,6 +99,54 @@
 // console.log(College.c_name);
 // College.c_name="VIT Chennai";
 // console.log(College.c_name);
+
+
+// class car{
+
+// }
+// car.company_name="Hyundai";  //static methot
+
+// let obj= new car();
+// obj.color="red";
+// console.log(obj.color);
+// console.log(obj.company_name);  // it will not work for static method.
+// obj.company_name="Maruti Suzuki";
+// console.log(car.company_name);  //it will work for static method.
+
+
+// class car{
+//     static company_name="Maruti";
+//     print_details(){
+//         console.log(car.company_name);
+//         console.log(this.color);
+//     }
+// }
+// //car.company_name="Hyundai";
+// let obj=new car();
+// obj.color="red";
+// obj.print_details();
+
+
+//calculate the no.of objects that has been created in realtime.
+
+// class count_objects
+// {
+//     constructor(){
+//         count_objects.i++;
+//     }
+    
+// }
+
+// count_objects.i=0;
+
+// let a = new count_objects();
+// let b = new count_objects();
+// let c = new count_objects();
+// console.log(count_objects.i);
+// let d = new count_objects();
+// console.log(count_objects.i);
+// let e = new count_objects();
+// console.log(count_objects.i);
 
 
 //CONSTRUCTOR
@@ -148,3 +233,23 @@
 
 // let b=new B(1,2,3,4);
 // b.display();
+
+
+//method of parent class by object of child class
+
+// class PARENT{
+//     print(){
+//         console.log("this is a parent class")
+//     }
+// }  
+// class CHILD extends PARENT{
+//     print(){
+//         console.log("this is a child class");
+//         super.print();
+//     }
+// }
+// let obj_parent = new PARENT();
+// obj_parent.print();
+
+// let obj_child = new CHILD();
+// obj_child.print();
