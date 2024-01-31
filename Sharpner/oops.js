@@ -253,3 +253,97 @@
 
 // let obj_child = new CHILD();
 // obj_child.print();
+
+
+//BINARY SEARCH
+
+// let search = function(nums, target) {
+//     let l=0, h=nums.length-1;
+    
+//     while(l<=h){
+//         let  mid=Math.floor((l+h)/2);
+//         if(target==nums[mid]){
+//            return(mid);
+//         }else if(target<nums[mid]){
+//             h=mid-1;
+//         }else{
+//             l=mid+1;
+//         }
+//     }return(-1);
+// };
+// console.log(search([1,3,6,12,14,17,25,29,31,36,42,47,53,55,62],42));
+
+
+//find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+
+// function findPeakElement(nums){
+//     let l=0, h=nums.length-1;
+//     while(l<h){
+//         let mid=Math.floor((l+h)/2);
+//         if(nums[mid]>nums[mid+1]){
+//             h=mid;
+//         }else{
+//             l=mid+1;
+//         }
+//     }
+//     // At the end of the loop, l==h and points to a peak
+//     return l;
+// }
+// const nums = [1,2,1,3,5,6,4];
+// console.log(findPeakElement(nums));
+
+
+//Find the Starting and ending Position of a given Target value
+
+// function searchRange(nums, target) {
+//     let l = findFirstOccurrence(nums, target);
+//     if (l === -1) {
+//         return [-1, -1];
+//     }
+    
+//     let h = findLastOccurrence(nums, target);
+//     return [l, h];
+// }
+
+// function findFirstOccurrence(nums, target){
+//     let l=0;
+//     let h=nums.length-1;
+//     let firstOccurrence=-1;
+    
+//     while(l<=h){
+//         let mid=Math.floor((l+h)/2);
+        
+//         if(nums[mid]>=target){
+//             if(nums[mid]===target){
+//                 firstOccurrence=mid;
+//             }
+//             h=mid-1;
+//         }else{
+//             l=mid+1;
+//         }
+//     }
+    
+//     return firstOccurrence;
+// }
+
+// function findLastOccurrence(nums, target){
+//     let l=0;
+//     let h=nums.length-1;
+//     let lastOccurrence=-1;
+    
+//     while (l<=h) {
+//         let mid=Math.floor((l+h)/2);
+        
+//         if(nums[mid]<=target){
+//             if(nums[mid]===target){
+//                 lastOccurrence=mid;
+//             }
+//             l=mid+1;
+//         }else{
+//             h=mid-1;
+//         }
+//     }
+    
+//     return lastOccurrence;
+// }
+// console.log(searchRange([5, 7, 7, 8, 8, 10], 8));
