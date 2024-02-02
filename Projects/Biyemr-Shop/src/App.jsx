@@ -15,11 +15,13 @@ function App() {
   }
 
   return (
-   <CartProvider>
-    {toggleCart && <Modal onClose={closeCartHandler} />}
-    <Header onToggle={toggleCartHandler} />
-    <MenuItems />
-   </CartProvider>
+  <>
+    <CartProvider>
+      {toggleCart && <Modal onClose={closeCartHandler} />}
+      <Header onToggle={toggleCartHandler} />
+      <MenuItems />
+    </CartProvider>
+   </>
   )
 }
 
