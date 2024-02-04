@@ -94,22 +94,68 @@
 // console.log(str);
 
 
-//find the pair whose sum is eq to k, others will be stored in b
+//Return the largest lucky integer in the array. If there is no lucky integer return -1, a lucky integer is an integer that has a frequency in the array equal to its value.
+
+// let x=[2,2,3,3,3,3,3];
+// let a={};
+// let b=new Map();
+// let arr=[];
+// for(let i=0; i<x.length;i++){
+//     if(b.get(x[i])==undefined){
+//         b.set(x[i], 1);
+//     }else{
+//         b.set(x[i], b.get(x[i])+1)
+//     }
+// }
+// for(let [k, v] of b){
+//     if(k==v){
+//         arr.push(k);
+//     }
+// }
+// if(arr.length==0){
+//     console.log(-1);
+// }else{
+//     let max=arr[0];
+//     for(let i=0;i<arr.length;i++){
+//         if(arr[i]>max){
+//             max=arr[i];
+//         }
+//     }console.log(max);
+// }
+
+
+//find the pair whose sum is eq to k
 
 // let x=[1,6,4,9,12,14,16];
 // let k=16;
-// let b=new Set();
+// let s=new Set();
 
 // for(let i=0;i<x.length;i++){
-//     let new_ele=x[i];
-//     a=k-new_ele;
-//     if(b.has(a)){
-//         console.log(a, new_ele);
+//     let a=x[i];
+//     let b=k-a;
+//     if(s.has(b)){
+//         console.log(b, a);
 //         break;
 //     }else{
-//         b.add(new_ele);
+//         s.add(a);
 //     }
 // }
-// console.log(b);
+// //console.log(s);
 
 
+//Return indices of the two numbers such that they add up to target.
+
+// let x=[2, 7, 11, 15];
+// let k=9;
+
+// let m=new Map();
+
+// for(let i=0; i<x.length; i++){
+//     let a=x[i];
+//     let b=k-a;
+    
+//     if(m.has(b)){
+//         console.log([m.get(b), i]);
+//     }   
+//     m.set(x[i], i);
+// }

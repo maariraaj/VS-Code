@@ -257,14 +257,14 @@
 
 //BINARY SEARCH
 
-// let search = function(nums, target) {
-//     let l=0, h=nums.length-1;
+// let search = function(arr, target) {
+//     let l=0, h=arr.length-1;
     
 //     while(l<=h){
 //         let  mid=Math.floor((l+h)/2);
-//         if(target==nums[mid]){
+//         if(target==arr[mid]){
 //            return(mid);
-//         }else if(target<nums[mid]){
+//         }else if(target<arr[mid]){
 //             h=mid-1;
 //         }else{
 //             l=mid+1;
