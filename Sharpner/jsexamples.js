@@ -195,6 +195,31 @@
 
 // console.log(arr);
 
+//return the number of prime numbers that are strictly less than n. Using the Sieve of Eratosthenes algorithm to efficiently find prime numbers up to n.
+
+// const n = 12;
+// const isPrime=[];
+// for(let i=2;i<n;i++){
+//     isPrime[i]=true;
+// }
+// isPrime[0] = false;
+// isPrime[1] = false;
+// for (let i=2;i*i<n;i++) {
+//     if(isPrime[i]){
+//         for(let j=i*i;j<n;j+=i) {
+//             isPrime[j]=false;
+//         }
+//     }
+// }
+// let count=0;
+// for (let i=2;i<n;i++){
+//     if(isPrime[i]){
+//         count++;
+//     }
+// }
+// console.log(count);
+ 
+
 //write the code to print all the subarrays possible
 
 // let arr=[1,2,3,4,5];
