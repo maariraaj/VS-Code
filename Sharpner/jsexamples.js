@@ -197,22 +197,22 @@
 
 //return the number of prime numbers that are strictly less than n. Using the Sieve of Eratosthenes algorithm to efficiently find prime numbers up to n.
 
-// const n = 12;
+// const n=12;
 // const isPrime=[];
 // for(let i=2;i<n;i++){
 //     isPrime[i]=true;
 // }
-// isPrime[0] = false;
-// isPrime[1] = false;
-// for (let i=2;i*i<n;i++) {
+// isPrime[0]=false;
+// isPrime[1]=false;
+// for (let i=2;i*i<n;i++){
 //     if(isPrime[i]){
-//         for(let j=i*i;j<n;j+=i) {
+//         for(let j=i*i;j<n;j+=i){
 //             isPrime[j]=false;
 //         }
 //     }
 // }
 // let count=0;
-// for (let i=2;i<n;i++){
+// for(let i=2;i<n;i++){
 //     if(isPrime[i]){
 //         count++;
 //     }
@@ -326,6 +326,19 @@
 // }console.log(max);
 
 
+//Given a 2D integer array matrix, return the transpose of matrix.
+
+// let matrix=[[1, 2, 3],[4, 5, 6],[7, 8, 9]];
+// let arr=[];
+// for(let i=0; i<matrix[0].length;i++){
+//     arr[i]=[];
+//     for(let j=0;j<matrix.length;j++){
+//         arr[i][j]=matrix[j][i];
+//     }
+// }
+// console.log(arr);
+
+
 //Find the sum of all possible odd-length subarrays of an array
 
 // let arr = [1,4,2,5,3];
@@ -388,7 +401,7 @@
 //     let max=arr[i];
 //     let index=i;
 //     for(let j=i+1;j<arr.length;j++){
-//         if(arr[j]>max){
+//         if(arr[j]<max){
 //             max=arr[j];
 //             index=j;
 //         }
@@ -457,6 +470,11 @@
 // let y="Muthuprabha";
 // console.log(y+" "+x);
 
+
+//reverse the order of the words.
+// let s="the sky is blue";
+// let words = s.trim().split(/\s+/).reverse().join(' ');
+// console.log(words);
 
 //Return the maximum number of words
 
@@ -543,7 +561,6 @@
 //     }
 //     return count;
 // }
-
 
 
 //Find no. of set bits(1's) in a number:

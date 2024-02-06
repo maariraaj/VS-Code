@@ -73,24 +73,24 @@
 
 //remove repetitive elements
 
-// let x="abcddcabxyzhfiiyuhlhhhf";
-// let a={};
-// let b=new Map();
+ //let x="abcddcabxyzhfiiyuhlhhhf";
+// let x="aAAabcdeaA"
+// let m=new Map();
 
 // for(let i=0;i<x.length;i++){
-//     if(b.get(x[i])==undefined){
-//         b.set(x[i], 1);
+//     if(m.get(x[i])==undefined){
+//         m.set(x[i], 1);
 //     }else{
-//         b.set(x[i], b.get(x[i])+1);
+//         m.set(x[i], m.get(x[i])+1);
 //     }
 // }
 // let str="";
 // for(let j=0;j<x.length;j++){
-//     if(b.get(x[j])==1){
+//     if(m.get(x[j])==1){
 //         str += x[j];
 //     }
 // }
-// console.log(b);
+// console.log(m);
 // console.log(str);
 
 
@@ -159,3 +159,63 @@
 //     }   
 //     m.set(x[i], i);
 // }
+
+//Return the toltal no.of jewels in stones
+
+// let jewels="aA";
+// let stones="aAAbbbb";
+
+// let jSet=new Set(jewels);
+// let count=0;
+
+// for(let stone of stones){
+//     if(jSet.has(stone)){
+//         count++;
+//     }
+// }
+// console.log(count);
+
+
+
+//Return the output should be true if subarray present in array whose sum is 0 and return false if not.
+
+// let arr=[4, 2, -3, 1, 6];
+// function hasZeroSumSubarray(arr){
+//     let sum=0;
+//     let sumMap=new Map();
+//     for(let i=0; i<arr.length;i++){
+//         sum += arr[i];
+//         if(sum===0 || sumMap.has(sum) || arr[i]===0){
+//             return true;
+//         }
+//         sumMap.set(sum, i);
+//     }
+//     return false;
+// }
+// console.log(hasZeroSumSubarray(arr));
+
+
+
+//arrange all the roll numbers in ascending order and Find the number of changes required to do so that number should be minimum
+
+// let arr=[10, 19, 6, 5, 3]
+// let changes=0;
+// for(let i=0;i<arr.length;i++){
+//     let max=arr[i];
+//     let index=i;
+//     for(let j=i+1;j<arr.length;j++){
+//         if(arr[j]<max){
+//             max=arr[j];
+//             index=j;
+//         }
+//     }
+//     if(index !== i){
+//     let temp=arr[i];
+//     arr[i]=arr[index];
+//     arr[index]=temp;
+//     changes++;
+//     }
+// }
+// console.log(changes);
+
+console.log(first)
