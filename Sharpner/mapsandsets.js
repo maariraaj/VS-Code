@@ -94,6 +94,46 @@
 // console.log(str);
 
 
+//return true if sentence is a pangram, or false otherwise. A pangram is a sentence where every letter of the English alphabet appears at least once.
+
+// let sen="thequickbrownfoxjumpsoverthelazydog";
+// let s=new Set();
+// let count=0;
+// for(let i=0;i<sen.length;i++){
+//     if(s.has(sen[i])){
+//         continue; 
+//     }else{
+//         s.add(sen[i]);
+//         count ++;
+//     }
+// }if(count==26){
+//     console.log(true);
+// }else{
+//     console.log(false);
+// }
+
+
+//Return the number of consistent strings in the array words.A string is consistent if all characters in the string appear in the string allowed.
+
+// let allowed="ab";
+// let words=["ad","bd","aaab","baa","badab"];
+// let s=new Set(allowed);
+// let count=0;
+
+// for(let word of words){
+//     let consistent=true;
+//     for(let char of word){
+//         if(!s.has(char)){
+//             consistent=false;
+//             break;
+//         }
+//     }
+//     if(consistent){
+//         count++;
+//     }
+// }console.log(count);
+
+
 //Return the largest lucky integer in the array. If there is no lucky integer return -1, a lucky integer is an integer that has a frequency in the array equal to its value.
 
 // let x=[2,2,3,3,3,3,3];
@@ -217,5 +257,3 @@
 //     }
 // }
 // console.log(changes);
-
-console.log(first)

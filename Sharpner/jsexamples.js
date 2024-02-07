@@ -478,17 +478,23 @@
 
 //Return the maximum number of words
 
-// let str= ["alice and bob love leetcode", "i think so too", "this is great thanks very much"];
-// let max=0, arr=[];
+// let s= ["alice and bob love leetcode", "i think so too", "this is great thanks very much"];
 
-// for(let i=0;i<str.length;i++){
-//     arr[i]=str[i].split(" ");
-//     if(arr[i].length>max){
-//         max=arr[i].length;
+// let max=0;
+// for(let i=0;i<s.length;i++){
+//     let arr=s[i].split(' ')
+//     if(arr.length>max){
+//         max=arr.length;
 //     }
 // }console.log(max);
-// //console.log(arr);
 
+
+//Given a string s, return true if it is a palindrome, or false otherwise. After converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters.
+
+// let str="A man, a plan, a canal: Panama"; 
+// str=str.toLowerCase().replace(/[^a-z0-9]/g,'');
+// let ans=str.split('').reverse().join('');
+// console.log(ans===str);
 
 //Extract numbers from a string
 
