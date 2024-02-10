@@ -73,7 +73,7 @@
 
 //remove repetitive elements
 
- //let x="abcddcabxyzhfiiyuhlhhhf";
+//let x="abcddcabxyzhfiiyuhlhhhf";
 // let x="aAAabcdeaA"
 // let m=new Map();
 

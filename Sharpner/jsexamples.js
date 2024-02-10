@@ -489,6 +489,39 @@
 // }console.log(max);
 
 
+//erase it if s[i] is equal to s[i-1] in the string.
+
+// const s = "aabaab";
+// let str="";
+// for(let i=0;i<s.length;i++){
+//     if(s[i] != s[i+1]){
+//         str += s[i];
+//     }
+// }console.log(str);
+
+
+
+//find the longest common prefix string amongst an array of strings.If there is no common prefix, return an empty string "".
+
+// let strs=["flower", "flow", "flight"];
+//     if(!strs || strs.length === 0){
+//         console.log("");
+//     }
+    
+//     let prefix=strs[0];
+//     for (let i=1;i<strs.length;i++){
+//         let j=0;
+//         while(j<prefix.length && j<strs[i].length && prefix[j]===strs[i][j]){
+//             j++;
+//         }
+//         prefix=prefix.slice(0, j);
+//         if(prefix===""){
+//             console.log("");
+//         }
+//     }
+//     console.log(prefix);
+
+
 //Given a string s, return true if it is a palindrome, or false otherwise. After converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters.
 
 // let str="A man, a plan, a canal: Panama"; 
@@ -568,6 +601,85 @@
 //     return count;
 // }
 
+
+
+//Given a sentence in the form of a string, convert it into its equivalent mobile numeric keypad sequence. 
+
+// let sentence="HELLO WORLD";
+// let keypadMap={
+//     'a': '2', 'b': '22', 'c': '222',
+//     'd': '3', 'e': '33', 'f': '333',
+//     'g': '4', 'h': '44', 'i': '444',
+//     'j': '5', 'k': '55', 'l': '555',
+//     'm': '6', 'n': '66', 'o': '666',
+//     'p': '7', 'q': '77', 'r': '777', 's': '7777',
+//     't': '8', 'u': '88', 'v': '888',
+//     'w': '9', 'x': '99', 'y': '999', 'z': '9999',
+//     ' ': '0'
+// };
+// let sequence = '';
+// for(let i=0;i<sentence.length;i++) {
+//     const char=sentence[i].toLowerCase();
+//     if(keypadMap.hasOwnProperty(char)){
+//     sequence += keypadMap[char];
+//     }
+// }
+// console.log(sequence);
+  
+
+
+//Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+// function isValid(s){
+//     const stack=[];
+//     const openBrackets=['(', '{', '['];
+//     const closingBrackets=[')', '}', ']'];
+//     const bracketMap={
+//       ')': '(',
+//       '}': '{',
+//       ']': '['
+//     };
+  
+//     for(let i=0; i<s.length; i++){
+//       const char=s[i];
+//       if(openBrackets.includes(char)){
+//         stack.push(char);
+//       }else if(closingBrackets.includes(char)){
+//         if(stack.length===0 || stack.pop() !== bracketMap[char]){
+//           return false;
+//         }
+//       }
+//     }
+  
+//     return stack.length===0;
+//   }
+//   const inputString="{[()]}{]";
+//   console.log(isValid(inputString));
+  
+
+
+//Given two strings s and t, return true if t is an anagram of s, and false otherwise. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+// function isAnagram(s, t){
+//     if(s.length !== t.length){
+//       return false;
+//     }
+//     const charCount={}; 
+//     for(let char of s){
+//       charCount[char]=(charCount[char] || 0) + 1;
+//     }
+//     for(let char of t){
+//       if(!charCount[char]){
+//         return false;
+//       }
+//       charCount[char]--;
+//     }
+//     return true;
+//   }
+//   const s="anagram";
+//   const t="nagaram";
+//   console.log(isAnagram(s, t));
+  
 
 //Find no. of set bits(1's) in a number:
 // let num=19;
