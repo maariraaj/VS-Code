@@ -183,6 +183,38 @@
 // //console.log(s);
 
 
+
+//Given an unsorted array and a number n, find if there exists a pair of elements in the array whose difference is n. 
+
+// function findPairWithDifference(arr, n) {
+//     arr.sort((a, b) => a - b);
+//     let i = 0;
+//     let j = 1;
+//     while (j < arr.length) {
+//         const diff = arr[j] - arr[i];   
+//         if (diff === n) {
+//             return [arr[i], arr[j]];
+//         } else if (diff < n) {
+//             j++;
+//         } else {
+//             i++;
+//             // Ensure i is always less than j
+//             if (i === j) {
+//                 j++;
+//             }
+//         }
+//     }
+//     return "No such pair";
+// }
+// const arr = [5, 20, 3, 2, 50, 80];
+// const n = 78;
+// const pair = findPairWithDifference(arr, n);
+// if (pair !== "No such pair") {
+//     console.log(`Pair with difference ${n}:`, pair);
+// } else {
+//     console.log("No such pair with difference", n);
+// }
+
 //Return indices of the two numbers such that they add up to target.
 
 // let x=[2, 7, 11, 15];
@@ -257,3 +289,4 @@
 //     }
 // }
 // console.log(changes);
+
