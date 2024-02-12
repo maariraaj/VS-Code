@@ -476,6 +476,8 @@
 // let words = s.trim().split(/\s+/).reverse().join(' ');
 // console.log(words);
 
+
+
 //Return the maximum number of words
 
 // let s= ["alice and bob love leetcode", "i think so too", "this is great thanks very much"];
@@ -487,6 +489,7 @@
 //         max=arr.length;
 //     }
 // }console.log(max);
+
 
 
 //erase it if s[i] is equal to s[i-1] in the string.
@@ -504,22 +507,22 @@
 //find the longest common prefix string amongst an array of strings.If there is no common prefix, return an empty string "".
 
 // let strs=["flower", "flow", "flight"];
-//     if(!strs || strs.length === 0){
+// if(!strs || strs.length === 0){
+//     console.log("");
+// }
+
+// let prefix=strs[0];
+// for (let i=1;i<strs.length;i++){
+//     let j=0;
+//     while(j<prefix.length && j<strs[i].length && prefix[j]===strs[i][j]){
+//         j++;
+//     }
+//     prefix=prefix.slice(0, j);
+//     if(prefix===""){
 //         console.log("");
 //     }
-    
-//     let prefix=strs[0];
-//     for (let i=1;i<strs.length;i++){
-//         let j=0;
-//         while(j<prefix.length && j<strs[i].length && prefix[j]===strs[i][j]){
-//             j++;
-//         }
-//         prefix=prefix.slice(0, j);
-//         if(prefix===""){
-//             console.log("");
-//         }
-//     }
-//     console.log(prefix);
+// }
+// console.log(prefix);
 
 
 //Given a string s, return true if it is a palindrome, or false otherwise. After converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters.
@@ -531,7 +534,7 @@
 
 //Extract numbers from a string
 
-// let s="I have 3 apples and 5 oranges, totaling 8 fruits.";
+// let s="I have 3 apples and 5 oranges, totaling 88 fruits.";
 // let a = ["1","2","3","4","5","6","7","8","9","0"];
 // let b = "";
 // let c = [];
@@ -605,7 +608,7 @@
 
 //Given a sentence in the form of a string, convert it into its equivalent mobile numeric keypad sequence. 
 
-// let sentence="HELLO WORLD";
+// let s="HELLO WORLD";
 // let keypadMap={
 //     'a': '2', 'b': '22', 'c': '222',
 //     'd': '3', 'e': '33', 'f': '333',
@@ -617,14 +620,14 @@
 //     'w': '9', 'x': '99', 'y': '999', 'z': '9999',
 //     ' ': '0'
 // };
-// let sequence = '';
-// for(let i=0;i<sentence.length;i++) {
-//     const char=sentence[i].toLowerCase();
+// let seq = '';
+// for(let i=0;i<s.length;i++) {
+//     let char=s[i].toLowerCase();
 //     if(keypadMap.hasOwnProperty(char)){
-//     sequence += keypadMap[char];
+//     seq += keypadMap[char];
 //     }
 // }
-// console.log(sequence);
+// console.log(seq);
   
 
 
@@ -653,7 +656,7 @@
   
 //     return stack.length===0;
 //   }
-//   const inputString="{[()]}{]";
+//   const inputString="{[()]}";
 //   console.log(isValid(inputString));
   
 

@@ -56,9 +56,7 @@
 
 // 3 - 'AddWork()' which adds 5 to salary of employee if the working_hours is more than 6 hours. (note you don't have to print or return anything)
 
-// class Employee
-// {
-//     //Write the code here
+// class Employee{
 //     getInfo(sal, wh){
 //        this.salary=sal;
 //        this.wh=wh; 
@@ -310,7 +308,7 @@
 //     while(l<=h){
 //         let mid=Math.floor((l+h)/2);
         
-//         if(nums[mid]>=target){
+//         if(target<=nums[mid]){
 //             if(nums[mid]===target){
 //                 firstOccurrence=mid;
 //             }
@@ -330,7 +328,7 @@
 //     while (l<=h) {
 //         let mid=Math.floor((l+h)/2);
         
-//         if(nums[mid]<=target){
+//         if(target>=nums[mid]){
 //             if(nums[mid]===target){
 //                 lastOccurrence=mid;
 //             }

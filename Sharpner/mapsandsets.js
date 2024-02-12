@@ -73,8 +73,7 @@
 
 //remove repetitive elements
 
-//let x="abcddcabxyzhfiiyuhlhhhf";
-// let x="aAAabcdeaA"
+// let x="abcddcabxyzhfiiyuhlhhhf";
 // let m=new Map();
 
 // for(let i=0;i<x.length;i++){
@@ -218,7 +217,7 @@
 //Return indices of the two numbers such that they add up to target.
 
 // let x=[2, 7, 11, 15];
-// let k=9;
+// let k=26;
 
 // let m=new Map();
 
@@ -273,11 +272,11 @@
 // let arr=[10, 19, 6, 5, 3]
 // let changes=0;
 // for(let i=0;i<arr.length;i++){
-//     let max=arr[i];
+//     let min=arr[i];
 //     let index=i;
 //     for(let j=i+1;j<arr.length;j++){
-//         if(arr[j]<max){
-//             max=arr[j];
+//         if(arr[j]<min){
+//             min=arr[j];
 //             index=j;
 //         }
 //     }
