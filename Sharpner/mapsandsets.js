@@ -99,9 +99,7 @@
 // let s=new Set();
 // let count=0;
 // for(let i=0;i<sen.length;i++){
-//     if(s.has(sen[i])){
-//         continue; 
-//     }else{
+//     if(!s.has(sen[i])){
 //         s.add(sen[i]);
 //         count ++;
 //     }
@@ -281,10 +279,10 @@
 //         }
 //     }
 //     if(index !== i){
-//     let temp=arr[i];
-//     arr[i]=arr[index];
-//     arr[index]=temp;
-//     changes++;
+//         let temp=arr[i];
+//         arr[i]=arr[index];
+//         arr[index]=temp;
+//         changes++;
 //     }
 // }
 // console.log(changes);
