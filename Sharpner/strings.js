@@ -231,3 +231,23 @@
 //   console.log(isAnagram(s, t));
   
 
+
+//You have to perform a single swap operation to make these strings similar. If it is possible then the strings are pro strings. If pro strings are formed then return True otherwise return False. If initially two equal strings are there then \those will not be considered pro strings.
+
+// let str1 = "SHARPENER";
+// let str2 = "S3P3R";
+// let i=0, j=0;
+
+// while(i<str1.length && j<str2.length){
+//     if(str1[i]===str2[j]){
+//         i++;
+//         j++;
+//     }else if(!isNaN(parseInt(str2[j]))){
+//         let count=parseInt(str2[j]);
+//         i += count;
+//         j++;
+//     } else {
+//         return false;
+//     }
+// }
+// console.log(i===str1.length && j===str2.length);

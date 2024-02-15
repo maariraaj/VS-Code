@@ -1,5 +1,7 @@
 //BINARY SEARCH
 
+//binary search for a sorted array(Ascending)
+
 // let search = function(arr, target) {
 //     let l=0, h=arr.length-1;
     
@@ -15,6 +17,24 @@
 //     }return(-1);
 // };
 // console.log(search([1,3,6,12,14,17,25,29,31,36,42,47,53,55,62],42));
+
+
+//binary search for a sorted array(Dscending)
+
+// let search=function(nums, target){
+//     let l=0,h=nums.length-1;
+//     while(l<=h){
+//         let mid=Math.floor((l+h)/2);
+//         if(target==nums[mid]){
+//             return mid;
+//         }else if(target<nums[mid]){
+//             l=mid+1;
+//         }else{
+//             h=mid-1;
+//         }
+//     }return -1;
+// }
+// console.log(search([9,5,3, 2,1],5));
 
 
 //find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
@@ -295,3 +315,38 @@
 // }
 // console.log("Minimum difference:", minDiff);
 
+
+
+//In a class A perfect team is the team where sum of marks of students in the team is divisible by 3 .It can be of two or three students Only . You have to find how many perfect teams can be formed 
+
+// const arr=[3, 6, 7, 2, 9];
+// let count2=0, count3=0;
+// for(let i=0;i<arr.length-1;i++){
+//     for(let j=i+1;j<arr.length;j++){
+//         let sum2=arr[i]+arr[j];
+//         if(sum2 % 3 ===0){
+//             count2 ++;
+//         }
+//         for(let k=j+1;k<arr.length;k++){
+//             let sum3=sum2+arr[k];
+//             if(sum3 % 3 ===0){
+//                 count3 ++;
+//             }
+//         }
+//     }
+// }
+// console.log(count2 + count3);
+
+
+//For each element check how many numbers are greater than it.
+
+// let nums= [10,12,6,4,16,1];
+// let arr=[];
+// for(let i=0;i<nums.length;i++){
+//     let max=nums[i], count=0;
+//     for(let j=0;j<nums.length;j++){
+//         if(nums[j]>max){
+//             count++;
+//         }
+//     }arr.push(count);
+// }console.log(arr)
