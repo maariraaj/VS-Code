@@ -9,6 +9,7 @@ function Profile() {
   return (
     <div>
         <h1>Profile: {user.username} </h1>
+        <h1>Password: {user.password}</h1>
     </div>
   )
 }
