@@ -203,7 +203,7 @@
   
 //     return stack.length===0;
 //   }
-//   const inputString="{[()]}";
+//   const inputString="}{";
 //   console.log(isValid(inputString));
   
 
