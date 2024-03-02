@@ -127,8 +127,7 @@
 // while(temp>0){
 //     x=temp%10;
 //     sum+=x*x*x;
-//     temp-=x;
-//     temp/=10;  //instead of using temp-=x; and temp/=10; we can use   temp = Math.floor(temp/10);
+//     temp=Math.floor(temp/10);
 // }
 // if(sum==n){
 //     console.log("It is an Armstrong number");
@@ -412,35 +411,25 @@
 // }console.log(arr);
 
 
+
 //Rotate the array to the right by k steps, where k is non-negative.
 //(try to solve in time complexity 0(n) with extra space)
 
 // let arr = [1, 2, 3, 4,5];
-// let k = 5;
-
-
+// let k = 2;
 // // Check if array is empty or if rotation is not needed
 // if (arr.length === 0 || k % arr.length === 0) {
-//     console.log(arr); ;
+//     console.log(arr);
 // }
-
 // // Normalize rotation if it's greater than array length
 // k = k % arr.length;
-
 // // Reverse the entire array
 // reverse(arr, 0, arr.length - 1);
-// console.log(arr);
-
 // // Reverse the first part up to K
 // reverse(arr, 0, k - 1);
-// console.log(arr);
-
 // // Reverse the remaining part from K to end
 // reverse(arr, k, arr.length - 1);
-
 // console.log("Rotated Array:", arr);
-
-
 // function reverse(arr, start, end) {
 //     while (start < end) {
 //         let temp = arr[start];

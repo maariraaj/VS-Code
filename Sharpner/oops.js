@@ -24,6 +24,24 @@
 // myCar1.get_no_of_years(5,2024);
 
 
+// class Employee{
+//     constructor(name, salary){
+//       this.name=name;
+//       this.salary=salary;
+//     }
+// }  
+// let employees = [
+// new Employee("Raj", 50000),
+// new Employee("Mari", 60000),
+// new Employee("Muthu", 55000),
+// new Employee("Kumar", 48000),
+// new Employee("Thirumalai", 70000)
+// ];
+// employees.sort((a, b)=>b.salary-a.salary);  
+// employees.forEach(employee=>console.log(employee.name));
+
+
+
 // class car{
 //     print_attributes(){
 //         console.log(this.name);
