@@ -158,6 +158,7 @@
 // }console.log(max);
 
 
+
 //store first n no. of prime numbers in an array
 
 // let n=20;

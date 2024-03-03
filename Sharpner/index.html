@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Write your code below -->
+    <h1>Book Appointment</h1>
+    <label form="appointment">Patient Details</label><hr>
+    <form id="appointment" onsubmit="handleFormSubmit(event)">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="u_name"><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="u_email"><br><br>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="u_phone"><br><br>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="u_date"><br><br>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="u_time"><br><br>
+      <label>
+        <button type="submit">Submit</button>
+      </label>
+      <label>
+        <button type="reset">Reset</button>
+      </label>
+    </form>
+  </body>
+<script>
+    function handleFormSubmit(event){
+        event.preventDefault();
+        console.log(event.target.u_name.value);
+        console.log(event.target.u_email.value);
+        console.log(event.target.u_phone.value);
+        console.log(event.target.u_date.value);
+        console.log(event.target.u_time.value);
+    }
+</script>
+</html>
