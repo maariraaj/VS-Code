@@ -442,6 +442,60 @@
 // }
 
 
+
+// 1th student can give 4 pens to 0th student, total work needed 4*(1-0) = 4, new arr[] = 1,0,1,-3,1 now 3rd student can give pens to 0th, 2th and 4th. so total work needed = 1*(3-0)+1*(3-2)+1*(4-3) = 5 So total work will be 4+5 = 9
+
+// var pens_need = function(arr) {
+  
+// let work=0, borrow
+// for(let i=0;i<arr.length;i++){
+// // if(arr[i] == 0){
+// //   continue
+// // }
+// if(arr[i]>0)
+// borrow=true
+// else{
+//     borrow = false
+// }
+
+// for(let j=i+1;j<arr.length;j++){
+
+//     if(borrow && arr[j]<0){
+//     if((arr[i]+arr[j])<=0){
+//         arr[j]=arr[i]+arr[j];
+//         work+=(j-i)*arr[i];
+//         arr[i] =0
+    
+//     } else {
+//         arr[i] = arr[i]+arr[j];
+//         work+=(j-i)*Math.abs(arr[j])
+//         arr[j] =0;
+//     }
+//     }
+    
+    
+//     else if(!borrow && arr[j]>0){
+//     if((arr[i]+arr[j])<=0){
+//         arr[i] = arr[i]+arr[j]
+//         work+=(j-i)*arr[j]
+//         arr[j] = 0;
+//     } else{
+//         arr[j] = arr[i]+arr[j]
+//         work+=(j-i)*Math.abs(arr[i])
+//         arr[i]=0
+//     }
+//     }
+// }
+// }
+// return work;
+
+// };
+
+// console.log(pens_need([5, -4, 1, -3, 1,0]));
+// console.log(pens_need([-1000, -1000, -1000, 1000, 1000, 1000,0]));
+
+
+
 //Find no. of set bits(1's) in a number:
 // let num=19;
 // let count=0;
@@ -493,17 +547,3 @@
 //     }
 // }
 // console.log(arr); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
