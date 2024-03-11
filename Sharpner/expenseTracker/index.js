@@ -23,7 +23,7 @@ function handleFormSubmit(event){
     
         const space1= document.createTextNode(' ');
         const space2= document.createTextNode(' ');
-        const amount = document.createTextNode(obj_getExp.expAmount);
+        const amount = document.createTextNode(obj_getExp.expAmount); 
         const desc = document.createTextNode(obj_getExp.description);
         const cate = document.createTextNode(obj_getExp.category);
     
