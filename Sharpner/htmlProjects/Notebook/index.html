@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notebook</title>
+</head>
+<body>
+    <h1>Notebook</h1>
+    <label for="search">Search Notes:</label>
+    <input type="text" name="search"/>
+    <div id="totalNotes">Total Notes:</div>
+    <div id="showing">Showing:</div><br><br><br>
+
+    <form onsubmit="handleFormSubmit(event)">
+        <label for="noteTitle">Note Title:</label>
+        <input type="text" id="NoteTitle" name="noteTitle"/><br>
+    
+        <label for="textArea">Note Description:</label>
+        <textarea name="textArea" id="textArea" rows="5" cols="100" ></textarea>
+
+        <button type="button" id="btn">Add To Book</button>
+    </form>
+</body>
+<script src="index.js"></script>
+</html>

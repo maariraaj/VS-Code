@@ -5,7 +5,7 @@ function handleFormSubmit(event){
         ratings: event.target.ratings.value
     };
     axios
-        .post("https://crudcrud.com/api/423252a6349d466da2483a243adb516c/feedbacks", userDetails)
+        .post("https://crudcrud.com/api/1d3f621082e043edbaf9f2b2a9a2186a/feedbacks", userDetails)
         .then((res)=> {
             displayFeedbacksOnScreen(res.data);
             document.getElementById("btn").textContent = "Submit";
@@ -17,7 +17,7 @@ function handleFormSubmit(event){
 }
 
 window.addEventListener("DOMContentLoaded",()=>{
-    axios.get("https://crudcrud.com/api/423252a6349d466da2483a243adb516c/feedbacks")
+    axios.get("https://crudcrud.com/api/1d3f621082e043edbaf9f2b2a9a2186a/feedbacks")
         .then((response)=>{
             for(let i=0; i<response.data.length; i++){
                 displayFeedbacksOnScreen(response.data[i]);
@@ -46,7 +46,7 @@ function displayFeedbacksOnScreen(feedbacks){
 
     deleteBtn.addEventListener("click", function(event){
         feedbackList.removeChild(event.target.parentElement);
-        axios.delete(`https://crudcrud.com/api/423252a6349d466da2483a243adb516c/feedbacks/${feedbacks._id}`)
+        axios.delete(`https://crudcrud.com/api/1d3f621082e043edbaf9f2b2a9a2186a/feedbacks/${feedbacks._id}`)
           .then(()=>{
             if(m.has(feedbacks.ratings)){
                 m.set(feedbacks.ratings, m.get(feedbacks.ratings)-1);
@@ -59,7 +59,7 @@ function displayFeedbacksOnScreen(feedbacks){
 
     editBtn.addEventListener("click", function(event){
         feedbackList.removeChild(event.target.parentElement);
-        axios.delete(`https://crudcrud.com/api/423252a6349d466da2483a243adb516c/feedbacks/${feedbacks._id}`)
+        axios.delete(`https://crudcrud.com/api/1d3f621082e043edbaf9f2b2a9a2186a/feedbacks/${feedbacks._id}`)
         .then(()=>document.getElementById("btn").textContent = "Edit Rating")
         .catch((err)=>console.log(err));
         document.getElementById("username").value=feedbacks.username;
