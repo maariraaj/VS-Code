@@ -9,11 +9,11 @@ const Expenses=(props) => {
         {props.expenses.map((expense)=>{
             return(
             <ExpenseItem
-                key={expense.id}
-                date={expense.date}
-                title={expense.title}
-                price={expense.price}
-                location={expense.location}
+              key={expense.id}
+              date={expense.date}
+              title={expense.title}
+              price={expense.price}
+              location={expense.location}
             />
             );
         })}
