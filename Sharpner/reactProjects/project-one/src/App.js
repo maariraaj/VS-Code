@@ -1,5 +1,6 @@
 import React from 'react';
 import Expenses from './components/Expenses/Expenses';
+import ExpenseForm from './components/ExpenseForm/ExpenseForm';
 
 const expenses=[
   {id:"1", date:new Date(2023, 7, 15), title:"Insurance", price:"300", location:'Bangalore' },
@@ -19,7 +20,7 @@ const App=()=> {
 
   return (
     <div>
-      <h1>Let's get Started</h1>
+      <ExpenseForm />
       <Expenses expenses={expenses}/>
     </div>
   );
