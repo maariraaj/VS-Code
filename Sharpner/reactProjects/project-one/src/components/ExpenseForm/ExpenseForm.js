@@ -34,17 +34,26 @@ const ExpenseForm = () => {
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
                 <label>Title</label>
-                <input type='text' onChange={titleChangeHandler} value={enteredTitle} />
+                <input 
+                    type='text' 
+                    onChange={titleChangeHandler} 
+                    value={enteredTitle} />
             </div>
 
             <div className='new-expense__control'>
                 <label>Amount</label>
-                <input type='number' onChange={amountChangeHandler} value={enteredAmount} />
+                <input 
+                    type='number' 
+                    onChange={amountChangeHandler} 
+                    value={enteredAmount} />
             </div>
 
             <div className='new-expense__control'>
                 <label>Date</label>
-                <input type='date' onChange={dateChangeHandler} value={enteredDate} />
+                <input 
+                    type='date' 
+                    onChange={dateChangeHandler} 
+                    value={enteredDate} />
             </div>
         </div>
         <div className='new-expense__actions'>
