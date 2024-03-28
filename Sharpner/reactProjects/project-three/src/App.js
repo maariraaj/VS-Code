@@ -1,21 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import AddUser from './components/Users/AddUser';
+import UsersList from './components/Users/UsersList';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+const App=()=> {
+  const [userList, setUserList]=useState([]);
+
+  const addUserHandler=(username, age)=>{
+    setUserList((prevUserList)=>{
+      return [
+        ...prevUserList,
+        {name:username, age:age, id:Math.random().toString()}
+      ];
+    });
+  };
+  return (
+    <div>
+      <AddUser onAddUser={addUserHandler}/>
+      <UsersList users={userList}  />
+    </div>
+  );
 }
 
 export default App;
