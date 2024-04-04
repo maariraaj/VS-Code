@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import { Fragment } from 'react';
+import Header from './components/Layout/Header'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      App
-    </>
-  )
+    <Fragment>
+      <Header />
+    </Fragment>
+  );
 }
 
 export default App
