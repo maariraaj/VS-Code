@@ -1,32 +1,32 @@
-import './App.css'
+import React, { useState, useCallback, useMemo } from 'react';
+
+import './App.css';
+import DemoList from './components/Demo/DemoList.jsx';
+import Button from './components/UI/Button/Button.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [listTitle, setListTitle] = useState('My List');
+
+  const [buttonTitle, setButtonTitle] = useState(true);
+
+  const changeTitleHandler = useCallback(() => {
+    setListTitle('New Title');
+  }, []);
+
+  const changeButtonTitleHandler=()=>{
+    setButtonTitle((prev) => !prev);
+  }
+
+  const listItems = useMemo(() => [5, 3, 1, 10, 9], []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <DemoList title={listTitle} items={listItems} sorting={buttonTitle} />
+      <Button onClick={changeTitleHandler}>Change List Title</Button>
+
+      <Button onClick={changeButtonTitleHandler}>{buttonTitle ? 'Change to descending order' : 'Change to ascending order'}</Button>
+    </div>
+  );
 }
 
-export default App
+export default App;
