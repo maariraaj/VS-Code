@@ -13,6 +13,12 @@ const InputForm = () => {
     const descriptionChangeHandler = (event) => {
         ctx.setDescription(event.target.value);
     }
+    const closeHandler=()=>{
+        ctx.onClose();
+        ctx.setUrl('')
+        ctx.setDescription('')
+        ctx.setTitle('')
+    }
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
@@ -23,18 +29,18 @@ const InputForm = () => {
     return (
         <form onSubmit={formSubmitHandler}>
             <label htmlFor="imageurl">Image Url:</label>
-            <input type="url" id="imageurl" value={ctx.url} onChange={urlChangeHandler} />
-            <br></br>
+            <input type="url" id="imageurl" value={ctx.url} onChange={urlChangeHandler} required/>
+            <br/>
             <label htmlFor="title">Title:</label>
-            <input type="text" id="title" value={ctx.title} onChange={titleChangeHandler} />
-            <br></br>
+            <input type="text" id="title" value={ctx.title} onChange={titleChangeHandler} required/>
+            <br/>
             <label htmlFor="description">Blog Description:</label>
-            <input type="text" id="description" value={ctx.description} onChange={descriptionChangeHandler} />
-            <br></br>
-            <br></br>
+            <input type="text" id="description" value={ctx.description} onChange={descriptionChangeHandler} required/>
+            <br/>
+            <br/>
             <div>
                 <button type="submit" >Post Blog</button>
-                <button type="button" onClick={ctx.onClose}>Close</button>
+                <button type="button" onClick={closeHandler}>Close</button>
             </div>
         </form>
     )
