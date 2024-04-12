@@ -29,9 +29,9 @@ const Cart = () => {
 
             <div className="modal fade" id="modal">
                 <div className="modal-dialog">
-                    <div className="modal-content">
+                    <div className="modal-content text-black bg-white">
                         <div className="modal-header">
-                            <h2>Cart</h2>
+                            <h1>Cart</h1>
                             <button className="btn-close" data-bs-dismiss="modal" data-bs-target="#modal"></button>
                         </div>
                         {cartElements.map((item) => {
@@ -41,7 +41,7 @@ const Cart = () => {
                                         <div className="col-md-6">
                                             <div className="product-card">
                                                 <img src={item.imageUrl} className="card-img" />
-                                                <h4>{item.title}</h4>
+                                                <h5>{item.title}</h5>
                                                 <p>Price: {Math.floor(item.price * item.quantity)}</p>
                                                 <button className="btn btn-danger remove-btn">Remove</button>
                                             </div>
