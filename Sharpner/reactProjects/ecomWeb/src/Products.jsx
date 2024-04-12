@@ -32,7 +32,7 @@ const Products = () => {
                         <img src={product.imageUrl} />
                         <div>
                             <h5>Price: ₹{product.price}</h5>
-                            <button>Add to cart</button>
+                            <button type="button" className="btn btn-success">Add to cart</button>
                         </div>
                         <hr />
                     </div>
