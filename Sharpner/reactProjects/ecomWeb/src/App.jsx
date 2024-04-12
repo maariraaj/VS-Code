@@ -1,8 +1,12 @@
+import Products from "./Products"
 
 function App() {
 
   return (
-    <div>App</div>
+    <div>
+      <h1>The Generics</h1>
+      <Products />
+    </div>
   )
 }
 
