@@ -1,5 +1,6 @@
 import { Fragment } from "react"
 import Products from "./Products"
+import Cart from "./Cart"
 
 function App() {
 
@@ -24,12 +25,16 @@ function App() {
               </li>
             </ul>
             <span className="navbar-text">
-              Cart
+              <Cart />
             </span>
           </div>
         </div>
       </nav>
-      <Products />
+      <div className="container">
+        <div className="card-group">
+          <Products />
+        </div>
+      </div>
     </Fragment>
   )
 }
