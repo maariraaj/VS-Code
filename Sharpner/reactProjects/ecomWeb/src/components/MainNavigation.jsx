@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { useContext } from "react";
 import Cart from "./Cart";
 import CartContext from "./cart-context";
@@ -20,10 +21,10 @@ function MainNavigation() {
                             <a className="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Store</a>
+                            <NavLink className="nav-link" to="/">Store</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/about">About</a>
+                            <NavLink className="nav-link" to="/about">About</NavLink>
                         </li>
                     </ul>
                     <div className="cart-icon-container position-relative d-inline-block">
