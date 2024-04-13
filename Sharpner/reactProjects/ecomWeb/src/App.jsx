@@ -1,6 +1,6 @@
 import { Fragment } from "react"
-import Products from "./Products"
-import Cart from "./Cart"
+import Products from "./components/Products"
+import Cart from "./components/Cart";
 
 function App() {
 
