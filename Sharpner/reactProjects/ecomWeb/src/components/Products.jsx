@@ -1,6 +1,6 @@
 import { Fragment, useContext } from "react"
 import CartContext from "./cart-context"
-import ProductList from "./ProductList";
+import ProductsList from "./ProductsList";
 
 const Products = () => {
     const ctx = useContext(CartContext);
@@ -8,7 +8,7 @@ const Products = () => {
     return (
         <Fragment>
             {ctx.items.map((item) => (
-                <ProductList
+                <ProductsList
                     key={item.id}
                     id={item.id}
                     title={item.title}
