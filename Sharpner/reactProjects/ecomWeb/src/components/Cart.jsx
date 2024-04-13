@@ -4,6 +4,10 @@ import CartContext from "./cart-context";
 const Cart = () => {
     const ctx = useContext(CartContext);
 
+    const totalCartPrice = ctx.items.reduce((curNumber, item) => {
+        return curNumber + (item.quantity * item.price);    
+      }, 0);
+
     return (
         <Fragment>
             <div className="container">
@@ -24,9 +28,10 @@ const Cart = () => {
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <div className="product-card">
-                                                    <img src={item.imageUrl} className="card-img" />
+                                                    <img src={item.imageUrl} className="img-fluid img-thumbnail " style={{maxWidth: "150px", maxHeight: "100px"}} />
                                                     <h5>{item.title}</h5>
-                                                    <p>Price: {Math.floor(item.price * item.quantity)}</p>
+                                                    <p>Quantity: {item.quantity}</p>
+                                                    <p>Price: ₹ {Math.floor(item.price * item.quantity)}</p>
                                                     <button className="btn btn-danger remove-btn">Remove</button>
                                                 </div>
                                             </div>
@@ -35,7 +40,7 @@ const Cart = () => {
                                 )
                             }
                         })}
-                        <div className="modal-footer">Total:</div>
+                        <div className="modal-footer">Total: ₹ {totalCartPrice}</div>
                         <button className="btn btn-primary mb-3 mx-3">Purchase</button>
                     </div>
                 </div>
