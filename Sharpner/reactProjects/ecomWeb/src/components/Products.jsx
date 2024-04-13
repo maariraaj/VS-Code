@@ -3,7 +3,7 @@ import CartContext from "./cart-context"
 import ProductList from "./ProductList";
 
 const Products = () => {
-    const ctx=useContext(CartContext);
+    const ctx = useContext(CartContext);
 
     return (
         <Fragment>

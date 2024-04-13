@@ -8,7 +8,7 @@ function App() {
   const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
     return curNumber + item.quantity;
   }, 0);
-  console.log(numberOfCartItems)
+
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,9 +29,6 @@ function App() {
                 <a className="nav-link" href="#">About</a>
               </li>
             </ul>
-            {/* <span className="navbar-text">
-              <Cart />
-            </span> */}
             <div className="cart-icon-container position-relative d-inline-block">
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{numberOfCartItems}</span>
               <Cart />

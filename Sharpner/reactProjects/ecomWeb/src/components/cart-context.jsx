@@ -41,10 +41,10 @@ export const CartContextProvider = (props) => {
     const addToCartHandler = (itemId) => {
         setItems(items.map(item => {
             if (item.id === itemId) {
-              return { ...item, quantity: item.quantity + 1 };
+                return { ...item, quantity: item.quantity + 1 };
             }
             return item;
-          }));
+        }));
     }
 
     return (

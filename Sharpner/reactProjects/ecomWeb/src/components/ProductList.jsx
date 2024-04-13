@@ -2,12 +2,12 @@ import { useContext } from "react"
 import CartContext from "./cart-context"
 
 const ProductList = (props) => {
-    const ctx=useContext(CartContext);
+    const ctx = useContext(CartContext);
 
-    const addCartHandler=()=>{
+    const addCartHandler = () => {
         ctx.onAddToCart(props.id);
     }
-    
+
     return (
         <div key={props.id} className="card p-3" >
             <h3 className="card-header">{props.title}</h3>
