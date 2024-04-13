@@ -11,7 +11,7 @@ function MainNavigation() {
                 </ul>
             </nav>
         </header>
-    )
+    )           
 }
 
 export default MainNavigation

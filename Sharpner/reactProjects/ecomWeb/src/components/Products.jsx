@@ -7,14 +7,19 @@ const Products = () => {
 
     return (
         <Fragment>
-            {ctx.items.map((item) => (
-                <ProductsList
-                    key={item.id}
-                    id={item.id}
-                    title={item.title}
-                    imageUrl={item.imageUrl}
-                    price={item.price} />
-            ))}
+            <div className="container">
+                <div className="card-group">
+                    {ctx.items.map((item) => (
+                        <ProductsList
+                            key={item.id}
+                            id={item.id}
+                            title={item.title}
+                            imageUrl={item.imageUrl}
+                            price={item.price} />
+                    ))}
+                </div>
+            </div>
+
         </Fragment>
     )
 }
