@@ -1,9 +1,14 @@
-import { Fragment } from "react"
+import { Fragment, useContext } from "react"
 import Products from "./components/Products"
 import Cart from "./components/Cart";
+import CartContext from "./components/cart-context";
 
 function App() {
-
+  const ctx = useContext(CartContext);
+  const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
+    return curNumber + item.quantity;
+  }, 0);
+  console.log(numberOfCartItems)
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,9 +29,13 @@ function App() {
                 <a className="nav-link" href="#">About</a>
               </li>
             </ul>
-            <span className="navbar-text">
+            {/* <span className="navbar-text">
               <Cart />
-            </span>
+            </span> */}
+            <div className="cart-icon-container position-relative d-inline-block">
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{numberOfCartItems}</span>
+              <Cart />
+            </div>
           </div>
         </div>
       </nav>

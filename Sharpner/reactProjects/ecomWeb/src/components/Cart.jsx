@@ -1,25 +1,8 @@
-import { Fragment} from "react";
+import { Fragment, useContext } from "react";
+import CartContext from "./cart-context";
 
 const Cart = () => {
-    const cartElements = [
-        {
-            title: 'Colors',
-            price: 100,
-            imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-            quantity: 2,
-        },
-        {
-            title: 'Black and white Colors',
-            price: 50,
-            imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-            quantity: 3,
-        },
-        {
-            title: 'Yellow and Black Colors',
-            price: 70,
-            imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-            quantity: 1,
-        }];
+    const ctx = useContext(CartContext);
 
     return (
         <Fragment>
@@ -34,21 +17,23 @@ const Cart = () => {
                             <h1>Cart</h1>
                             <button className="btn-close" data-bs-dismiss="modal" data-bs-target="#modal"></button>
                         </div>
-                        {cartElements.map((item) => {
-                            return (
-                                <div className="modal-body" key={Math.random().toString()}>
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <div className="product-card">
-                                                <img src={item.imageUrl} className="card-img" />
-                                                <h5>{item.title}</h5>
-                                                <p>Price: {Math.floor(item.price * item.quantity)}</p>
-                                                <button className="btn btn-danger remove-btn">Remove</button>
+                        {ctx.items.map((item) => {
+                            if (item.quantity > 0) {
+                                return (
+                                    <div className="modal-body" key={item.id}>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="product-card">
+                                                    <img src={item.imageUrl} className="card-img" />
+                                                    <h5>{item.title}</h5>
+                                                    <p>Price: {Math.floor(item.price * item.quantity)}</p>
+                                                    <button className="btn btn-danger remove-btn">Remove</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
+                                )
+                            }
                         })}
                         <div className="modal-footer">Total:</div>
                         <button className="btn btn-primary mb-3 mx-3">Purchase</button>
