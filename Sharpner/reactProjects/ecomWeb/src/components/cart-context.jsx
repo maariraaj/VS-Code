@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 const CartContext = React.createContext({
     items: [],
+    tourList: [],
     onAddToCart: () => { }
 });
 
@@ -36,6 +37,46 @@ export const CartContextProvider = (props) => {
             quantity: 0
         }
     ]
+
+    const tourList = [
+        {
+            id: 1,
+            title: "DTE ENERGY MUSIC THEATRE",
+            location: "DETROIT, MI",
+            date: "JUL 16"
+        },
+        {
+            id: 2,
+            title: "BUDWEISER STAGE",
+            location: "TORONTO,ON",
+            date: "JUL 19"
+        },
+        {
+            id: 3,
+            title: "JIGGY LUBE LIVE",
+            location: "BRISTOW, VA",
+            date: "JUL 22"
+        },
+        {
+            id: 4,
+            title: "AK-CHIN PAVILION",
+            location: "PHOENIX, AZ",
+            date: "JUL 29"
+        },
+        {
+            id: 5,
+            title: "T-MOBILE ARENA",
+            location: "LAS VEGAS, NV",
+            date: "AUG 2"
+        },
+        {
+            id: 6,
+            title: "CONCORD PAVILION",
+            location: "CONCORD, CA",
+            date: "AUG 7"
+        }
+    ]
+
     const [items, setItems] = useState(productsArr);
 
     const addToCartHandler = (itemId) => {
@@ -50,6 +91,7 @@ export const CartContextProvider = (props) => {
     return (
         <CartContext.Provider value={{
             items: items,
+            tourList: tourList,
             onAddToCart: addToCartHandler
         }}>
             {props.children}
