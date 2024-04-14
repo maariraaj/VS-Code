@@ -1,8 +1,8 @@
 import { Fragment, useContext } from "react"
 import CartContext from "./cart-context"
-import ProductsList from "./ProductsList";
+import StoreList from "./StoreList";
 
-const Products = () => {
+const Store = () => {
     const ctx = useContext(CartContext);
 
     return (
@@ -10,7 +10,7 @@ const Products = () => {
             <div className="container">
                 <div className="card-group">
                     {ctx.items.map((item) => (
-                        <ProductsList
+                        <StoreList
                             key={item.id}
                             id={item.id}
                             title={item.title}
@@ -24,4 +24,4 @@ const Products = () => {
     )
 }
 
-export default Products
+export default Store;

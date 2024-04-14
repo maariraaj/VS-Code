@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import CartContext from "./cart-context"
 
-const ProductsList = (props) => {
+const StoreList = (props) => {
     const ctx = useContext(CartContext);
 
     const addCartHandler = () => {
@@ -20,4 +20,4 @@ const ProductsList = (props) => {
     )
 }
 
-export default ProductsList
+export default StoreList;
