@@ -24,14 +24,14 @@ const Home = () => {
                 <div className='table-responsive'>
                     <table className='table table-hover'>
                         <thead>
-                            <tr>
+                            <tr className='table-secondary'                                                                                                                 >
                                 <th>Date</th>
                                 <th>Location</th>
                                 <th>Tour</th>
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='table-group-divider'>
                             {ctx.tourList.map((tour) => (
                                 <HomeList
                                     key={tour.id}
