@@ -30,8 +30,8 @@ const Cart = () => {
                                                 <div className="product-card">
                                                     <img src={item.imageUrl} className="img-fluid img-thumbnail " style={{maxWidth: "150px", maxHeight: "100px"}} />
                                                     <h5>{item.title}</h5>
-                                                    <p>Quantity: {item.quantity}</p>
-                                                    <p>Price: ₹ {Math.floor(item.price * item.quantity)}</p>
+                                                    <p>Quantity: {item.quantity} &nbsp; &nbsp; Price: ₹ {item.price}</p>
+                                                    <p>Todal Price: ₹ {Math.floor(item.price * item.quantity)}</p>
                                                     <button className="btn btn-danger remove-btn">Remove</button>
                                                 </div>
                                             </div>
@@ -40,7 +40,7 @@ const Cart = () => {
                                 )
                             }
                         })}
-                        <div className="modal-footer">Total: ₹ {totalCartPrice}</div>
+                        <div className="modal-footer">Overall Total: ₹ {totalCartPrice}</div>
                         <button className="btn btn-primary mb-3 mx-3">Purchase</button>
                     </div>
                 </div>
