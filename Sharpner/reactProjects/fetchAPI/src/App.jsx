@@ -24,14 +24,18 @@ function App() {
       }
       const data = await response.json();
 
-      const transformedMovies = data.results.map((movieData) => ({
-        id: movieData.episode_id,
-        title: movieData.title,
-        openingText: movieData.opening_crawl,
-        releaseDate: movieData.release_date
-      }));
+      const loadedMovies = [];
 
-      setMovies(transformedMovies);
+      for (const key in data) {
+        loadedMovies.push({
+          id: key,
+          title: data[key].title,
+          openingText: data[key].openingText,
+          releaseDate: data[key].releaseDate,
+        })
+      }
+
+      setMovies(loadedMovies);
       setIsLoading(false);
       setRetrying(false);
 
@@ -46,8 +50,22 @@ function App() {
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
 
-  function addMovieHandler(NewMovieObj) {
-    console.log(NewMovieObj);
+  async function addMovieHandler(movie) {
+    const response = await fetch('https://react-http-28c96-default-rtdb.firebaseio.com/movies.json', {
+      method: 'POST',
+      body: JSON.stringify(movie),
+      headers: {
+        'Content-Type': 'application.json'
+      }
+    });
+    const data = await response.json();
+  };
+
+  async function deleteMovieHandler(movieId) {
+    await fetch(`https://react-http-28c96-default-rtdb.firebaseio.com/movies/${movieId}.json`, {
+      method: 'DELETE'
+    });
+    fetchMoviesHandler();
   }
 
   useEffect(() => {
@@ -65,7 +83,7 @@ function App() {
   let content = <p>Found no movies.</p>;
 
   if (movies.length > 0) {
-    content = <MoviesList movies={movies} />;
+    content = <MoviesList onDelete={deleteMovieHandler} movies={movies} />;
   }
   if (error) {
     content = <p>{error}</p>;
