@@ -1,7 +1,10 @@
 
 function ProductsPage() {
   return (
-    <h1>ProductsPage</h1>
+    <section>
+      <h1>ProductsPage</h1>
+      
+    </section>
   )
 }
 
