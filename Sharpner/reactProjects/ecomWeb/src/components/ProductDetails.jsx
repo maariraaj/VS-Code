@@ -8,6 +8,9 @@ const ProductDetails = () => {
     const ctx = useContext(CartContext);
 
     if (params.productId === 'p1') {
+        const addCartHandler = () => {
+            ctx.onAddToCart(params.productId);
+        }
         return (
             <div className="container mt-5">
                 <div className="row">
@@ -23,13 +26,16 @@ const ProductDetails = () => {
                         <p>
                             {ctx.items[0].details}
                         </p>
-                        <button className="btn btn-primary">Add to Cart</button>
+                        <button type="button" className="btn btn-success" onClick={addCartHandler}>Add to cart</button>
                     </div>
                 </div>
             </div>
         );
     }
     if (params.productId === 'p2') {
+        const addCartHandler = () => {
+            ctx.onAddToCart(params.productId);
+        }
         return (
             <div className="container mt-5">
                 <div className="row">
@@ -45,13 +51,16 @@ const ProductDetails = () => {
                         <p>
                             {ctx.items[1].details}
                         </p>
-                        <button className="btn btn-primary">Add to Cart</button>
+                        <button type="button" className="btn btn-success" onClick={addCartHandler}>Add to cart</button>
                     </div>
                 </div>
             </div>
         );
     }
     if (params.productId === 'p3') {
+        const addCartHandler = () => {
+            ctx.onAddToCart(params.productId);
+        }
         return (
             <div className="container mt-5">
                 <div className="row">
@@ -67,13 +76,16 @@ const ProductDetails = () => {
                         <p>
                             {ctx.items[2].details}
                         </p>
-                        <button className="btn btn-primary">Add to Cart</button>
+                        <button type="button" className="btn btn-success" onClick={addCartHandler}>Add to cart</button>
                     </div>
                 </div>
             </div>
         );
     }
     if (params.productId === 'p4') {
+        const addCartHandler = () => {
+            ctx.onAddToCart(params.productId);
+        }
         return (
             <div className="container mt-5">
                 <div className="row">
@@ -89,7 +101,7 @@ const ProductDetails = () => {
                         <p>
                             {ctx.items[3].details}
                         </p>
-                        <button className="btn btn-primary">Add to Cart</button>
+                        <button type="button" className="btn btn-success" onClick={addCartHandler}>Add to cart</button>
                     </div>
                 </div>
             </div>
