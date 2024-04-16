@@ -3,10 +3,15 @@ import React, { useState } from 'react'
 const CartContext = React.createContext({
     items: [],
     tourList: [],
-    onAddToCart: () => { }
+    onAddToCart: () => { },
+    login: (token)=>{}
 });
 
 export const CartContextProvider = (props) => {
+    const initialToken = localStorage.getItem('token');
+
+    const [token, setToken] =useState(initialToken);
+
     const productsArr = [
         {
             id: "p1",
@@ -91,6 +96,11 @@ export const CartContextProvider = (props) => {
 
     const [items, setItems] = useState(productsArr);
 
+    const loginHandler=(token)=>{
+        setToken(token);
+        localStorage.setItem("token", token);
+    }
+
     const addToCartHandler = (itemId) => {
         setItems(items.map(item => {
             if (item.id === itemId) {
@@ -104,7 +114,8 @@ export const CartContextProvider = (props) => {
         <CartContext.Provider value={{
             items: items,
             tourList: tourList,
-            onAddToCart: addToCartHandler
+            onAddToCart: addToCartHandler,
+            login: loginHandler
         }}>
             {props.children}
         </CartContext.Provider>

@@ -5,6 +5,7 @@ import About from './components/About';
 import Home from './components/Home';
 import ContactUs from './components/ContactUs';
 import ProductDetails from './components/ProductDetails';
+import AuthPage from './components/AuthPage';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
       { path: '/store', element: <Store /> },
       { path: '/store/:productId', element: <ProductDetails />},
       { path: '/about', element: <About /> },
-      { path: '/contactus', element: <ContactUs /> }
+      { path: '/contactus', element: <ContactUs /> },
+      { path: '/auth', element: <AuthPage /> }
     ]
   }
 ]);
