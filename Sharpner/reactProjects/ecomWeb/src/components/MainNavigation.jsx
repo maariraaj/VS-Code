@@ -5,9 +5,11 @@ import CartContext from "./cart-context";
 
 function MainNavigation() {
     const ctx = useContext(CartContext);
+
     const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
         return curNumber + item.quantity;
     }, 0);
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
             <div className="container-fluid">

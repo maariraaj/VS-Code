@@ -4,14 +4,11 @@ const CartContext = React.createContext({
     items: [],
     tourList: [],
     onAddToCart: () => { },
-    login: (token)=>{}
+    login: (token) => { },
+    isLoggedIn: false
 });
 
 export const CartContextProvider = (props) => {
-    const initialToken = localStorage.getItem('token');
-
-    const [token, setToken] =useState(initialToken);
-
     const productsArr = [
         {
             id: "p1",
@@ -44,7 +41,7 @@ export const CartContextProvider = (props) => {
             quantity: 0
         },
         {
-            id: "p4", 
+            id: "p4",
             title: 'Blue Color',
             price: 100,
             imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
@@ -92,11 +89,17 @@ export const CartContextProvider = (props) => {
             location: "CONCORD, CA",
             date: "AUG 7"
         }
-    ]
+    ];
+
+    const initialToken = localStorage.getItem('token');
+
+    const [token, setToken] = useState(initialToken);
+
+    const userIsLoggedIn = !!token;
 
     const [items, setItems] = useState(productsArr);
 
-    const loginHandler=(token)=>{
+    const loginHandler = (token) => {
         setToken(token);
         localStorage.setItem("token", token);
     }
@@ -115,7 +118,8 @@ export const CartContextProvider = (props) => {
             items: items,
             tourList: tourList,
             onAddToCart: addToCartHandler,
-            login: loginHandler
+            login: loginHandler,
+            isLoggedIn: userIsLoggedIn
         }}>
             {props.children}
         </CartContext.Provider>
