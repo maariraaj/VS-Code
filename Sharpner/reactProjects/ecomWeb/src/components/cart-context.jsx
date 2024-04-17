@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react'
 
 const CartContext = React.createContext({
     items: [],
-    cartItems: [],
     tourList: [],
     onAddToCart: () => { },
     login: (token) => { },
@@ -99,48 +97,25 @@ export const CartContextProvider = (props) => {
 
     const userIsLoggedIn = !!token;
 
-    const [cartItems, setCartItems] = useState([]);
+    const [items, setItems] = useState(productsArr);
 
     const loginHandler = (token) => {
         setToken(token);
         localStorage.setItem("token", token);
     }
 
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('https://crudcrud.com/api/36b56f460b7d4bd69764d6b47d211b52/cart');
-            setCartItems(response.data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    const addToCartHandler = async (itemId) => {
-        try {
-            setCartItems(cartItems.map(item => {
-                if (item.id === itemId) {
-                    return { ...item, quantity: item.quantity + 1 };
-                }
-                return item;
-            }));
-            const response = await axios.post('https://crudcrud.com/api/36b56f460b7d4bd69764d6b47d211b52/cart', { item: cartItems });
-            setCartItems('');
-
-            setCartItems([...cartItems, response.data]);
-        } catch (error) {
-            console.error('Error adding item:', error);
-        }
-    };
-    
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    const addToCartHandler = (itemId) => {
+        setItems(items.map(item => {
+            if (item.id === itemId) {
+                return { ...item, quantity: item.quantity + 1 };
+            }
+            return item;
+        }));
+    }
 
     return (
         <CartContext.Provider value={{
-            items: productsArr,
-            cartItems: cartItems,
+            items: items,
             tourList: tourList,
             onAddToCart: addToCartHandler,
             login: loginHandler,

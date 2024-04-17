@@ -4,10 +4,7 @@ import CartContext from "./cart-context";
 const Cart = () => {
     const ctx = useContext(CartContext);
 
-    // const totalCartPrice = ctx.items.reduce((curNumber, item) => {
-    //     return curNumber + (item.quantity * item.price);    
-    //   }, 0);
-    const totalCartPrice = ctx.cartItems.reduce((curNumber, item) => {
+    const totalCartPrice = ctx.items.reduce((curNumber, item) => {
         return curNumber + (item.quantity * item.price);    
       }, 0);
 
@@ -24,7 +21,7 @@ const Cart = () => {
                             <h1>Cart</h1>
                             <button className="btn-close" data-bs-dismiss="modal" data-bs-target="#modal"></button>
                         </div>
-                        {ctx.cartItems.map((item) => {
+                        {ctx.items.map((item) => {
                             if (item.quantity > 0) {
                                 return (
                                     <div className="modal-body" key={item.id}>
