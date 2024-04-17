@@ -4,7 +4,7 @@ import CartContext from "./cart-context";
 import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -51,28 +51,31 @@ const AuthPage = () => {
     };
 
     return (
-        <div className="container">
-            <div className="row justify-content-center mt-5">
-                <div className="col-md-6">
-                    <div className="card">
-                        <h3 className="card-header">Login</h3>
-                        <div className="card-body">
-                            <form onSubmit={loginHandler}>
-                                <div className="mb-3">
-                                    <label htmlFor="username" className="form-label">Username</label>
-                                    <input type="text" className="form-control" id="username" ref={emailInputRef} required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="password" className="form-label">Password</label>
-                                    <input type="password" className="form-control" id="password" ref={passwordInputRef} required />
-                                </div>
-                                <button type="submit" className="btn btn-primary">Login</button>
-                            </form>
+        <>
+            {!authCtx.isLoggedIn && <div className="container">
+                <div className="row justify-content-center mt-5">
+                    <div className="col-md-6">
+                        <div className="card">
+                            <h3 className="card-header">Login</h3>
+                            <div className="card-body">
+                                <form onSubmit={loginHandler}>
+                                    <div className="mb-3">
+                                        <label htmlFor="username" className="form-label">Username</label>
+                                        <input type="text" className="form-control" id="username" ref={emailInputRef} required />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="password" className="form-label">Password</label>
+                                        <input type="password" className="form-control" id="password" ref={passwordInputRef} required />
+                                    </div>
+                                    <button type="submit" className="btn btn-primary">Login</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>}
+            {authCtx.isLoggedIn && <h1 className="text-center mt-5 mb-5">Already logged in.</h1>}
+        </>
     );
 };
 

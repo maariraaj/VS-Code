@@ -6,7 +6,7 @@ import CartContext from "./cart-context";
 function MainNavigation() {
     const ctx = useContext(CartContext);
 
-    const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
+    const numberOfCartItems = ctx.cartItems.reduce((curNumber, item) => {
         return curNumber + item.quantity;
     }, 0);
     

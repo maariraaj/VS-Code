@@ -4,9 +4,9 @@ import CartContext from "./cart-context";
 const Cart = () => {
     const ctx = useContext(CartContext);
 
-    const totalCartPrice = ctx.items.reduce((curNumber, item) => {
-        return curNumber + (item.quantity * item.price);    
-      }, 0);
+    const totalCartPrice = ctx.cartItems.reduce((curNumber, item) => {
+        return curNumber + (item.quantity * item.price);
+    }, 0);
 
     return (
         <Fragment>
@@ -21,18 +21,25 @@ const Cart = () => {
                             <h1>Cart</h1>
                             <button className="btn-close" data-bs-dismiss="modal" data-bs-target="#modal"></button>
                         </div>
-                        {ctx.items.map((item) => {
+                        {ctx.cartItems.map((item) => {
                             if (item.quantity > 0) {
                                 return (
                                     <div className="modal-body" key={item.id}>
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <div className="product-card">
-                                                    <img src={item.imageUrl} className="img-fluid img-thumbnail " style={{maxWidth: "150px", maxHeight: "100px"}} />
+                                                    <img src={item.imageUrl} className="img-fluid img-thumbnail " style={{ maxWidth: "150px", maxHeight: "100px" }} />
                                                     <h5>{item.title}</h5>
-                                                    <p>Quantity: {item.quantity} &nbsp; &nbsp; Price: ₹ {item.price}</p>
-                                                    <p>Todal Price: ₹ {Math.floor(item.price * item.quantity)}</p>
-                                                    <button className="btn btn-danger remove-btn">Remove</button>
+                                                    <div>
+                                                        <span>Quantity:&nbsp;</span>
+                                                        <button type="button" className="btn btn-danger btn-sm" onClick={() => { ctx.onDecrease(item.id) }}>-</button>
+                                                        &nbsp;{item.quantity}&nbsp;
+                                                        <button type="button" className="btn btn-success btn-sm" onClick={() => { ctx.onIncrease(item.id) }}>+</button>
+                                                        <br />
+                                                        Price: ₹ {item.price}
+                                                    </div>
+                                                    <p>Total Price: ₹ {Math.floor(item.price * item.quantity)}</p>
+                                                    <button className="btn btn-warning remove-btn" onClick={() => { ctx.onRemove(item.id) }}>Remove</button>
                                                 </div>
                                             </div>
                                         </div>
