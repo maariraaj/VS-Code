@@ -28,9 +28,12 @@ function MainNavigation() {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/about">About</NavLink>
                         </li>
-                        <li className="nav-item">
+                        {!ctx.isLoggedIn && (<li className="nav-item">
                             <NavLink className="nav-link" to="/auth">Login</NavLink>
-                        </li>
+                        </li>)}
+                        {ctx.isLoggedIn && (<li className="nav-item" onClick={ctx.onLogout}>
+                            <NavLink className="nav-link" to="/auth">Logout</NavLink>
+                        </li>)}
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
                         </li>

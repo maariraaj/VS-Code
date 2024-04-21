@@ -1,5 +1,4 @@
-import React, { useRef } from "react";
-import { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import CartContext from "./cart-context";
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +40,7 @@ const AuthPage = () => {
                     });
                 }
             }).then((data) => {
-                authCtx.login(data.idToken);
+                authCtx.login(data.idToken, data.email);
 
                 navigate('/store');
             })
@@ -74,7 +73,6 @@ const AuthPage = () => {
                     </div>
                 </div>
             </div>}
-            {authCtx.isLoggedIn && <h1 className="text-center mt-5 mb-5">Already logged in.</h1>}
         </>
     );
 };

@@ -22,7 +22,7 @@ function App() {
         { path: '/store/:productId', element: ctx.isLoggedIn ? <ProductDetails /> : <AuthPage /> },
         { path: '/about', element: <About /> },
         { path: '/contactus', element: <ContactUs /> },
-        { path: '/auth', element: <AuthPage /> }
+        { path: '/auth', element: <AuthPage />  }
       ]
     }
   ]);

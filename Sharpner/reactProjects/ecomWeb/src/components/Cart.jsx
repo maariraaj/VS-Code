@@ -7,7 +7,7 @@ const Cart = () => {
     const totalCartPrice = ctx.cartItems.reduce((curNumber, item) => {
         return curNumber + (item.quantity * item.price);
     }, 0);
-
+    
     return (
         <Fragment>
             <div className="container">
