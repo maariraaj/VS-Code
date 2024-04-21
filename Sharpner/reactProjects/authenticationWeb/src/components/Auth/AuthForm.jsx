@@ -30,9 +30,9 @@ const AuthForm = () => {
 
     let url;
     if (isLogin) {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAZalqK-mJEtcoOj7nMqwQ5rztJ1EGgpCE';
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0';
     } else {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAZalqK-mJEtcoOj7nMqwQ5rztJ1EGgpCE';
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0';
     }
     fetch(
       url,

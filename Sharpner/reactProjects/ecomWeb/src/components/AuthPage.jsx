@@ -16,7 +16,7 @@ const AuthPage = () => {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
-        fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAZalqK-mJEtcoOj7nMqwQ5rztJ1EGgpCE',
+        fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0',
             {
                 method: 'POST',
                 body: JSON.stringify({

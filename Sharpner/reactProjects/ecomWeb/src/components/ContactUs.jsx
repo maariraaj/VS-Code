@@ -17,7 +17,7 @@ const ContactUs = () => {
         event.target.reset();
     }
     async function addUserHandler(user) {
-        const response = await fetch('https://react-http-28c96-default-rtdb.firebaseio.com/users.json', {
+        const response = await fetch('https://react-http-bb1f2-default-rtdb.firebaseio.com/users.json', {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
