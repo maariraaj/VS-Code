@@ -1,27 +1,52 @@
 import React, { useState, useRef } from 'react';
+import { useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import ExpenseContext from '../exp-context/expense-context';
 
 function AuthPage() {
-    const emailRef = useRef(null);
-    const passwordRef = useRef(null);
-    const confirmPasswordRef = useRef(null);
+    const navigate = useNavigate();
+
+    const authCtx = useContext(ExpenseContext);
+
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const confirmPasswordRef = useRef();
+
     const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+    const [isLogin, setIsLogin] = useState(true);
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const switchAuthModeHandler = () => {
+        setIsLogin((prevState) => !prevState);
+    };
 
     const submitHandler = (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const confirmPassword = confirmPasswordRef.current.value;
+        let confirmPassword;
 
-        if (password === confirmPassword) {
+        setIsLoading(true);
+
+        if (password === password) {
             setPasswordsMatch(true);
 
+            let url;
+            if (isLogin) {
+                url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0';
+            } else {
+                confirmPassword = confirmPasswordRef.current.value;
+                url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0';
+            }
             fetch(
-                'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0',
+                url,
                 {
                     method: 'POST',
                     body: JSON.stringify({
                         email: email,
-                        password: confirmPassword,
+                        password: password,
                         returnSecureToken: true
                     }),
                     headers: {
@@ -29,6 +54,8 @@ function AuthPage() {
                     }
                 }
             ).then((response) => {
+                setIsLoading(false);
+
                 if (response.ok) {
                     return response.json();
                 } else {
@@ -41,15 +68,18 @@ function AuthPage() {
                     });
                 }
             }).then((data) => {
-                //console.log(data.idToken);
-                console.log("User has successfully signed up.")
+                authCtx.login(data.idToken);
+
+                navigate('/expense');
             })
                 .catch((error) => {
                     alert(error.message);
                 });
             emailRef.current.value = '';
             passwordRef.current.value = '';
-            confirmPasswordRef.current.value = '';
+            if (!isLogin) {
+                confirmPasswordRef.current.value = '';
+            }
         } else {
             setPasswordsMatch(false);
         }
@@ -61,7 +91,7 @@ function AuthPage() {
                 <div className="col-lg-6">
                     <div className="card shadow-lg">
                         <div className="card-body p-5">
-                            <h3 className="card-title text-center mb-4">Sign Up</h3>
+                            <h3 className="card-title text-center mb-4">{isLogin ? 'Login' : 'Sign Up'}</h3>
                             <form onSubmit={submitHandler}>
                                 <div className="form-group mb-3">
                                     <label htmlFor="email">Email</label>
@@ -85,7 +115,7 @@ function AuthPage() {
                                         required
                                     />
                                 </div>
-                                <div className="form-group mb-3">
+                                {!isLogin && (<div className="form-group mb-3">
                                     <label htmlFor="confirmPassword">Confirm Password</label>
                                     <input
                                         type="password"
@@ -96,15 +126,20 @@ function AuthPage() {
                                         required
                                     />
                                     {!passwordsMatch && <p className="text-danger mt-2">Passwords do not match</p>}
-                                </div>
-                                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                                </div>)}
+                                {!isLoading && <button type="submit" className="btn btn-primary btn-block">{isLogin ? 'Login' : 'Sign Up'}</button>}
+                                {isLoading && <p>Sending request...</p>}
                             </form>
                         </div>
                     </div>
                     <div className="card mt-3">
                         <div className="card-body text-center">
-                            <p className="mb-3">Already have an account?</p>
-                            <button className="btn btn-info">Login</button>
+                            <p className="mb-3">{isLogin ? 'Do not have an account?' : 'Already have an account?'}</p>
+                            <button
+                                type='button'
+                                className="btn btn-info"
+                                onClick={switchAuthModeHandler}
+                            >{isLogin ? 'SignUp' : 'Login'}</button>
                         </div>
                     </div>
                 </div>

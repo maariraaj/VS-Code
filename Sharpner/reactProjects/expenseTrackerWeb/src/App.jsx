@@ -1,12 +1,20 @@
-import React from 'react'
-import AuthPage from './components/AuthPage'
+import { useContext } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import ExpenseContext from './exp-context/expense-context';
+import Expense from './components/Expense';
+import AuthPage from './components/AuthPage';
 
-const App = () => {
+function App() {
+  const ctx = useContext(ExpenseContext);
+
+  const router = createBrowserRouter([
+    {path: '/', element: <AuthPage />},
+    {path: '/expense', element: <Expense />}
+  ]);
+
   return (
-    <>
-      <AuthPage />
-    </>
+    <RouterProvider router={router} />
   )
 }
 
-export default App
+export default App;
