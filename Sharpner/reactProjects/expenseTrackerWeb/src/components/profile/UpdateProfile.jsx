@@ -1,0 +1,140 @@
+import React, { useContext, useState } from 'react';
+import ExpenseContext from '../../exp-context/expense-context';
+
+const UpdateProfile = () => {
+  const [fullName, setFullName] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
+
+  const ctx = useContext(ExpenseContext);
+
+  const handleFullNameChange = (e) => {
+    setFullName(e.target.value);
+  };
+
+  const handlePhotoURLChange = (e) => {
+    setPhotoURL(e.target.value);
+  };
+
+  const handleUpdate = () => {
+
+    console.log('Full Name:', fullName);
+    console.log('Profile Photo URL:', photoURL);
+    fetch(
+      'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          idToken: ctx.token,
+          displayName: fullName,
+          photoUrl: photoURL,
+          returnSecureToken: true
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return response.json().then((data) => {
+          let errorMessage = 'Authentication failed!';
+          if (data && data.error && data.error.message) {
+            errorMessage = data.error.message;
+          }
+          throw new Error(errorMessage);
+        });
+      }
+    }).then((data) => {
+      console.log("Data", data);
+    })
+      .catch((error) => {
+        alert(error.message);
+      });
+    setFullName('');
+    setPhotoURL('');
+  };
+
+  const handleCancel = () => {
+    setFullName('');
+    setPhotoURL('');
+  };
+
+  // return (
+  //   <div className="container mt-5">
+  //     <h2>Contact Details</h2>
+  //     <form>
+  //       <div className="form-group">
+  //         <label htmlFor="fullName">Full Name</label>
+  //         <input
+  //           type="text"
+  //           className="form-control"
+  //           id="fullName"
+  //           placeholder="Enter full name"
+  //           value={fullName}
+  //           onChange={handleFullNameChange}
+  //         />
+  //       </div>
+  //       <div className="form-group">
+  //         <label htmlFor="photoURL">Profile Photo URL</label>
+  //         <input
+  //           type="text"
+  //           className="form-control"
+  //           id="photoURL"
+  //           placeholder="Enter profile photo URL"
+  //           value={photoURL}
+  //           onChange={handlePhotoURLChange}
+  //         />
+  //       </div>
+  //       <div className="mt-3">
+  //         <button type="button" className="btn btn-primary mr-2" onClick={handleUpdate}>Update</button>
+  //         <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
+  //       </div>
+  //     </form>
+  //   </div>
+  // );
+  return (
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-lg-6">
+          <div className="card shadow-lg">
+            <div className="card-body p-5">
+              <h3 className="card-title text-center mb-4">Contact Details</h3>
+              <form onSubmit={handleUpdate}>
+                <div className="form-group mb-3">
+                  <label htmlFor="fullName" className="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="fullName"
+                    placeholder="Enter full name"
+                    value={fullName}
+                    onChange={handleFullNameChange}
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <label htmlFor="photoURL" className="form-label">Profile Photo URL</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="photoURL"
+                    placeholder="Enter profile photo URL"
+                    value={photoURL}
+                    onChange={handlePhotoURLChange}
+                  />
+                </div>
+                <div className="card-body text-center">
+                  <button type="button" className="btn btn-primary me-2" onClick={handleUpdate}>Update</button>
+                  <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+export default UpdateProfile

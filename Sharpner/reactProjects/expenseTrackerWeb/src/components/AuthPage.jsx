@@ -70,7 +70,7 @@ function AuthPage() {
             }).then((data) => {
                 authCtx.login(data.idToken);
 
-                navigate('/expense');
+                navigate('/profile');
             })
                 .catch((error) => {
                     alert(error.message);
@@ -129,6 +129,9 @@ function AuthPage() {
                                 </div>)}
                                 {!isLoading && <button type="submit" className="btn btn-primary btn-block">{isLogin ? 'Login' : 'Sign Up'}</button>}
                                 {isLoading && <p>Sending request...</p>}
+                                {isLogin && (<div className="text-center mt-3">
+                                    <a href="#" className="forgot-password-link">Forgot Password?</a>
+                                </div>)}
                             </form>
                         </div>
                     </div>
