@@ -107,6 +107,41 @@ const Profile = () => {
     setNewEmail(e.target.value);
   };
 
+  const emailVerifyHandler = () => {
+    fetch(
+      'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          requestType: "VERIFY_EMAIL",
+          idToken: ctx.token,
+
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return response.json().then((data) => {
+          let errorMessage = 'Authentication failed!';
+          if (data && data.error && data.error.message) {
+            errorMessage = data.error.message;
+          }
+          throw new Error(errorMessage);
+        });
+      }
+    }).then((data) => {
+      console.log("Email verify", data)
+      alert('Check your email , you might have recieved a verification link. Click on it to verify.');
+    })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
   return (
     <div className="container mt-5">
       <div className="card shadow-lg">
@@ -138,7 +173,7 @@ const Profile = () => {
                           {isEmailVerified ? (
                             <span className="badge bg-success ms-2">Verified</span>
                           ) : (
-                            <span className="badge bg-danger ms-2">Not Verified</span>
+                            <button className="btn btn-danger ms-2" onClick={emailVerifyHandler}>verify Email</button>
                           )}
                         </>
                       )}
@@ -180,9 +215,9 @@ const Profile = () => {
                       <>
                         {email} <button className="btn btn-primary" onClick={handleEmailEdit}>Edit</button>
                         {isEmailVerified ? (
-                          <span className="badge bg-success ms-2">Verified</span>
+                          <button className="btn btn-success ms-2">Verified</button>
                         ) : (
-                          <span className="badge bg-danger ms-2">Not Verified</span>
+                          <button className="btn btn-danger ms-2" onClick={emailVerifyHandler}>verify Email</button>
                         )}
                       </>
                     )}

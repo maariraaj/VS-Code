@@ -10,8 +10,8 @@ function App() {
 
   const router = createBrowserRouter([
     {path: '/', element: <AuthPage />},
-    {path: '/profile', element: <Profile />},
-    {path: '/updateProfile', element: <UpdateProfile />}
+    {path: '/profile', element: ctx.isLoggedIn ? <Profile /> : <AuthPage />},
+    {path: '/updateProfile', element: ctx.isLoggedIn ? <UpdateProfile /> : <AuthPage />}
   ]);
 
   return (
