@@ -4,6 +4,7 @@ const ExpenseContext = React.createContext({
     token: '',
     isLoggedIn: false,
     login: (token) => { },
+    onLogout: ()=>{}
 });
 
 export const ExpenseContextProvider = (props) => {
@@ -17,11 +18,16 @@ export const ExpenseContextProvider = (props) => {
         setToken(token);
         localStorage.setItem("token", token);
     };
+    const logoutHandler = () => {
+        setToken('');
+        localStorage.removeItem("token");
+    };
 
     const contextValue = {
         token: token,
         isLoggedIn: userIsLoggedIn,
-        login: loginHandler
+        login: loginHandler,
+        onLogout: logoutHandler
     };
 
     return <ExpenseContext.Provider value={contextValue}>

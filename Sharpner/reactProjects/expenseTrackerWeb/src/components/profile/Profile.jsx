@@ -16,48 +16,48 @@ const Profile = () => {
 
   const ctx = useContext(ExpenseContext);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      fetch(
-        'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            idToken: ctx.token
-          }),
-          headers: {
-            'Content-Type': 'application/json'
+  const fetchUserData = async () => {
+    fetch(
+      'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          idToken: ctx.token
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return response.json().then((data) => {
+          let errorMessage = 'Authentication failed!';
+          if (data && data.error && data.error.message) {
+            errorMessage = data.error.message;
           }
-        }
-      ).then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return response.json().then((data) => {
-            let errorMessage = 'Authentication failed!';
-            if (data && data.error && data.error.message) {
-              errorMessage = data.error.message;
-            }
-            throw new Error(errorMessage);
-          });
-        }
-      }).then((data) => {
-        console.log("Data", data);
-
-        if (!data.photoUrl || !data.displayName) {
-          setCompleteProfile(false);
-        }
-        setImgUrl(data.photoUrl);
-        setEmail(data.email);
-        setDisplayName(data.displayName);
-        setIsEmailVerified(data.emailVerified);
-
-      })
-        .catch((error) => {
-          alert(error.message);
+          throw new Error(errorMessage);
         });
-    };
+      }
+    }).then((data) => {
+      console.log("Data", data);
 
+      if (!data.photoUrl || !data.displayName) {
+        setCompleteProfile(false);
+      }
+      setImgUrl(data.photoUrl);
+      setEmail(data.email);
+      setDisplayName(data.displayName);
+      setIsEmailVerified(data.emailVerified);
+
+    })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  useEffect(() => {
     fetchUserData();
   }, []);
 
@@ -140,10 +140,18 @@ const Profile = () => {
       .catch((error) => {
         alert(error.message);
       });
-  }
+  };
 
   return (
     <div className="container mt-5">
+      <div className="row justify-content-between">
+        <div className="col-auto">
+          <h2>Profile</h2>
+        </div>
+        <div className="col-auto">
+          <button className="btn btn-danger" onClick={ctx.onLogout}>Logout</button>
+        </div>
+      </div>
       <div className="card shadow-lg">
         <div className="card-body">
           <div className="row">
