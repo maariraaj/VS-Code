@@ -1,7 +1,10 @@
 import React, { useContext, useState } from 'react';
 import ExpenseContext from '../../exp-context/expense-context';
+import { useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
+  const navigate = useNavigate();
+
   const [fullName, setFullName] = useState('');
   const [photoURL, setPhotoURL] = useState('');
 
@@ -53,12 +56,15 @@ const UpdateProfile = () => {
       });
     setFullName('');
     setPhotoURL('');
+    navigate('/profile')
   };
 
   const handleCancel = () => {
     setFullName('');
     setPhotoURL('');
+    navigate('/profile')
   };
+  const isDisabled = !fullName || !photoURL;
 
   return (
     <div className="container mt-5">
@@ -77,6 +83,7 @@ const UpdateProfile = () => {
                     placeholder="Enter full name"
                     value={fullName}
                     onChange={handleFullNameChange}
+                    required
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -88,10 +95,11 @@ const UpdateProfile = () => {
                     placeholder="Enter profile photo URL"
                     value={photoURL}
                     onChange={handlePhotoURLChange}
+                    required
                   />
                 </div>
                 <div className="card-body text-center">
-                  <button type="button" className="btn btn-primary me-2" onClick={handleUpdate}>Update</button>
+                  <button type="button" className="btn btn-primary me-2" onClick={handleUpdate} disabled={isDisabled}>Update</button>
                   <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
                 </div>
               </form>
