@@ -60,39 +60,6 @@ const UpdateProfile = () => {
     setPhotoURL('');
   };
 
-  // return (
-  //   <div className="container mt-5">
-  //     <h2>Contact Details</h2>
-  //     <form>
-  //       <div className="form-group">
-  //         <label htmlFor="fullName">Full Name</label>
-  //         <input
-  //           type="text"
-  //           className="form-control"
-  //           id="fullName"
-  //           placeholder="Enter full name"
-  //           value={fullName}
-  //           onChange={handleFullNameChange}
-  //         />
-  //       </div>
-  //       <div className="form-group">
-  //         <label htmlFor="photoURL">Profile Photo URL</label>
-  //         <input
-  //           type="text"
-  //           className="form-control"
-  //           id="photoURL"
-  //           placeholder="Enter profile photo URL"
-  //           value={photoURL}
-  //           onChange={handlePhotoURLChange}
-  //         />
-  //       </div>
-  //       <div className="mt-3">
-  //         <button type="button" className="btn btn-primary mr-2" onClick={handleUpdate}>Update</button>
-  //         <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
-  //       </div>
-  //     </form>
-  //   </div>
-  // );
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
