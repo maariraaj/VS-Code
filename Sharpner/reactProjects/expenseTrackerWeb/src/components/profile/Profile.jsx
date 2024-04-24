@@ -164,7 +164,7 @@ const Profile = () => {
                   <h2 className="card-title">Profile Information</h2>
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item">
-                      <strong>Email:</strong>
+                      <strong className='me-2'>Email:</strong>
                       {isEditingEmail ? (
                         <div className="input-group">
                           <input
@@ -177,12 +177,13 @@ const Profile = () => {
                         </div>
                       ) : (
                         <>
-                          {email} <button className="btn btn-primary" onClick={handleEmailEdit}>Edit</button>
+                          {email}
                           {isEmailVerified ? (
                             <span className="badge bg-success ms-2">Verified</span>
                           ) : (
                             <button className="btn btn-danger ms-2" onClick={emailVerifyHandler}>verify Email</button>
                           )}
+                          <button className="btn btn-primary ms-2" onClick={handleEmailEdit}>Edit</button>
                         </>
                       )}
                     </li>
@@ -199,8 +200,8 @@ const Profile = () => {
                     </li>
                   </ul>
                   <div className='text-center'>
-                    To update the profile.{' '}
-                    <NavLink to='/updateProfile'>Click here</NavLink>
+                    To update the profile.
+                    <NavLink className='ms-2' to='/updateProfile'>Click here</NavLink>
                   </div>
                 </div>
               </>)}
@@ -221,19 +222,20 @@ const Profile = () => {
                       </div>
                     ) : (
                       <>
-                        {email} <button className="btn btn-primary" onClick={handleEmailEdit}>Edit</button>
+                        {email}
                         {isEmailVerified ? (
                           <button className="btn btn-success ms-2">Verified</button>
                         ) : (
                           <button className="btn btn-danger ms-2" onClick={emailVerifyHandler}>verify Email</button>
                         )}
+                        <button className="btn btn-primary" onClick={handleEmailEdit}>Edit</button>
                       </>
                     )}
                   </li>
                 </ul>
                 <div className='text-center'>
-                  Your profile is incomplete.{' '}
-                  <NavLink to='/updateProfile'>Complete now</NavLink>
+                  Your profile is incomplete.
+                  <NavLink className='ms-2' to='/updateProfile'>Complete now</NavLink>
                 </div>
               </>)}
           </div>

@@ -89,7 +89,7 @@ const UpdateProfile = () => {
                 <div className="form-group mb-3">
                   <label htmlFor="photoURL" className="form-label">Profile Photo URL</label>
                   <input
-                    type="text"
+                    type="url"
                     className="form-control"
                     id="photoURL"
                     placeholder="Enter profile photo URL"
