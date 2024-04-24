@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Expenses = () => {
   const [amount, setAmount] = useState('');
@@ -6,6 +6,26 @@ const Expenses = () => {
   const [category, setCategory] = useState('');
 
   const [expenses, setExpenses] = useState([]);
+
+  const firebaseAPI = 'https://react-http-bb1f2-default-rtdb.firebaseio.com/';
+
+  const firebaseEndpoint = `expenses.json`;
+
+  const fetchData = () => {
+    fetch(`${firebaseAPI}${firebaseEndpoint}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        return response.json();
+      })
+      .then(responseData => {
+        setExpenses(Object.values(responseData));
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,11 +35,35 @@ const Expenses = () => {
       description: description,
       category: category
     };
-    setExpenses([...expenses, newExpense]);
+    fetch(`${firebaseAPI}${firebaseEndpoint}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newExpense)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to post data to Firebase');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("POST", data);
+        fetchData();
+      })
+      .catch(error => {
+        console.error('Error posting data:', error);
+      });
+
     setAmount('');
     setDescription('');
     setCategory('');
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="container mt-5">
@@ -73,7 +117,7 @@ const Expenses = () => {
       </div>
       <h3 className='text-center mt-3'>Expense List:</h3>
       <div className="mt-4">
-        {expenses.map((expense, index) => (
+        {expenses && expenses.map((expense, index) => (
           <div key={index} className="card shadow-lg mt-3">
             <div className="card-body">
               <h5 className="card-title">Expense No :: {' '}{index + 1}</h5>
