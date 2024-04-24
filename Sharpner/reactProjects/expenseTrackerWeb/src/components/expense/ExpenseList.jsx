@@ -7,6 +7,8 @@ const ExpenseList = (props) => {
                 <p><strong>Amount:</strong> ₹{props.expense.amount}</p>
                 <p><strong>Description:</strong> {props.expense.description}</p>
                 <p><strong>Category:</strong> {props.expense.category}</p>
+                <button type="button" className="btn btn-warning me-3" onClick={()=>{props.onEdit(props.id, props.expense)}}>Edit</button>
+                <button type="button" className="btn btn-danger" onClick={()=>{props.onDelete(props.id)}}>Delete</button>
             </div>
         </div>
     )

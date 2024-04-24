@@ -66,6 +66,56 @@ const Expenses = () => {
     descriptionRef.current.value = '';
     categoryRef.current.value = '';
   };
+  const deleteExpenseHandler = (expenseId) => {
+    const newExpense = expenses.filter(expense => expense.id !== expenseId);
+    fetch(`${firebaseAPI}${firebaseEndpoint}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newExpense),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to delete expense');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Expense deleted successfully:', data);
+        setExpenses(data);
+        fetchData();
+      })
+      .catch(error => {
+        console.error('Error delete expense:', error);
+      });
+  };
+  const editExpenseHandler = (expenseId, expense) => {
+    const newExpense = expenses.filter(expense => expense.id !== expenseId);
+    fetch(`${firebaseAPI}${firebaseEndpoint}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newExpense),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to update expense');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Expense updated successfully:', data);
+
+        amountRef.current.value = expense.amount;
+        descriptionRef.current.value = expense.description;
+        categoryRef.current.value = expense.category;
+      })
+      .catch(error => {
+        console.error('Error updating expense:', error);
+      });
+  };
 
   useEffect(() => {
     fetchData();
@@ -126,6 +176,8 @@ const Expenses = () => {
             id={expense.id}
             index={index}
             expense={expense}
+            onDelete={deleteExpenseHandler}
+            onEdit={editExpenseHandler}
           />
         ))}
       </div>
