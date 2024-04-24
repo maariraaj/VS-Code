@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import ExpenseList from './ExpenseList';
 
 const Expenses = () => {
-  const [amount, setAmount] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
+  const amountRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const categoryRef = useRef(null);
 
   const [expenses, setExpenses] = useState([]);
 
@@ -20,7 +21,11 @@ const Expenses = () => {
         return response.json();
       })
       .then(responseData => {
-        setExpenses(Object.values(responseData));
+        if (responseData) {
+          setExpenses(Object.values(responseData));
+        } else {
+          setExpenses([]);
+        }
       })
       .catch(error => {
         console.error('Error:', error);
@@ -31,9 +36,10 @@ const Expenses = () => {
     e.preventDefault();
 
     const newExpense = {
-      amount: amount,
-      description: description,
-      category: category
+      id: `${amountRef.current.value}_${categoryRef.current.value}_${Math.random().toString()}`,
+      amount: amountRef.current.value,
+      description: descriptionRef.current.value,
+      category: categoryRef.current.value
     };
     fetch(`${firebaseAPI}${firebaseEndpoint}`, {
       method: 'POST',
@@ -56,9 +62,9 @@ const Expenses = () => {
         console.error('Error posting data:', error);
       });
 
-    setAmount('');
-    setDescription('');
-    setCategory('');
+    amountRef.current.value = '';
+    descriptionRef.current.value = '';
+    categoryRef.current.value = '';
   };
 
   useEffect(() => {
@@ -77,8 +83,7 @@ const Expenses = () => {
                 type="number"
                 className="form-control"
                 id="amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                ref={amountRef}
                 required
               />
             </div>
@@ -88,8 +93,7 @@ const Expenses = () => {
                 type="text"
                 className="form-control"
                 id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                ref={descriptionRef}
                 required
               />
             </div>
@@ -98,8 +102,7 @@ const Expenses = () => {
               <select
                 className="form-select"
                 id="category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                ref={categoryRef}
                 required
               >
                 <option value="">Select Category</option>
@@ -118,14 +121,12 @@ const Expenses = () => {
       <h3 className='text-center mt-3'>Expense List:</h3>
       <div className="mt-4">
         {expenses && expenses.map((expense, index) => (
-          <div key={index} className="card shadow-lg mt-3">
-            <div className="card-body">
-              <h5 className="card-title">Expense No :: {' '}{index + 1}</h5>
-              <p><strong>Amount:</strong> ₹{expense.amount}</p>
-              <p><strong>Description:</strong> {expense.description}</p>
-              <p><strong>Category:</strong> {expense.category}</p>
-            </div>
-          </div>
+          <ExpenseList
+            key={expense.id}
+            id={expense.id}
+            index={index}
+            expense={expense}
+          />
         ))}
       </div>
     </div>
