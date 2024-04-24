@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ExpenseContext from './exp-context/expense-context';
-import AuthPage from './components/AuthPage';
+import AuthPage from './components/authentication/AuthPage';
 import Profile from './components/profile/Profile';
 import UpdateProfile from './components/profile/UpdateProfile';
-import ResetPassword from './components/ResetPassword';
+import ResetPassword from './components/authentication/ResetPassword';
 import Expenses from './components/expense/Expenses';
 
 

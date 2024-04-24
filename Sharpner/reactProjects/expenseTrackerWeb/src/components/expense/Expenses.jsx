@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
-const Expenses=()=> {
+const Expenses = () => {
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
+
   const [expenses, setExpenses] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const newExpense = {
       amount: amount,
       description: description,

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import ExpenseContext from '../exp-context/expense-context';
+import ExpenseContext from '../../exp-context/expense-context';
 import { NavLink } from 'react-router-dom';
 
 function AuthPage() {
