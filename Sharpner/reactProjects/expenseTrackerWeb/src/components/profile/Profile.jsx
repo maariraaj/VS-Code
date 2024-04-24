@@ -161,7 +161,7 @@ const Profile = () => {
                   <img src={imgUrl} alt="Profile" className="img-fluid rounded mb-3" style={{ width: '200px', height: '200px', borderRadius: '10px' }} />
                 </div>
                 <div className="col-md-8">
-                  <h2 className="card-title">Profile Information</h2>
+                  <h3 className="card-title">Profile Information</h3>
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item">
                       <strong className='me-2'>Email:</strong>
@@ -188,21 +188,14 @@ const Profile = () => {
                       )}
                     </li>
                     <li className="list-group-item">
-                      <strong>Display Name:</strong>
-                      <div className="input-group">
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={displayName}
-                          disabled
-                        />
-                      </div>
+                      <strong className='me-2'>Display Name:</strong>
+                      {displayName}
+                    </li>
+                    <li className='list-group-item text-center'>
+                      To update the profile.
+                      <NavLink className='ms-2' to='/updateProfile'>Click here</NavLink>
                     </li>
                   </ul>
-                  <div className='text-center'>
-                    To update the profile.
-                    <NavLink className='ms-2' to='/updateProfile'>Click here</NavLink>
-                  </div>
                 </div>
               </>)}
             {!completeProfile && (
@@ -232,11 +225,11 @@ const Profile = () => {
                       </>
                     )}
                   </li>
+                  <li className='list-group-item text-center'>
+                    Your profile is incomplete.
+                    <NavLink className='ms-2' to='/updateProfile'>Complete now</NavLink>
+                  </li>
                 </ul>
-                <div className='text-center'>
-                  Your profile is incomplete.
-                  <NavLink className='ms-2' to='/updateProfile'>Complete now</NavLink>
-                </div>
               </>)}
           </div>
         </div>
