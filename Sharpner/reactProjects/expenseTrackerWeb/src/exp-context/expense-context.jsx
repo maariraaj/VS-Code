@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const ExpenseContext = React.createContext({
     token: '',
     isLoggedIn: false,
-    login: (token) => { },
-    onLogout: ()=>{}
+    onLogin: (token) => { },
+    onLogout: () => { }
 });
 
 export const ExpenseContextProvider = (props) => {
@@ -26,7 +26,7 @@ export const ExpenseContextProvider = (props) => {
     const contextValue = {
         token: token,
         isLoggedIn: userIsLoggedIn,
-        login: loginHandler,
+        onLogin: loginHandler,
         onLogout: logoutHandler
     };
 

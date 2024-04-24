@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import ExpenseContext from '../exp-context/expense-context';
+import { NavLink } from 'react-router-dom';
 
 function AuthPage() {
     const navigate = useNavigate();
@@ -68,7 +69,7 @@ function AuthPage() {
                     });
                 }
             }).then((data) => {
-                authCtx.login(data.idToken);
+                authCtx.onLogin(data.idToken);
 
                 navigate('/profile');
             })
@@ -129,8 +130,9 @@ function AuthPage() {
                                 </div>)}
                                 {!isLoading && <button type="submit" className="btn btn-primary btn-block">{isLogin ? 'Login' : 'Sign Up'}</button>}
                                 {isLoading && <p>Sending request...</p>}
+
                                 {isLogin && (<div className="text-center mt-3">
-                                    <a href="#" className="forgot-password-link">Forgot Password?</a>
+                                    <NavLink to="/resetPassword">Forgot password?</NavLink>
                                 </div>)}
                             </form>
                         </div>
