@@ -5,6 +5,7 @@ import AuthPage from './components/AuthPage';
 import Profile from './components/profile/Profile';
 import UpdateProfile from './components/profile/UpdateProfile';
 import ResetPassword from './components/ResetPassword';
+import Expenses from './components/expense/Expenses';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
     { path: '/', element: <AuthPage /> },
     { path: '/profile', element: ctx.isLoggedIn ? <Profile /> : <AuthPage /> },
     { path: '/updateProfile', element: ctx.isLoggedIn ? <UpdateProfile /> : <AuthPage /> },
-    { path: '/resetPassword', element: ctx.isLoggedIn ? <Profile /> : <ResetPassword /> }
+    { path: '/resetPassword', element: ctx.isLoggedIn ? <Profile /> : <ResetPassword /> },
+    { path: '/expenses', element: ctx.isLoggedIn ? <Expenses /> : <AuthPage /> }
   ]);
 
   return (

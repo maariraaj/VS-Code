@@ -149,7 +149,7 @@ const Profile = () => {
           <h2>Profile</h2>
         </div>
         <div className="col-auto">
-          <button className="btn btn-danger" onClick={ctx.onLogout}>Logout</button>
+          <button className="btn btn-warning" onClick={ctx.onLogout}>Logout</button>
         </div>
       </div>
       <div className="card shadow-lg">
