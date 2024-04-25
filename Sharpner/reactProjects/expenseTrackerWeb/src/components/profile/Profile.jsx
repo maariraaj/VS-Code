@@ -148,9 +148,6 @@ const Profile = () => {
         <div className="col-auto">
           <h2>Profile</h2>
         </div>
-        <div className="col-auto">
-          <button className="btn btn-warning" onClick={ctx.onLogout}>Logout</button>
-        </div>
       </div>
       <div className="card shadow-lg">
         <div className="card-body">
@@ -181,7 +178,7 @@ const Profile = () => {
                           {isEmailVerified ? (
                             <span className="badge bg-success ms-2">Verified</span>
                           ) : (
-                            <button className="btn btn-danger ms-2" onClick={emailVerifyHandler}>verify Email</button>
+                            <button className="btn btn-warning ms-2" onClick={emailVerifyHandler}>verify Email</button>
                           )}
                           <button className="btn btn-primary ms-2" onClick={handleEmailEdit}>Edit</button>
                         </>
@@ -219,7 +216,7 @@ const Profile = () => {
                         {isEmailVerified ? (
                           <button className="btn btn-success ms-2">Verified</button>
                         ) : (
-                          <button className="btn btn-danger ms-2" onClick={emailVerifyHandler}>verify Email</button>
+                          <button className="btn btn-warning ms-2" onClick={emailVerifyHandler}>verify Email</button>
                         )}
                         <button className="btn btn-primary" onClick={handleEmailEdit}>Edit</button>
                       </>
