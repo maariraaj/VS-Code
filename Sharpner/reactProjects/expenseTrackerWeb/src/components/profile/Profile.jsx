@@ -14,9 +14,12 @@ const Profile = () => {
 
   const [completeProfile, setCompleteProfile] = useState(true);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const ctx = useContext(ExpenseContext);
 
   const fetchUserData = async () => {
+    setIsLoading(true);
     fetch(
       'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDQxqWAXQVnifXhqishJ95EfgRZb9DOkq0',
       {
@@ -29,6 +32,7 @@ const Profile = () => {
         }
       }
     ).then((response) => {
+      setIsLoading(false);
       if (response.ok) {
         return response.json();
       } else {
@@ -151,7 +155,7 @@ const Profile = () => {
       </div>
       <div className="card shadow-lg">
         <div className="card-body">
-          <div className="row">
+          {!isLoading && (<div className="row">
             {completeProfile && (
               <>
                 <div className="col-md-4">
@@ -228,7 +232,10 @@ const Profile = () => {
                   </li>
                 </ul>
               </>)}
-          </div>
+          </div>)}
+          {isLoading && <div className="row">
+            <h3 className='text-center'>Loading profile information...</h3>
+          </div>}
         </div>
       </div>
     </div>

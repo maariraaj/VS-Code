@@ -19,7 +19,7 @@ function App() {
         <RootLayout />
       ),
       children: [
-        { path: '/', element: <AuthPage /> },
+        { path: '/', element: ctx.isLoggedIn ? <Expenses /> : <AuthPage /> },
         { path: '/profile', element: ctx.isLoggedIn ? <Profile /> : <AuthPage /> },
         { path: '/updateProfile', element: ctx.isLoggedIn ? <UpdateProfile /> : <AuthPage /> },
         { path: '/resetPassword', element: ctx.isLoggedIn ? <Profile /> : <ResetPassword /> },
