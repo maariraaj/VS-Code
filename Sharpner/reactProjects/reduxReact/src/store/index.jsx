@@ -1,49 +1,70 @@
-import { createStore } from "redux";
-
-const initialState = { counter: 0, showCounter: true };
-
-const counterReducer = (state = initialState, action) => {
-
-    if (action.type === 'changeCount') {
-        return {
-            counter: state.counter + action.amount,
-            showCounter: state.showCounter
-        }
-    }
-    if (action.type === 'toggle') {
-        return {
-            showCounter: !state.showCounter,
-            counter: state.counter
-        }
-    }
-
-    return state;
-};
-
-const store = createStore(counterReducer);
-
-
-// import {createSlice, configureStore} from '@reduxjs/toolkit';
+// import { createStore } from "redux";
 
 // const initialState = { counter: 0, showCounter: true };
 
-// const counterSlice=createSlice({
-//     name: 'counter',
-//     initialState,
-//     reducers:{
-//         changeCount(state, action) {
-//             state.counter=state.counter + action.amount;
-//         },
-//         toggle(state) {
-//             state.showCounter = !state.showCounter;
+// const counterReducer = (state = initialState, action) => {
+
+//     if (action.type === 'changeCount') {
+//         return {
+//             counter: state.counter + action.amount,
+//             showCounter: state.showCounter
 //         }
 //     }
-// });
+//     if (action.type === 'toggle') {
+//         return {
+//             showCounter: !state.showCounter,
+//             counter: state.counter
+//         }
+//     }
 
-// const store = configureStore({
-//     counter:counterSlice.reducer
-// });
+//     return state;
+// };
 
-// export const counterActions=counterSlice.actions;
+// const store = createStore(counterReducer);
 
-// export default store;
+
+import { createSlice, configureStore } from '@reduxjs/toolkit';
+
+const initialCounterState = { counter: 0, showCounter: true };
+
+const counterSlice = createSlice({
+    name: 'counter',
+    initialState: initialCounterState,
+    reducers: {
+        changeCount(state, action) {
+            state.counter = state.counter + action.payload;
+        },
+        toggleCounter(state) {
+            state.showCounter = !state.showCounter;
+        }
+    }
+});
+
+const initialAuthState = {
+    isAuthenticated: false
+};
+const authSlice = createSlice({
+    name: 'authentication',
+    initialState: initialAuthState,
+    reducers: {
+        login(state) {
+            state.isAuthenticated = true;
+        },
+        logout(state) {
+            state.isAuthenticated = false;
+        }
+    }
+});
+
+const store = configureStore({
+    reducer: {
+        counter: counterSlice.reducer,
+        auth: authSlice.reducer
+    }
+});
+
+export const counterActions = counterSlice.actions;
+
+export const authActions = authSlice.actions;
+
+export default store;
