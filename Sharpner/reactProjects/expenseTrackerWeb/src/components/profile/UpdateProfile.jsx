@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react';
-import ExpenseContext from '../../exp-context/expense-context';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const UpdateProfile = () => {
+  const token = useSelector((state) => state.auth.token);
+
   const navigate = useNavigate();
 
   const [fullName, setFullName] = useState('');
   const [photoURL, setPhotoURL] = useState('');
-
-  const ctx = useContext(ExpenseContext);
 
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
@@ -27,7 +27,7 @@ const UpdateProfile = () => {
       {
         method: 'POST',
         body: JSON.stringify({
-          idToken: ctx.token,
+          idToken: token,
           displayName: fullName,
           photoUrl: photoURL,
           returnSecureToken: true

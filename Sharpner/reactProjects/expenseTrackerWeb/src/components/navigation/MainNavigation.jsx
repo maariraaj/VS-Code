@@ -1,13 +1,8 @@
-//import { useContext } from "react"
 import { NavLink } from "react-router-dom"
-//import ExpenseContext from "../../exp-context/expense-context";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from "../../store/auth";
-import { useSelector } from 'react-redux';
 
 const MainNavigation = () => {
-    //const ctx = useContext(ExpenseContext);
-
     const dispatch = useDispatch();
 
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);

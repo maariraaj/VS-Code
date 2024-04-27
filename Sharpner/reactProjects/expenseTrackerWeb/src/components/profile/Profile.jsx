@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-//import ExpenseContext from '../../exp-context/expense-context';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -18,8 +17,6 @@ const Profile = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  //const ctx = useContext(ExpenseContext);
-
   const fetchUserData = async () => {
     setIsLoading(true);
     fetch(
@@ -27,7 +24,6 @@ const Profile = () => {
       {
         method: 'POST',
         body: JSON.stringify({
-          // idToken: ctx.token
           idToken: token
         }),
         headers: {
@@ -80,7 +76,6 @@ const Profile = () => {
       {
         method: 'POST',
         body: JSON.stringify({
-          // idToken: ctx.token,
           idToken: token,
           email: newEmail,
           returnSecureToken: true
@@ -122,9 +117,7 @@ const Profile = () => {
         method: 'POST',
         body: JSON.stringify({
           requestType: "VERIFY_EMAIL",
-          // idToken: ctx.token,
           idToken: token,
-
         }),
         headers: {
           'Content-Type': 'application/json'

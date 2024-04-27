@@ -1,7 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import ExpenseContext from '../../exp-context/expense-context';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../store/auth';
@@ -10,8 +8,6 @@ function AuthPage() {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-
-    //const authCtx = useContext(ExpenseContext);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -73,7 +69,6 @@ function AuthPage() {
                     });
                 }
             }).then((data) => {
-                //authCtx.onLogin(data.idToken, data.email);
                 dispatch(authActions.login({ token: data.idToken, email: data.email }));
 
                 navigate('/profile');

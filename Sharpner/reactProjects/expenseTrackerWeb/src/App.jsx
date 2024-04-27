@@ -1,6 +1,4 @@
-//import { useContext } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-//import ExpenseContext from './exp-context/expense-context';
 import AuthPage from './components/authentication/AuthPage';
 import Profile from './components/profile/Profile';
 import UpdateProfile from './components/profile/UpdateProfile';
@@ -12,7 +10,6 @@ import { useSelector } from 'react-redux';
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  //const ctx = useContext(ExpenseContext);
 
   const router = createBrowserRouter([
     {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
 import { expensesActions } from '../../store/expenses';
@@ -14,8 +14,6 @@ const Expenses = () => {
   const descriptionRef = useRef(null);
   const categoryRef = useRef(null);
 
-  //const [expenses, setExpenses] = useState([]);
-
   const firebaseAPI = 'https://react-http-bb1f2-default-rtdb.firebaseio.com/';
 
   const firebaseEndpoint = `expenses/${loggedInEmail.replace(/[.@]/g, '')}.json`;
@@ -30,10 +28,8 @@ const Expenses = () => {
       })
       .then(responseData => {
         if (responseData) {
-          //setExpenses(Object.values(responseData));
           dispatch(expensesActions.setExpenses(Object.values(responseData)));
         } else {
-          //setExpenses([]);
           dispatch(expensesActions.setExpenses([]));
         }
       })
@@ -93,7 +89,6 @@ const Expenses = () => {
       })
       .then(data => {
         console.log('Expense deleted successfully:', data);
-        //setExpenses(data);
         fetchData();
       })
       .catch(error => {
@@ -130,7 +125,6 @@ const Expenses = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
 
   const totalExpenses = expenses.reduce((curNumber, expense) => {
     const intNumber = parseInt(expense.amount, 10);
@@ -186,7 +180,10 @@ const Expenses = () => {
           </form>
         </div>
       </div>
-      <h3 className='text-center mt-3'>Expense List:<button className='btn btn-info ms-3' disabled={isDisabled}>Activate Premium</button></h3>
+      <h3 className='text-center mt-3'>
+        Expense List:
+        <button className='btn btn-info ms-3' disabled={isDisabled}>Activate Premium</button>
+      </h3>
       <div className="mt-4">
         {expenses && expenses.map((expense, index) => (
           <ExpenseList
