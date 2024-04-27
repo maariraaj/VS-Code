@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
 import { expensesActions } from '../../store/expenses';
+import { themeActions } from '../../store/theme';
 
 const Expenses = () => {
   const dispatch = useDispatch();
@@ -10,9 +11,13 @@ const Expenses = () => {
 
   const loggedInEmail = useSelector((state) => state.auth.loggedInEmail);
 
+  const theme = useSelector((state) => state.theme.theme);
+
   const amountRef = useRef(null);
   const descriptionRef = useRef(null);
   const categoryRef = useRef(null);
+
+  const [premiumFeature, setPremiumFeature] = useState(false);
 
   const firebaseAPI = 'https://react-http-bb1f2-default-rtdb.firebaseio.com/';
 
@@ -133,6 +138,43 @@ const Expenses = () => {
 
   const isDisabled = totalExpenses > 10000 ? false : true;
 
+  const premiumToggleHandler = () => {
+    setPremiumFeature((prev) => prev = !prev);
+  };
+  const toggleThemeHandler = () => {
+    dispatch(themeActions.setTheme());
+  };
+
+  function downloadCSV(csvContent) {
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'data.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  const handleDownload = async () => {
+    fetch(`${firebaseAPI}${firebaseEndpoint}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        return response.json();
+      })
+      .then(responseData => {
+        const data = Object.values(responseData);
+        const header = Object.keys(data[0]);
+        let csvContent = data.map(obj => header.map(key => obj[key]).join(','));
+        let newCsvContent = [header.join(','), ...csvContent].join('\n');
+        downloadCSV(newCsvContent);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
   return (
     <div className="container mt-5">
       <div className="card shadow-lg">
@@ -182,8 +224,17 @@ const Expenses = () => {
       </div>
       <h3 className='text-center mt-3'>
         Expense List:
-        <button className='btn btn-info ms-3' disabled={isDisabled}>Activate Premium</button>
+        <button className='btn btn-info ms-3' onClick={premiumToggleHandler} disabled={isDisabled}>Activate Premium</button>
       </h3>
+      {premiumFeature && (
+        <div className={`card shadow-lg mt-3 mb-3 ${theme === true ? 'bg-light text-dark' : 'bg-dark text-light'}`}>
+          <div className="card-body">
+            <h5 className="card-title">Premium Features</h5>
+            <button type="button" className={`btn btn-${theme === true ? 'dark' : 'light'} me-3`} onClick={toggleThemeHandler}>Toggle Theme</button>
+            <button type="button" className="btn btn-warning" onClick={handleDownload} >Download Expenses</button>
+          </div>
+        </div>
+      )}
       <div className="mt-4">
         {expenses && expenses.map((expense, index) => (
           <ExpenseList

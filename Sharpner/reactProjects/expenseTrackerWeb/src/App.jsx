@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
+  const theme = useSelector((state) => state.theme.theme);
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -28,7 +30,12 @@ function App() {
   ]);
 
   return (
-    <RouterProvider router={router} />
+    <div className={`App ${theme === true ? 'bg-dark text-light' : ''}`}>
+      <div className='container'>
+      <RouterProvider router={router} />
+      </div>
+      
+    </div>
   )
 }
 
