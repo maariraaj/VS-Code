@@ -1,9 +1,20 @@
-import { useContext } from "react"
+//import { useContext } from "react"
 import { NavLink } from "react-router-dom"
-import ExpenseContext from "../../exp-context/expense-context"
+//import ExpenseContext from "../../exp-context/expense-context";
+import { useDispatch } from 'react-redux';
+import { authActions } from "../../store/auth";
+import { useSelector } from 'react-redux';
 
 const MainNavigation = () => {
-    const ctx = useContext(ExpenseContext);
+    //const ctx = useContext(ExpenseContext);
+
+    const dispatch = useDispatch();
+
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+    const logoutHandler = () => {
+        dispatch(authActions.logout());
+    }
 
     return (
         <div className="card shadow mb-5">
@@ -25,9 +36,9 @@ const MainNavigation = () => {
                                 <NavLink className="nav-link" to="/profile">Profile</NavLink>
                             </li>
                         </ul>
-                        <div className="cart-icon-container position-relative d-inline-block">
-                            <button type="button" className="btn btn-danger" onClick={ctx.onLogout}>Logout</button>
-                        </div>
+                        {isLoggedIn && <div className="cart-icon-container position-relative d-inline-block">
+                            <button type="button" className="btn btn-danger" onClick={logoutHandler}>Logout</button>
+                        </div>}
                     </div>
                 </div>
             </nav>

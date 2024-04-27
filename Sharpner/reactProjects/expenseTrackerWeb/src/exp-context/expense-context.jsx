@@ -14,7 +14,7 @@ export const ExpenseContextProvider = (props) => {
 
     const userIsLoggedIn = !!token;
 
-    const loginHandler = (token) => {
+    const loginHandler = (token, loggedInEmail) => {
         setToken(token);
         localStorage.setItem("token", token);
     };

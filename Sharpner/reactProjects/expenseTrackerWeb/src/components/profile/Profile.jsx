@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ExpenseContext from '../../exp-context/expense-context';
+//import ExpenseContext from '../../exp-context/expense-context';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
+  const token = useSelector((state) => state.auth.token);
 
   const [email, setEmail] = useState('');
   const [displayName, setDisplayName] = useState('');
@@ -16,7 +18,7 @@ const Profile = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const ctx = useContext(ExpenseContext);
+  //const ctx = useContext(ExpenseContext);
 
   const fetchUserData = async () => {
     setIsLoading(true);
@@ -25,7 +27,8 @@ const Profile = () => {
       {
         method: 'POST',
         body: JSON.stringify({
-          idToken: ctx.token
+          // idToken: ctx.token
+          idToken: token
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -77,7 +80,8 @@ const Profile = () => {
       {
         method: 'POST',
         body: JSON.stringify({
-          idToken: ctx.token,
+          // idToken: ctx.token,
+          idToken: token,
           email: newEmail,
           returnSecureToken: true
         }),
@@ -118,7 +122,8 @@ const Profile = () => {
         method: 'POST',
         body: JSON.stringify({
           requestType: "VERIFY_EMAIL",
-          idToken: ctx.token,
+          // idToken: ctx.token,
+          idToken: token,
 
         }),
         headers: {

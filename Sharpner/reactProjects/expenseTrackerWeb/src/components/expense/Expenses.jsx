@@ -1,16 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ExpenseList from './ExpenseList';
+import { useSelector, useDispatch } from 'react-redux';
+import { expensesActions } from '../../store/expenses';
 
 const Expenses = () => {
+  const dispatch = useDispatch();
+
+  const expenses = useSelector((state) => state.expenses.expenses);
+
+  const loggedInEmail = useSelector((state) => state.auth.loggedInEmail);
+
   const amountRef = useRef(null);
   const descriptionRef = useRef(null);
   const categoryRef = useRef(null);
 
-  const [expenses, setExpenses] = useState([]);
+  //const [expenses, setExpenses] = useState([]);
 
   const firebaseAPI = 'https://react-http-bb1f2-default-rtdb.firebaseio.com/';
 
-  const firebaseEndpoint = `expenses.json`;
+  const firebaseEndpoint = `expenses/${loggedInEmail.replace(/[.@]/g, '')}.json`;
 
   const fetchData = () => {
     fetch(`${firebaseAPI}${firebaseEndpoint}`)
@@ -22,9 +30,11 @@ const Expenses = () => {
       })
       .then(responseData => {
         if (responseData) {
-          setExpenses(Object.values(responseData));
+          //setExpenses(Object.values(responseData));
+          dispatch(expensesActions.setExpenses(Object.values(responseData)));
         } else {
-          setExpenses([]);
+          //setExpenses([]);
+          dispatch(expensesActions.setExpenses([]));
         }
       })
       .catch(error => {
@@ -83,7 +93,7 @@ const Expenses = () => {
       })
       .then(data => {
         console.log('Expense deleted successfully:', data);
-        setExpenses(data);
+        //setExpenses(data);
         fetchData();
       })
       .catch(error => {
@@ -120,6 +130,14 @@ const Expenses = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+
+  const totalExpenses = expenses.reduce((curNumber, expense) => {
+    const intNumber = parseInt(expense.amount, 10);
+    return curNumber + intNumber;
+  }, 0);
+
+  const isDisabled = totalExpenses > 10000 ? false : true;
 
   return (
     <div className="container mt-5">
@@ -168,7 +186,7 @@ const Expenses = () => {
           </form>
         </div>
       </div>
-      <h3 className='text-center mt-3'>Expense List:</h3>
+      <h3 className='text-center mt-3'>Expense List:<button className='btn btn-info ms-3' disabled={isDisabled}>Activate Premium</button></h3>
       <div className="mt-4">
         {expenses && expenses.map((expense, index) => (
           <ExpenseList
