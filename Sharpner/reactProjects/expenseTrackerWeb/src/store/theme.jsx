@@ -8,8 +8,8 @@ const themeSlice = createSlice({
     name: 'theme',
     initialState: initialThemeState,
     reducers: {
-        setTheme(state) {
-            state.theme = !state.theme;
+        setTheme(state, action) {
+            state.theme = action.payload;
         }
     }
 });

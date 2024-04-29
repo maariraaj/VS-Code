@@ -142,7 +142,12 @@ const Expenses = () => {
     setPremiumFeature((prev) => prev = !prev);
   };
   const toggleThemeHandler = () => {
-    dispatch(themeActions.setTheme());
+    if(theme){
+      dispatch(themeActions.setTheme(false));
+    }else{
+      dispatch(themeActions.setTheme(true));
+    }
+    
   };
 
   function downloadCSV(csvContent) {

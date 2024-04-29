@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from "../../store/auth";
+import { themeActions } from "../../store/theme";
 
 const MainNavigation = () => {
     const dispatch = useDispatch();
@@ -9,6 +10,7 @@ const MainNavigation = () => {
 
     const logoutHandler = () => {
         dispatch(authActions.logout());
+        dispatch(themeActions.setTheme(false));
     }
 
     return (
