@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialExpensesState = {
+export const initialExpensesState = {
   expenses: [],
 };
 
@@ -15,5 +15,6 @@ const expensesSlice = createSlice({
 });
 
 export const expensesActions = expensesSlice.actions;
+export const { setExpenses } = expensesSlice.actions;
 
 export default expensesSlice.reducer;

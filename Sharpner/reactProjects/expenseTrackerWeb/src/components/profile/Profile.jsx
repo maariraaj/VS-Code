@@ -145,7 +145,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 vh-100">
       <div className="row justify-content-between">
         <div className="col-auto">
           <h2>Profile</h2>

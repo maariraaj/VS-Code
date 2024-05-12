@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const tokenFromLocalStorage = localStorage.getItem('token');
 const emailFromLocalStorage = localStorage.getItem('email');
 
-const initialAuthState = {
+export const initialAuthState = {
     isLoggedIn: !!tokenFromLocalStorage,
     token: tokenFromLocalStorage,
     loggedInEmail: emailFromLocalStorage
@@ -29,5 +29,7 @@ const authSlice = createSlice({
 });
 
 export const authActions = authSlice.actions;
+
+export const {login, logout}=authSlice.actions;
 
 export default authSlice.reducer;

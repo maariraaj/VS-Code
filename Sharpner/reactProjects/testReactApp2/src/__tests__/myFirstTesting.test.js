@@ -12,7 +12,7 @@ describe("App.js component", () => {
     expect(image).toBeInTheDocument();
   });
 
-  //// A test that checks for the existence of an element with a specific text content.
+  // A test that checks for the existence of an element with a specific text content.
   test("renders List.js component in App.js", () => {
     renderWithProviders(<App />);
     const textInListJS = screen.getByText(/This is a list/i);

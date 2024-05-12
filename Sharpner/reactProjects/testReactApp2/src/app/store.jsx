@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { ListSlice } from "../features/ListSlice"; // Import the slice that should be added to the store.
+import { ListSlice } from "../features/listSlice"; // Import the slice that should be added to the store.
 
 const store = configureStore({
   reducer: {

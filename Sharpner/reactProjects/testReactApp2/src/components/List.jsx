@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { testAddReducer } from "../features/ListSlice";
+import { testAddReducer } from "../features/listSlice";
 
 const List = () => {
   const listState = useSelector((state) => state.listReducers.value);

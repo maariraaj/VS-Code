@@ -67,7 +67,7 @@ const UpdateProfile = () => {
   const isDisabled = !fullName || !photoURL;
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 vh-100">
       <div className="row justify-content-center">
         <div className="col-lg-6">
           <div className="card shadow-lg">
