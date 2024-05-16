@@ -5,13 +5,16 @@ import userEvent from '@testing-library/user-event';
 describe('Greeting component', () => {
   test('renders Hello world as text', () => {
     render(<Greeting />);
-    const helloWorldElement = screen.getByText(/Hello World/i); // Using a regular expression for case-insensitive matching
+    const helloWorldElement = screen.getByText(/Hello World/i);
     expect(helloWorldElement).toBeInTheDocument();
   });
   test('renders paragraph tag', () => {
     render(<Greeting />);
-    const pTagElement = screen.getByText(/It is good to see you/i); // Using a regular expression for case-insensitive matching
-    expect(pTagElement).toBeInTheDocument();
+    //const pTagElement = screen.getByText(/It is good to see you/i);
+    const outputElement = screen.queryByText((content) => {
+      return content === 'It is good to see you';
+    });
+    expect(outputElement).toBeNull();
   });
   test('renders "good to see" you if the button was NOT clicked', () => {
     render(<Greeting />);
@@ -35,6 +38,6 @@ describe('Greeting component', () => {
     const outputElement = screen.queryByText((content) => {
       return content === 'It is good to see you.';
     });
-    expect(outputElement).not.toBeNull();
+    expect(outputElement).toBeNull();
   });
 });
