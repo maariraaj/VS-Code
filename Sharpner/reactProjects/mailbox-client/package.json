@@ -1,5 +1,5 @@
 {
-  "name": "mail-box-client",
+  "name": "mailbox-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
