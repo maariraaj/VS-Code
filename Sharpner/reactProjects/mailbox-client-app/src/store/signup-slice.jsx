@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
 const API_KEY = 'AIzaSyCatwThboBu2LgMKmq15aAmAgyFtgh1CAw';
 
 export const signUp = createAsyncThunk('auth/signUp', async (credentials, { rejectWithValue }) => {

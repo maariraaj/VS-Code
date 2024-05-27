@@ -60,6 +60,7 @@ const SignUp = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              data-testid="password-input"
               required
             />
           </div>
@@ -72,6 +73,7 @@ const SignUp = () => {
               placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              data-testid="confirm-password-input"
               required
             />
           </div>
