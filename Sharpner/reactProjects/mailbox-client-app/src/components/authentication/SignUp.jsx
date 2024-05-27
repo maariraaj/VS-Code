@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { signUp } from '../../store/signup-slice';
@@ -7,32 +7,37 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error } = useSelector((state) => state.signup);
-  const [passwordError, setPasswordError] = useState('');
+  const { loading, error, user } = useSelector((state) => state.signup);
+
+  useEffect(() => {
+    if (user) {
+      navigate('/signin');
+    }
+  }, [user, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     if (password !== confirmPassword) {
       setPasswordError('Passwords do not match');
       return;
     }
 
-    dispatch(signUp({ email, password })).then((result) => {
-      if (result.type === 'auth/signUp/fulfilled') {
-        navigate('/');
-      }
-    });
+    setPasswordError('');
+
+    dispatch(signUp({ email, password }));
   };
 
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4" style={{ width: '400px', boxShadow: '0 4px 30px rgba(0, 128, 0, 0.5)' }}>
         <h3 className="card-title text-center">Sign Up</h3>
-        {error && <div className="alert alert-danger">{error.message}</div>}
         {passwordError && <div className="alert alert-danger">{passwordError}</div>}
+        {error && <div className="alert alert-danger">{error.error.message}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>
@@ -82,4 +87,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;  
+export default SignUp;
