@@ -10,6 +10,7 @@ export const signUp = createAsyncThunk('auth/signUp', async (credentials, { reje
         password: credentials.password,
         returnSecureToken: true,
       });
+      console.log("User has successfully signed up.")
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
