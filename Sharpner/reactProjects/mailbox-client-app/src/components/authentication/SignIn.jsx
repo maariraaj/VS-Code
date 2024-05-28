@@ -10,13 +10,21 @@ const SignIn = () => {
   const navigate = useNavigate();
   const { loading, error } = useSelector((state) => state.signin);
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(signIn({ email, password })).then((result) => {
+  //     if (result.type === 'auth/signIn/fulfilled') {
+  //       navigate('/');
+  //     }
+  //   });
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(signIn({ email, password })).then((result) => {
-      if (result.type === 'auth/signIn/fulfilled') {
-        navigate('/');
-      }
-    });
+    const result = await dispatch(signIn({ email, password }));
+    if (signIn.fulfilled.match(result)) {
+      navigate('/');
+    }
   };
 
   return (
