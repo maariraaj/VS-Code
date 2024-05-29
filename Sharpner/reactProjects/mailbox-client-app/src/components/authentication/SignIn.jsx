@@ -28,8 +28,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-      <div className="card p-4" style={{ width: '400px', boxShadow: '0 4px 30px rgba(0, 0, 255, 0.5)' }}>
+    <div className="container d-flex justify-content-center mt-5">
+      <div className="card p-4 border-primary" style={{ width: '600px', boxShadow: '0 4px 30px rgba(0, 0, 255, 0.5)' }}>
         <h3 className="card-title text-center">Sign In</h3>
         {error && <div className="alert alert-danger">{error.error.message}</div>}
         <form onSubmit={handleSubmit}>

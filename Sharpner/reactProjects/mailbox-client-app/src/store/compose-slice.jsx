@@ -4,8 +4,8 @@ import { EditorState } from 'draft-js';
 export const sendMail = createAsyncThunk('compose/sendMail',
   async ({ to, subject, content }, { rejectWithValue }) => {
     try {
-      const mailId=to.split(/[.@]/).join("");
-      const senderMailId=localStorage.getItem('mailId');
+      const mailId = to.split(/[.@]/).join("");
+      const senderMailId = localStorage.getItem('mailId');
       const response = await fetch(`https://mail-box-client-7-default-rtdb.firebaseio.com/${mailId}.json`, {
         method: 'POST',
         headers: {

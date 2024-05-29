@@ -13,7 +13,6 @@ jest.mock('react-router-dom', () => ({
 
 jest.mock('../store/signin-slice');
 
-const mockNavigate = useNavigate();
 const mockStore = configureStore();
 const initialStore = {
     signin: { user: null, loading: false, error: null },
