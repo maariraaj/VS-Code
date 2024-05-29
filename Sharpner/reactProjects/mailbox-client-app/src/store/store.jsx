@@ -12,8 +12,9 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ['compose/setEditorState'],
         ignoredPaths: ['compose.editorState'],
+        ignoredActions: ['compose/setEditorState'],
+        ignoredActionPaths: ['meta.arg.editorState', 'payload.editorState'],
       },
     }),
 });

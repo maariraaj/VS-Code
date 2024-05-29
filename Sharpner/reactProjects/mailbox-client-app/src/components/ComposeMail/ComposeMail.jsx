@@ -42,31 +42,32 @@ const ComposeMail = () => {
             <form>
               <div className="form-group mb-3">
                 <label htmlFor="formTo"><strong>To:</strong></label>
-                <input 
-                  type="email" 
-                  className="form-control" 
-                  id="formTo" 
-                  placeholder="Enter email" 
-                  value={to} 
-                  onChange={(e) => dispatch(setTo(e.target.value))} 
+                <input
+                  type="email"
+                  className="form-control"
+                  id="formTo"
+                  placeholder="Enter email"
+                  value={to}
+                  onChange={(e) => dispatch(setTo(e.target.value))}
                 />
               </div>
 
               <div className="form-group mb-3">
                 <label htmlFor="formSubject"><strong>Subject:</strong></label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  id="formSubject" 
-                  placeholder="Enter subject" 
-                  value={subject} 
-                  onChange={(e) => dispatch(setSubject(e.target.value))} 
+                <input
+                  type="text"
+                  className="form-control"
+                  id="formSubject"
+                  placeholder="Enter subject"
+                  value={subject}
+                  onChange={(e) => dispatch(setSubject(e.target.value))}
                 />
               </div>
 
               <div className="form-group border mb-3">
                 <label htmlFor="formContent"><strong>Content:</strong></label>
                 <Editor
+                  id='formContent'
                   editorState={editorState}
                   wrapperClassName="demo-wrapper"
                   editorClassName="demo-editor"
