@@ -77,7 +77,7 @@ const ComposeMail = () => {
 
               {error && <div className="alert alert-danger">{error}</div>}
 
-              <button type="button" className="btn btn-primary" onClick={handleSend} disabled={sending}>
+              <button type="button" className="btn btn-warning" onClick={handleSend} disabled={sending}>
                 {sending ? 'Sending...' : 'Send'}
               </button>
               <button type="button" className="btn btn-secondary ms-2" onClick={handleCancel}>

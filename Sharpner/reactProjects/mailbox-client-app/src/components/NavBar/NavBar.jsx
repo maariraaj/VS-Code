@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import './NavBar.css';
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border border-danger mb-3" style={{ boxShadow: '0 0 10px red', marginTop: '10px', marginLeft: '10px', marginRight: '10px' }}>
@@ -20,21 +20,21 @@ const NavBar = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/compose">New Mail</NavLink>
+            <NavLink className="nav-link" activeclassname="active" to="/compose">New Mail</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/inbox">Inbox</NavLink>
+            <NavLink className="nav-link" activeclassname="active" to="/inbox">Inbox</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/sent">Sent Mail</NavLink>
+            <NavLink className="nav-link" activeclassname="active" to="/sent">Sent Mail</NavLink>
           </li>
         </ul>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/account">Account</NavLink>
+            <NavLink className="nav-link" activeclassname="active" to="/">Account</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/signin">Signin</NavLink>
+            <NavLink className="nav-link" activeclassname="active" to="/signin">Signin</NavLink>
           </li>
         </ul>
       </div>
