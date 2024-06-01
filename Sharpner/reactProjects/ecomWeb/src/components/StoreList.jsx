@@ -1,4 +1,4 @@
-import { useContext} from "react"
+import { useContext } from "react"
 import CartContext from "./cart-context"
 import { NavLink } from "react-router-dom"
 
@@ -13,7 +13,7 @@ const StoreList = (props) => {
             </NavLink>
             <div className="card-footer">
                 <h5>Price: ₹{props.price}</h5>
-                <button type="button" className="btn btn-success" onClick={()=>{ctx.onAddToCart(props.id)}}>Add to Cart</button>
+                <button type="button" className="btn btn-success" onClick={() => { ctx.onAddToCart(props.id) }}>Add to Cart</button>
             </div>
         </div>
     )
