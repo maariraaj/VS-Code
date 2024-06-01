@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import signinReducer from './signin-slice';
 import signupReducer from './signup-slice';
 import composeReducer from './compose-slice';
+import getDataReducer from './getData-slice';
 
 const store = configureStore({
   reducer: {
     signin: signinReducer,
     signup: signupReducer,
-    compose: composeReducer
+    compose: composeReducer,
+    data: getDataReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
