@@ -21,8 +21,15 @@ export const signIn = createAsyncThunk('auth/signIn', async (credentials, { reje
 
 const signinSlice = createSlice({
   name: 'signin',
-  initialState: { user: null, loading: false, error: null },
-  reducers: {},
+  initialState: { user: null, loading: false, error: null, isLoggedIn: !!localStorage.getItem('token') },
+  reducers: {
+    signOut: (state) => {
+      state.user = null;
+      state.isLoggedIn = false;
+      localStorage.removeItem('token');
+      localStorage.removeItem('mailId');
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(signIn.pending, (state) => {
@@ -32,6 +39,7 @@ const signinSlice = createSlice({
       .addCase(signIn.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        state.isLoggedIn = true;
       })
       .addCase(signIn.rejected, (state, action) => {
         state.loading = false;
@@ -40,4 +48,5 @@ const signinSlice = createSlice({
   },
 });
 
+export const { signOut } = signinSlice.actions;
 export default signinSlice.reducer;

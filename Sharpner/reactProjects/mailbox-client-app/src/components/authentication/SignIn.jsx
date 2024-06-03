@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { signIn } from '../../store/signin-slice';
+import { fetchData } from '../../store/getData-slice';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -21,8 +22,10 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const result = await dispatch(signIn({ email, password }));
     if (signIn.fulfilled.match(result)) {
+      dispatch(fetchData());
       navigate('/');
     }
   };

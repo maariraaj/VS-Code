@@ -17,6 +17,7 @@ export const sendMail = createAsyncThunk('compose/sendMail',
           to,
           subject,
           content,
+          read: false
         }),
       });
 

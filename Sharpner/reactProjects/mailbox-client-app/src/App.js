@@ -7,8 +7,11 @@ import ComposeMail from './components/ComposeMail/ComposeMail';
 import RootLayout from './components/NavBar/Root';
 import Inbox from './components/Inbox/Inbox';
 import SentMail from './components/SentMail/SentMail';
+import MailPage from './components/Inbox/MailPage';
+import { useSelector } from 'react-redux';
 
 const App = () => {
+  const { isLoggedIn } = useSelector((state) => state.signin);
   const router = createBrowserRouter([
     {
       path: '/',
@@ -16,16 +19,16 @@ const App = () => {
         <RootLayout />
       ),
       children: [
-        { path: '/', element: <Home /> },
-        { path: "/signin", element: <SignIn /> },
-        { path: "/signup", element: <SignUp /> },
-        { path: "/compose", element: <ComposeMail /> },
-        { path: "/inbox", element: <Inbox /> },
-        { path: "/sent", element: <SentMail /> }
+        { path: '/', element: isLoggedIn ? <Home /> : <SignIn /> },
+        { path: "/signin", element: isLoggedIn ? <Home /> : <SignIn /> },
+        { path: "/signup", element: isLoggedIn ? <Home /> : <SignUp /> },
+        { path: "/compose", element: isLoggedIn ? <ComposeMail /> : <SignIn /> },
+        { path: "/inbox", element: isLoggedIn ? <Inbox /> : <SignIn /> },
+        { path: "/inbox/:mailId", element: isLoggedIn ? <MailPage /> : <SignIn /> },
+        { path: "/sent", element: isLoggedIn ? <SentMail /> : <SignIn /> }
       ]
     }
   ]);
-
   return (
     <RouterProvider router={router} />
   )
