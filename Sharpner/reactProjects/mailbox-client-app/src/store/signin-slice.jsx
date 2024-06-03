@@ -10,7 +10,6 @@ export const signIn = createAsyncThunk('auth/signIn', async (credentials, { reje
       password: credentials.password,
       returnSecureToken: true,
     });
-    console.log(response.data);
     localStorage.setItem('token', response.data.idToken);
     localStorage.setItem('mailId', response.data.email);
     return response.data;

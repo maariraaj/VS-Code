@@ -33,6 +33,19 @@ const Inbox = () => {
     }
   }
 
+  const deleteMailHandler = async (messageId) => {
+    const updatedMessages = Object.values(data).filter((message) => message.id !== messageId);
+    try {
+      const mailId = localStorage.getItem('mailId').split(/[.@]/).join("");
+      const response = await axios.put(`https://mail-box-client-7-default-rtdb.firebaseio.com/${mailId}.json`, updatedMessages);
+
+      console.log('Data updated successfully', response.data);
+      dispatch(fetchData());
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
+  }
+
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchData());
@@ -53,8 +66,8 @@ const Inbox = () => {
     } else {
       content = Object.values(data).map((item) => (
         <div className="col" key={item.id}>
-          <div className="card border-dark p-4 rounded bg-light" style={{ boxShadow: '0px 0px 5px 0px black' }} onClick={() => handleRead(item.id)}>
-            <NavLink to={`/inbox/${item.id}`} className="text-decoration-none text-dark">
+          <div className="card border-dark p-4 rounded bg-light" style={{ boxShadow: '0px 0px 5px 0px black', position: 'relative' }}>
+            <NavLink to={`/inbox/${item.id}`} className="text-decoration-none text-dark" style={{ width: '80%' }} onClick={() => handleRead(item.id)}>
               <div className="card-body">
                 <h5 className="card-title">
                   {!item.read && <FontAwesomeIcon icon={faCircle} style={{ color: 'green', fontSize: '10px', marginRight: '8px' }} />}
@@ -64,6 +77,7 @@ const Inbox = () => {
                 <p className="card-text">Content:{' '}{truncateContent(item.content.blocks[0].text, 100)}</p>
               </div>
             </NavLink>
+            <button className="btn btn-danger position-absolute" style={{ top: '50%', right: '20px', transform: 'translateY(-50%)', width: 'auto' }} onClick={() => deleteMailHandler(item.id)}>Delete</button>
           </div>
         </div>
       ));
