@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { getSentData } from '../../store/getSentData-slice';
 
-const truncateContent = (content, maxLength) => {
-  return content.length > maxLength ? `${content.substring(0, maxLength)}...` : content;
-};
-
-const SentMail = () => {
+const SentMailPage = () => {
   const dispatch = useDispatch();
   const sentData = useSelector((state) => state.getSentData.sentItems);
   const status = useSelector((state) => state.getSentData.status);
   const error = useSelector((state) => state.getSentData.error);
+
+  const params = useParams();
 
   useEffect(() => {
     if (status === 'idle') {
@@ -41,15 +39,15 @@ const SentMail = () => {
     } else {
       const mailId = localStorage.getItem('mailId').split(/[.@]/).join("");
       content = data.map((item) => {
-        if (item.from.split(/[.@]/).join("") === mailId) {
+        if (item.from.split(/[.@]/).join("") === mailId && item.id === params.sentMailId) {
           return (
             <div className="col" key={item.id}>
               <div className="card border-dark p-4 rounded bg-light" style={{ boxShadow: '0px 0px 5px 0px black', position: 'relative' }}>
                 <NavLink to={`/sent/${item.id}`} className="text-decoration-none text-dark" >
                   <div className="card-body">
-                    <h5 className="card-title">To:{' '}{item.to}</h5>
-                    <p className="card-text">Subject:{' '}{item.subject}</p>
-                    <p className="card-text">Content:{' '}{truncateContent(item.content.blocks[0].text, 100)}</p>
+                    <h4 className="card-title">To:{' '}{item.to}</h4>
+                    <h5 className="card-text">Subject:{' '}{item.subject}</h5>
+                    <p className="card-text">Content:{' '}{item.content.blocks[0].text}</p>
                   </div>
                 </NavLink>
               </div>
@@ -64,10 +62,14 @@ const SentMail = () => {
   return (
     <div className="container mt-5">
       <div className="row row-cols-1 gy-3" style={{ maxHeight: '80vh', overflowY: 'scroll' }}>
-        {content}
+        <div className="col">
+          <div className="card border-dark p-4 rounded bg-light" style={{ boxShadow: '0px 0px 5px 0px black' }}>
+            {content}
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-export default SentMail;
+export default SentMailPage;

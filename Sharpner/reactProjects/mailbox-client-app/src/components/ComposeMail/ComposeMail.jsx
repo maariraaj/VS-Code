@@ -34,7 +34,7 @@ const ComposeMail = () => {
     const content = convertToRaw(contentState);
     dispatch(sendMail({ to, subject, content })).then(() => {
       dispatch(resetCompose());
-      navigate('/');
+      navigate('/sent');
     });
   };
 

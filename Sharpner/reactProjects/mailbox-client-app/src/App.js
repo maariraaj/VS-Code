@@ -9,6 +9,7 @@ import Inbox from './components/Inbox/Inbox';
 import SentMail from './components/SentMail/SentMail';
 import MailPage from './components/Inbox/MailPage';
 import { useSelector } from 'react-redux';
+import SentMailPage from './components/SentMail/SentMailPage';
 
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.signin);
@@ -25,7 +26,8 @@ const App = () => {
         { path: "/compose", element: isLoggedIn ? <ComposeMail /> : <SignIn /> },
         { path: "/inbox", element: isLoggedIn ? <Inbox /> : <SignIn /> },
         { path: "/inbox/:mailId", element: isLoggedIn ? <MailPage /> : <SignIn /> },
-        { path: "/sent", element: isLoggedIn ? <SentMail /> : <SignIn /> }
+        { path: "/sent", element: isLoggedIn ? <SentMail /> : <SignIn /> },
+        { path: "/sent/:sentMailId", element: isLoggedIn ? <SentMailPage /> : <SignIn /> },
       ]
     }
   ]);
