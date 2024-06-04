@@ -53,8 +53,12 @@ const Inbox = () => {
   }, [status, dispatch]);
 
   useEffect(() => {
-    dispatch(fetchData());
-  }, []);
+    const intervalId = setInterval(() => {
+      dispatch(fetchData());
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, [dispatch]);
 
   let content;
 
@@ -94,4 +98,4 @@ const Inbox = () => {
   );
 }
 
-export default Inbox
+export default Inbox;
