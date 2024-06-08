@@ -23,7 +23,7 @@ const SentMailPage = () => {
 
   let data = [];
   if (sentData.length > 0) {
-    Object.values(sentData[0]).map((item) => {
+    Object.values(sentData[0]).forEach((item) => {
       let temp = Object.values(item);
       data = data.concat(temp);
     })
