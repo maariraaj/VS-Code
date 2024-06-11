@@ -1,29 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TodoItem from './ToDoItem';
 import dayjs from 'dayjs';
 
-const TodoList = () => {
-    const [todos, setTodos] = useState([]);
+const TodoList = ({ onAddToDo, onToggleComplete, todoListData }) => {
     const [newTodo, setNewTodo] = useState('');
     const [newTodoDate, setNewTodoDate] = useState('');
+    const [todos, setTodos] = useState(todoListData);
+
+    useEffect(() => {
+        setTodos(todoListData);
+    }, [todoListData]);
 
     const addTodo = () => {
         if (newTodo.trim() !== '' && newTodoDate !== '') {
-            setTodos([
-                ...todos,
-                { id: Date.now(), text: newTodo, date: newTodoDate, completed: false },
-            ]);
+            const newToDoItem = {
+                id: `${Date.now()}_${Math.random().toString()}`,
+                text: newTodo,
+                date: newTodoDate,
+                completed: false
+            };
+
+            onAddToDo(newToDoItem);
             setNewTodo('');
             setNewTodoDate('');
         }
     };
 
     const toggleComplete = (id) => {
-        setTodos(
-            todos.map((todo) =>
-                todo.id === id ? { ...todo, completed: !todo.completed } : todo
-            )
-        );
+        onToggleComplete(id);
     };
 
     const today = dayjs().format('YYYY-MM-DD');
@@ -64,7 +68,7 @@ const TodoList = () => {
                     <h2 className="text-xl font-semibold mb-2">Today's Todos</h2>
                     <div className="space-y-4">
                         {todayTodos.map((todo) => (
-                            <TodoItem key={todo.id} todo={todo} toggleComplete={toggleComplete} />
+                            <TodoItem key={todo.id} todo={todo} toggleComplete={() => toggleComplete(todo.id)} />
                         ))}
                     </div>
                 </div>
@@ -74,7 +78,7 @@ const TodoList = () => {
                     <h2 className="text-xl font-semibold mb-2">Other Todos</h2>
                     <div className="space-y-4">
                         {otherTodos.map((todo) => (
-                            <TodoItem key={todo.id} todo={todo} toggleComplete={toggleComplete} />
+                            <TodoItem key={todo.id} todo={todo} toggleComplete={() => toggleComplete(todo.id)} />
                         ))}
                     </div>
                 </div>
