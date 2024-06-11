@@ -30,13 +30,23 @@ export default function Home(props) {
     }
   }
 
-  const toggleCompleteHandler = (id) => {
-    setTodos(prevTodos =>
-      prevTodos.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
+  async function toggleCompleteHandler(id) {
+    const todoToToggle = todos.find(todo => todo.id === id);
+    const updatedTodo = { ...todoToToggle, completed: !todoToToggle.completed };
+
+    const response = await fetch('/api/put-todo', {
+      method: 'PUT',
+      body: JSON.stringify({ id: updatedTodo._id, completed: updatedTodo.completed }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await response.json();
+    if (response.ok) {
+      console.log(data.message);
+      fetchTodos();
+    }
+  }
 
   return (
     <Fragment>
