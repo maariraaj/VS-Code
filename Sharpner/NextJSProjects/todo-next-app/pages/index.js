@@ -48,6 +48,22 @@ export default function Home(props) {
     }
   }
 
+  async function deleteTodoHandler(id) {
+    const response = await fetch('/api/delete-todo', {
+      method: 'DELETE',
+      body: JSON.stringify({ id }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      fetchTodos();
+    } else {
+      console.error(`Failed to edit todo with ID ${id}.`);
+    }
+  }
+
   return (
     <Fragment>
       <Head>
@@ -59,6 +75,7 @@ export default function Home(props) {
           onAddToDo={addToDoHandler}
           onToggleComplete={toggleCompleteHandler}
           todoListData={todos}
+          onDeleteTodo={deleteTodoHandler}
         />
       </div>
     </Fragment>
