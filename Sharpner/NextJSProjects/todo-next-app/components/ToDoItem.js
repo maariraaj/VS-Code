@@ -15,7 +15,7 @@ const TodoItem = ({ todo, toggleComplete, handleEdit, handleDelete }) => {
                 />
                 <RiDeleteBinLine
                     className="h-6 w-6 mr-2 cursor-pointer text-gray-400 hover:text-gray-200"
-                    onClick={() => console.log("Clicked delete")}
+                    onClick={() => handleDelete(todo._id)}
                 />
                 <button
                     onClick={() => toggleComplete(todo.id)}

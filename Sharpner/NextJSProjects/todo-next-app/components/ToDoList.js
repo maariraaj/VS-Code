@@ -74,7 +74,7 @@ const TodoList = ({ onAddToDo, onToggleComplete, onDeleteTodo, todoListData }) =
                     <h2 className="text-xl font-semibold mb-2">Today's Todos</h2>
                     <div className="space-y-4">
                         {todayTodos.map((todo) => (
-                            <TodoItem key={todo.id} todo={todo} toggleComplete={() => toggleComplete(todo.id)} handleEdit={() => editHandler(todo)} />
+                            <TodoItem key={todo.id} todo={todo} toggleComplete={() => toggleComplete(todo.id)} handleEdit={() => editHandler(todo)} handleDelete={() => onDeleteTodo(todo._id)} />
                         ))}
                     </div>
                 </div>
@@ -84,7 +84,7 @@ const TodoList = ({ onAddToDo, onToggleComplete, onDeleteTodo, todoListData }) =
                     <h2 className="text-xl font-semibold mb-2">Other Todos</h2>
                     <div className="space-y-4">
                         {otherTodos.map((todo) => (
-                            <TodoItem key={todo.id} todo={todo} toggleComplete={() => toggleComplete(todo.id)} handleEdit={() => editHandler(todo)} />
+                            <TodoItem key={todo.id} todo={todo} toggleComplete={() => toggleComplete(todo.id)} handleEdit={() => editHandler(todo)} handleDelete={() => onDeleteTodo(todo._id)} />
                         ))}
                     </div>
                 </div>
