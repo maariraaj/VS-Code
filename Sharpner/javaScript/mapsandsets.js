@@ -181,14 +181,14 @@
 
 
 
-//Given an unsorted array and a number n, find if there exists a pair of elements in the array whose difference is n. 
+//Given an unsorted array and a number n, find if there exists a pair of elements in the array whose difference is n.
 
 // function findPairWithDifference(arr, n) {
 //     arr.sort((a, b) => a - b);
 //     let i = 0;
 //     let j = 1;
 //     while (j < arr.length) {
-//         const diff = arr[j] - arr[i];   
+//         const diff = arr[j] - arr[i];
 //         if (diff === n) {
 //             return [arr[i], arr[j]];
 //         } else if (diff < n) {
@@ -222,10 +222,10 @@
 // for(let i=0; i<x.length; i++){
 //     let a=x[i];
 //     let b=k-a;
-    
+
 //     if(m.has(b)){
 //         console.log([m.get(b), i]);
-//     }   
+//     }
 //     m.set(x[i], i);
 // }
 
@@ -287,3 +287,34 @@
 // }
 // console.log(changes);
 
+
+
+//Every student have different id but twins have same id . Task is to find whether twins are present in given array or not.
+
+// let arr = [1, 2, 3, 1];
+// let s = new Set();
+// let flag = false;
+// for (let i = 0; i < arr.length; i++) {
+//     if (s.has(arr[i])) {
+//         flag = true;
+//     } else {
+//         s.add(arr[i]);
+//     }
+// }
+// console.log(flag);
+
+
+
+//find the Super hill and return its index if more then one Super hills are there return any one of index . 
+//The Super hill is the hill which is taller than its neighbors hills .
+
+// let arr = [1, 2, 1, 3, 5, 6, 4];
+// let m = new Map();
+// let max = arr[0];
+// for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] >= max) {
+//         max = arr[i];
+//         m.set(max, i);
+//     }
+// }
+// console.log(m.get(max));

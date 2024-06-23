@@ -74,7 +74,7 @@
 
 //Given a string s, return true if it is a palindrome, or false otherwise. After converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters.
 
-// let str="A man, a plan, a canal: Panama"; 
+// let str="A man, a plan, a canal: Panama";
 // str=str.toLowerCase().replace(/[^a-z0-9]/g,'');
 // let ans=str.split('').reverse().join('');
 // console.log(ans===str);
@@ -110,14 +110,14 @@
 //     if (!isNaN(parseInt(char))) {
 //         currentNumber += char; // Add the digit to the current number string
 //         //console.log("currentNumber", currentNumber);
-//     } else if (currentNumber !== '') 
+//     } else if (currentNumber !== '')
 //         // If the current number string is not empty, add it to the arr
 //         {
 //             arr.push(currentNumber);
 //            // console.log("array", arr);
 //             currentNumber = ''; // Reset the current number string
 //         }
-    
+
 // }
 
 // // Add the last number if the string ends with a number
@@ -133,7 +133,7 @@
 // const str = "abcd";
 
 // if (isPalindrome(str)) {
-//     console.log(0); 
+//     console.log(0);
 // } else {
 //     console.log(minCharsToAdd(str));
 // }
@@ -153,7 +153,7 @@
 
 
 
-//Given a sentence in the form of a string, convert it into its equivalent mobile numeric keypad sequence. 
+//Given a sentence in the form of a string, convert it into its equivalent mobile numeric keypad sequence.
 
 // let s="HELLO WORLD";
 // let keypadMap={
@@ -175,7 +175,7 @@
 //     }
 // }
 // console.log(seq);
-  
+
 
 
 //Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -189,7 +189,7 @@
 //       '}': '{',
 //       ']': '['
 //     };
-  
+
 //     for(let i=0; i<s.length; i++){
 //       const char=s[i];
 //       if(openBrackets.includes(char)){
@@ -200,12 +200,12 @@
 //         }
 //       }
 //     }
-  
+
 //     return stack.length===0;
 //   }
 //   const inputString="}{";
 //   console.log(isValid(inputString));
-  
+
 
 
 //Given two strings s and t, return true if t is an anagram of s, and false otherwise. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
@@ -214,7 +214,7 @@
 //     if(s.length !== t.length){
 //       return false;
 //     }
-//     const charCount={}; 
+//     const charCount={};
 //     for(let char of s){
 //       charCount[char]=(charCount[char] || 0) + 1;
 //     }
@@ -229,7 +229,7 @@
 //   const s="anagram";
 //   const t="nagaram";
 //   console.log(isAnagram(s, t));
-  
+
 
 
 //You have to perform a single swap operation to make these strings similar. If it is possible then the strings are pro strings. If pro strings are formed then return True otherwise return False. If initially two equal strings are there then \those will not be considered pro strings.
@@ -251,3 +251,17 @@
 //     }
 // }
 // console.log(i===str1.length && j===str2.length);
+
+
+//vowels in the given string
+
+// let s = "a1e@i2o!u"
+// s = s.toLowerCase().replace(/[^a-z]/g, '');
+// let vow = ["a", "e", "i", "o", "u"];
+// let count = 0;
+// for (let i = 0; i < s.length; i++) {
+//     if (vow.includes(s[i])) {
+//         count++;
+//     }
+// }
+// console.log(count);

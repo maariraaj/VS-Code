@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Bubbling Example</title>
+  </head>
+  <body>
+    <div id="outer" style="padding: 20px; border: 2px solid red">
+      Outer Div
+      <div id="inner" style="padding: 20px; border: 2px solid blue">
+        Inner Div
+        <button id="button">Click Me</button>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("outer").addEventListener("click", function () {
+        console.log("Outer Div clicked");
+      });
+
+      document.getElementById("inner").addEventListener("click", function () {
+        console.log("Inner Div clicked");
+      });
+
+      document
+        .getElementById("button")
+        .addEventListener("click", function (event) {
+          console.log("Button clicked");
+          // Stop the event from bubbling up to outer elements
+          event.stopPropagation();
+        });
+    </script>
+  </body>
+</html>
