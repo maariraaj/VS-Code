@@ -1,43 +1,93 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import React, { useState } from 'react';
+import { AppBar, Box, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import { NavLink } from 'react-router-dom';
-import { Box, IconButton } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
 
 const NavBar = () => {
-    const navLinkStyle = ({ isActive }) => ({
-        color: isActive ? 'white' : 'white',
-        backgroundColor: isActive ? '#004d40' : 'transparent',
-        textDecoration: 'none',
-        padding: '8px 16px',
-        borderRadius: '4px',
-        transition: 'background-color 0.3s ease',
-        display: 'block',
-    });
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const toggleDrawer = (open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setDrawerOpen(open);
+    };
+
+    const navLinks = [
+        { title: 'Home', path: '/' },
+        { title: 'About', path: '/about' },
+        { title: 'Skills', path: '/skills' },
+        { title: 'Projects', path: '/projects' },
+        { title: 'Contact', path: '/contact' },
+    ];
 
     return (
-        <AppBar position="sticky" sx={{ backgroundColor: '#009688' }}>
-            <Toolbar sx={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <IconButton edge="start" color="inherit" aria-label="logo">
-                        <StarIcon />
-                    </IconButton>
-                    <Typography variant="h6" component="div" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <>
+            <AppBar position="sticky" sx={{ bgcolor: '#009688', borderBottom: '1px solid #009688' }}>
+                <Toolbar>
+                    <Typography variant="h6" sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+                        <span role="img" aria-label="star">⭐</span>
                         MY PORTFOLIO
-                        <StarIcon />
+                        <span role="img" aria-label="star">⭐</span>
                     </Typography>
+                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.title}
+                                to={link.path}
+                                style={({ isActive }) => ({
+                                    color: isActive ? '#fff' : '#004d40',
+                                    backgroundColor: isActive ? '#004d40' : 'transparent',
+                                    textDecoration: 'none',
+                                    padding: '0.5rem 1rem',
+                                    borderRadius: '4px',
+                                    margin: '0 0.5rem',
+                                })}
+                            >
+                                {link.title}
+                            </NavLink>
+                        ))}
+                    </Box>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ display: { xs: 'block', md: 'none' } }}
+                        onClick={toggleDrawer(true)}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                anchor="right"
+                open={drawerOpen}
+                onClose={toggleDrawer(false)}
+                sx={{ '& .MuiDrawer-paper': { width: '250px', bgcolor: '#009688', color: '#fff' } }}
+            >
+                <Box
+                    sx={{ width: 250, textAlign: 'center', bgcolor: '#009688', color: '#fff', height: '100%' }}
+                    role="presentation"
+                    onClick={toggleDrawer(false)}
+                    onKeyDown={toggleDrawer(false)}
+                >
+                    <IconButton sx={{ color: '#fff', textAlign: 'right', padding: '1rem' }} onClick={toggleDrawer(false)}>
+                        <CloseIcon />
+                    </IconButton>
+                    <List>
+                        {navLinks.map((link) => (
+                            <ListItem button key={link.title} component={NavLink} to={link.path}>
+                                <ListItemText
+                                    primary={link.title}
+                                    sx={{ textAlign: 'center', color: 'inherit' }}
+                                />
+                            </ListItem>
+                        ))}
+                    </List>
                 </Box>
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                    <NavLink to="/" style={navLinkStyle}>Home</NavLink>
-                    <NavLink to="/about" style={navLinkStyle}>About</NavLink>
-                    <NavLink to="/skills" style={navLinkStyle}>Skills</NavLink>
-                    <NavLink to="/projects" style={navLinkStyle}>Projects</NavLink>
-                    <NavLink to="/contact" style={navLinkStyle}>Contact</NavLink>
-                </Box>
-            </Toolbar>
-        </AppBar>
+            </Drawer>
+        </>
     );
 };
 
