@@ -19,7 +19,7 @@ const Contact = () => {
                 Contact Me
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-                <ContactItem icon={faGithub} color="#181717" text="GitHub" link="https://github.com/marirajb" />
+                <ContactItem icon={faGithub} color="#181717" text="GitHub" link="https://github.com/maariraaj" />
                 <ContactItem icon={faWhatsapp} color="#25D366" text="WhatsApp" link="https://wa.me/+919488455867" />
                 <ContactItem icon={faLinkedin} color="#0077B5" text="LinkedIn" link="https://www.linkedin.com/in/marirajb/" />
                 <ContactItem icon={faMicrosoft} color="#00A4EF" text="Hotmail" link="mailto:marirajb@outlook.com" />
