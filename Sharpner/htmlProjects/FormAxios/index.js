@@ -1,41 +1,40 @@
 function handleFormSubmit(event) {
     event.preventDefault();
     const userDetails = {
-      username: event.target.username.value,
-      email: event.target.email.value,
-      phone: event.target.phone.value,
+        username: event.target.username.value,
+        email: event.target.email.value,
+        phone: event.target.phone.value,
     };
     axios
-      .post(
-        "https://crudcrud.com/api/d65efd905f104ae48efbc0a57fb53d2b/appointmentData",
-        userDetails
-      )
-      .then((response) => displayUserOnScreen(response.data))
-      .catch((error) => console.log(error));
-  
-    // Clearing the input fields
+        .post(
+            "https://crudcrud.com/api/cf7bfa7ef14847a4aa43254d4854eed2/appointmentData",
+            userDetails
+        )
+        .then((response) => displayUserOnScreen(response.data))
+        .catch((error) => console.log(error));
+
     document.getElementById("username").value = "";
     document.getElementById("email").value = "";
     document.getElementById("phone").value = "";
 }
 
-window.addEventListener("DOMContentLoaded", ()=>{
-    axios.get("https://crudcrud.com/api/d65efd905f104ae48efbc0a57fb53d2b/appointmentData")
-        .then((response)=>{
-            for(let i=0; i<response.data.length; i++){
+window.addEventListener("DOMContentLoaded", () => {
+    axios.get("https://crudcrud.com/api/cf7bfa7ef14847a4aa43254d4854eed2/appointmentData")
+        .then((response) => {
+            for (let i = 0; i < response.data.length; i++) {
                 displayUserOnScreen(response.data[i]);
             }
         })
-        .catch((error)=>{
+        .catch((error) => {
             console.log(error);
         });
 })
-  
+
 function displayUserOnScreen(userDetails) {
     const userItem = document.createElement("li");
     userItem.appendChild(
         document.createTextNode(
-        `${userDetails.username} - ${userDetails.email} - ${userDetails.phone}`
+            `${userDetails.username} - ${userDetails.email} - ${userDetails.phone}`
         )
     );
 
@@ -52,16 +51,16 @@ function displayUserOnScreen(userDetails) {
 
     deleteBtn.addEventListener("click", function (event) {
         userList.removeChild(event.target.parentElement);
-        axios.delete(`https://crudcrud.com/api/d65efd905f104ae48efbc0a57fb53d2b/appointmentData/${userDetails._id}`)
-            .then((response)=>console.log(response))
-            .catch((error)=>console.log(error));
+        axios.delete(`https://crudcrud.com/api/cf7bfa7ef14847a4aa43254d4854eed2/appointmentData/${userDetails._id}`)
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error));
     });
 
     editBtn.addEventListener("click", function (event) {
         userList.removeChild(event.target.parentElement);
-        axios.delete(`https://crudcrud.com/api/d65efd905f104ae48efbc0a57fb53d2b/appointmentData/${userDetails._id}`)
-        .then((response)=>console.log(response))
-        .catch((error)=>console.log(error));
+        axios.delete(`https://crudcrud.com/api/cf7bfa7ef14847a4aa43254d4854eed2/appointmentData/${userDetails._id}`)
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error));
         document.getElementById("username").value = userDetails.username;
         document.getElementById("email").value = userDetails.email;
         document.getElementById("phone").value = userDetails.phone;
