@@ -248,6 +248,21 @@
 
 
 
+//to add two Matrices ( 2d Array). Return the resultant Array. Both the 2d Array will be of the same size.
+
+// let arr1 = [[1, 1, 1], [2, 2, 2], [3, 3, 3]], arr2 = [[4, 4, 4], [5, 5, 5], [6, 6, 6]];
+// let ans = [];
+// for (let i = 0; i < arr1.length; i++) {
+//     let temp = [];
+//     for (let j = 0; j < arr1[i].length; j++) {
+//         temp.push(arr1[i][j] + arr2[i][j]);
+//     }
+//     ans.push(temp);
+// }
+// console.log(ans);
+
+
+
 //find the maximum sum subarray
 
 // let arr=[5,2,-4,-5, 3,-1,2,3,1];
@@ -416,13 +431,13 @@
 //Rotate the array to the right by k steps, where k is non-negative.
 //(try to solve in time complexity 0(n) with extra space)
 
-// let arr = [1, 2, 3, 4,5];
+// let arr = [1, 2, 3, 4, 5];
 // let k = 2;
-// // Check if array is empty or if rotation is not needed
+
 // if (arr.length === 0 || k % arr.length === 0) {
 //     console.log(arr);
 // }
-// // Normalize rotation if it's greater than array length
+
 // k = k % arr.length;
 // // Reverse the entire array
 // reverse(arr, 0, arr.length - 1);
@@ -440,6 +455,24 @@
 //         end--;
 //     }
 // }
+
+
+
+//You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+
+// let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+// const n = matrix.length;
+
+// for (let i = 0; i < n; i++) {
+//     for (let j = i + 1; j < n; j++) {
+//         [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+//     }
+// }
+
+// for (let i = 0; i < n; i++) {
+//     matrix[i].reverse();
+// }
+// console.log(matrix);
 
 
 
@@ -516,7 +549,96 @@
 //     y++;
 // } console.log(arr);
 
+
+
+//you have to check whether addition of strengths on left side and right side are equal or not. if both sides have equal strength, then return True else return False .
+
+// let arr = [1, 2, 3, 2, 1, 2, 5];
+// let sum = 0;
+// for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i];
+// }
+// let j = 0, newSum = 0, flag = true;
+// while (sum !== newSum) {
+//     if (j === arr.length) {
+//         flag = false;
+//         break;
+//     } else {
+//         newSum += arr[j];
+//         sum -= arr[j];
+//         j++;
+//     }
+// } console.log(flag);
+
+
+
+//You have to revamp such that no duplicate roll numbers should be there . You can increase the roll number by one at a time . you have to find minimum operation for revamping the array.
+
+// let arr = [1, 1, 2, 3];
+// arr.sort((a, b) => a - b);
+// let count = 0;
+// for (let i = 1; i < arr.length; i++) {
+//     if (arr[i] <= arr[i - 1]) {
+//         let increment = arr[i - 1] - arr[i] + 1;
+//         count += increment;
+//         arr[i] = arr[i - 1] + 1;
+//     }
+// } console.log(count);
+
+
+
+//Increment the large integer by one and return the resulting array of digits.
+
+// var plusOne = function (digits) {
+//     let n = digits.length;
+//     for (let i = n - 1; i >= 0; i--) {
+//         if (digits[i] < 9) {
+//             digits[i]++;
+//             return digits;
+//         }
+//         digits[i] = 0;
+//     }
+//     digits.unshift(1);
+//     return digits;
+// };
+// console.log(plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]));
+
+
+
+//Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+// let nums = [0, 1, 0, 3, 12];
+// let j = 0;
+// for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== 0) {
+//         nums[j] = nums[i];
+//         j++;
+//     }
+// }
+// for (let i = j; i < nums.length; i++) {
+//     nums[i] = 0;
+// }
+// console.log(nums);
+
+
+
+//Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+// var twoSum = function (nums, target) {
+//     for (let i = 0; i < nums.length; i++) {
+//         for (let j = i + 1; j < nums.length; j++) {
+//             if (nums[i] + nums[j] === target) {
+//                 return [i, j];
+//             }
+//         }
+//     }
+// };
+// console.log(twoSum([2, 7, 11, 15], 9));
+
+
+
 //Find no. of set bits(1's) in a number:
+
 // let num=19;
 // let count=0;
 // for(let i=0;i<32;i++){
