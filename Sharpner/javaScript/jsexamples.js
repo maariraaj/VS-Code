@@ -637,6 +637,29 @@
 
 
 
+//return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+// const nums1 = [1, 2, 2, 1];
+// const nums2 = [2, 2];
+// nums1.sort((a, b) => a - b);
+// nums2.sort((a, b) => a - b);
+// const result = [];
+// let i = 0, j = 0;
+// while (i < nums1.length && j < nums2.length) {
+//     if (nums1[i] < nums2[j]) {
+//         i++;
+//     } else if (nums1[i] > nums2[j]) {
+//         j++;
+//     } else {
+//         result.push(nums1[i]);
+//         i++;
+//         j++;
+//     }
+// }
+// console.log(result);
+
+
+
 //Find no. of set bits(1's) in a number:
 
 // let num=19;
@@ -646,6 +669,18 @@
 //         count += 1;
 //     }
 // }console.log(count);
+
+
+
+//Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+// const nums = [4, 1, 2, 1, 2];
+// let result = 0;
+// for (const num of nums) {
+//     result ^= num;
+// }
+// console.log(result);
+
 
 
 //find alternating bit (if two adjacent bits will always have different values)

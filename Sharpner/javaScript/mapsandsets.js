@@ -318,3 +318,24 @@
 //     }
 // }
 // console.log(m.get(max));
+
+
+
+// find the first non-repeating character in it and return its index. If it does not exist, return -1.
+
+// function firstUniqChar(s) {
+//     const charCount = new Map();
+
+//     for (const char of s) {
+//         charCount.set(char, (charCount.get(char) || 0) + 1);
+//     }
+
+//     for (let i = 0; i < s.length; i++) {
+//         if (charCount.get(s[i]) === 1) {
+//             return i;
+//         }
+//     }
+
+//     return -1;
+// }
+// console.log(firstUniqChar("loveleetcode"));
