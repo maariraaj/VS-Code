@@ -161,34 +161,34 @@
 
 //store first n no. of prime numbers in an array
 
-// let n=20;
-// let arr=[];
-// let x=2;
-// while(arr.length<n){
-//     let flag=true;
-//     for(let i=2;i<x;i++){
-//         if(x%i==0){
-//             flag=false;
+// let n = 20;
+// let arr = [];
+// let x = 2;
+// while (arr.length < n) {
+//     let flag = true;
+//     for (let i = 2; i < x; i++) {
+//         if (x % i == 0) {
+//             flag = false;
 //             break;
 //         }
-//     }if(flag){
+//     } if (flag) {
 //         arr.push(x);
-//     }x+=1;
-// }console.log(arr);
+//     } x += 1;
+// } console.log(arr);
 
 
 //store first n prime number
 
-// let arr=[];
+// let arr = [];
 
-// for(let num=2;num<10;num++){
-//     let flag=true;
-//     for(let i=2;i<num;i++){
-//         if(num%i===0){
-//             flag=false;
+// for (let num = 2; num < 10; num++) {
+//     let flag = true;
+//     for (let i = 2; i < num; i++) {
+//         if (num % i === 0) {
+//             flag = false;
 //             break;
 //         }
-//     }if(flag){
+//     } if (flag) {
 //         arr.push(num)
 //     }
 // }
@@ -311,44 +311,27 @@
 
 //Find the max in an 2D array
 
-// let arr=[[1,2,3],[3,4],[5,6,7,8]];
-// let ans=[];
-// for(let i=0;i<arr.length;i++){
-//     let sum=0;
-//     for(let j=0;j<arr[i].length;j++){
-//         sum+=arr[i][j];
-//     }ans.push(sum);
-// }
-// let max=ans[0];
-// for(let k=0;k<ans.length;k++){
-//     if(ans[k]>max){
-//         max=ans[k];
+// let arr = [[1, 2, 3], [3, 4], [5, 6, 7, 8]];
+// let max = 0;
+// for (let i = 0; i < arr.length; i++) {
+//     let sum = 0;
+//     for (let j = 0; j < arr[i].length; j++) {
+//         sum += arr[i][j];
 //     }
-// }console.log(max);
-
-//another simple method without using k loop
-
-// let arr=[[1,2,3],[3,4],[5,6,7,8]];
-// let max=0;
-// for(let i=0;i<arr.length;i++){
-//     let sum=0;
-//     for(let j=0;j<arr[i].length;j++){
-//         sum+=arr[i][j];
+//     if (sum > max) {
+//         max = sum;
 //     }
-//     if(sum>max){
-//         max=sum;
-//     }
-// }console.log(max);
+// } console.log(max);
 
 
 //Given a 2D integer array matrix, return the transpose of matrix.
 
-// let matrix=[[1, 2, 3],[4, 5, 6],[7, 8, 9]];
-// let arr=[];
-// for(let i=0; i<matrix[0].length;i++){
-//     arr[i]=[];
-//     for(let j=0;j<matrix.length;j++){
-//         arr[i][j]=matrix[j][i];
+// let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+// let arr = [];
+// for (let i = 0; i < matrix[0].length; i++) {
+//     arr[i] = [];
+//     for (let j = 0; j < matrix.length; j++) {
+//         arr[i][j] = matrix[j][i];
 //     }
 // }
 // console.log(arr);
@@ -431,31 +414,27 @@
 //Rotate the array to the right by k steps, where k is non-negative.
 //(try to solve in time complexity 0(n) with extra space)
 
-// let arr = [1, 2, 3, 4, 5];
-// let k = 2;
+// let rotate = function (nums, k) {
+//     k = k % nums.length;
+//     if (k === 0) {
+//         return nums;
+//     };
 
-// if (arr.length === 0 || k % arr.length === 0) {
-//     console.log(arr);
-// }
-
-// k = k % arr.length;
-// // Reverse the entire array
-// reverse(arr, 0, arr.length - 1);
-// // Reverse the first part up to K
-// reverse(arr, 0, k - 1);
-// // Reverse the remaining part from K to end
-// reverse(arr, k, arr.length - 1);
-// console.log("Rotated Array:", arr);
-// function reverse(arr, start, end) {
-//     while (start < end) {
-//         let temp = arr[start];
-//         arr[start] = arr[end];
-//         arr[end] = temp;
-//         start++;
-//         end--;
+//     function reverse(arr, start, end) {
+//         while (start < end) {
+//             let temp = arr[start];
+//             arr[start] = arr[end];
+//             arr[end] = temp;
+//             start++;
+//             end--;
+//         }
 //     }
-// }
-
+//     reverse(nums, 0, nums.length - 1);
+//     reverse(nums, 0, k - 1);
+//     reverse(nums, k, nums.length - 1);
+//     return nums;
+// };
+// console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3));
 
 
 //You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
@@ -518,6 +497,28 @@
 // };
 // console.log(pens_need([5, -4, 1, -3, 1,0]));
 // console.log(pens_need([-1000, -1000, -1000, 1000, 1000, 1000,0]));
+
+
+
+//Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+// var reverse = function (x) {
+//     const INT_MAX = 2 ** 31 - 1;
+//     let result = 0;
+//     let sign = Math.sign(x);
+//     x = Math.abs(x);
+//     while (x !== 0) {
+//         let digit = x % 10;
+//         x = Math.floor(x / 10);
+
+//         if (result > Math.floor(INT_MAX / 10) || (result === Math.floor(INT_MAX / 10) && digit > 7)) {
+//             return 0;
+//         }
+//         result = result * 10 + digit;
+//     }
+//     return result * sign;
+// };
+// console.log(reverse(-321));
 
 
 
@@ -590,8 +591,7 @@
 //Increment the large integer by one and return the resulting array of digits.
 
 // var plusOne = function (digits) {
-//     let n = digits.length;
-//     for (let i = n - 1; i >= 0; i--) {
+//     for (let i = digits.length - 1; i >= 0; i--) {
 //         if (digits[i] < 9) {
 //             digits[i]++;
 //             return digits;
@@ -607,7 +607,7 @@
 
 //Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
-// let nums = [0, 1, 0, 3, 12];
+// let nums = [0, 1, 0, 3, 12, 15, 0, 17, 0, 0, 68];
 // let j = 0;
 // for (let i = 0; i < nums.length; i++) {
 //     if (nums[i] !== 0) {
@@ -657,6 +657,31 @@
 //     }
 // }
 // console.log(result);
+
+
+
+//Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+
+// const nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+// let k = 1;
+// for (let i = 1; i < nums.length; i++) {
+//     if (nums[i] !== nums[i - 1]) {
+//         nums[k] = nums[i];
+//         k++
+//     }
+// } console.log(k);
+
+
+
+//On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day. Find and return the maximum profit you can achieve.
+
+// const prices = [7, 1, 5, 3, 6, 4];
+// let maxProfit = 0;
+// for (let i = 1; i < prices.length; i++) {
+//     if (prices[i] > prices[i - 1]) {
+//         maxProfit += (prices[i] - prices[i - 1]);
+//     }
+// } console.log(maxProfit);
 
 
 

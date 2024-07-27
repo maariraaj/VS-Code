@@ -291,21 +291,20 @@
 
 //Every student have different id but twins have same id . Task is to find whether twins are present in given array or not.
 
-// let arr = [1, 2, 3, 1];
-// let s = new Set();
-// let flag = false;
-// for (let i = 0; i < arr.length; i++) {
-//     if (s.has(arr[i])) {
-//         flag = true;
-//     } else {
-//         s.add(arr[i]);
+// let containsTwins = function (nums) {
+//     let s = new Set();
+//     for (let num of nums) {
+//         if (s.has(num)) {
+//             return true;
+//         }
+//         s.add(num);
 //     }
-// }
-// console.log(flag);
+//     return false;
+// };
+// console.log(containsTwins([1, 2, 3, 1]));
 
 
-
-//find the Super hill and return its index if more then one Super hills are there return any one of index . 
+//find the Super hill and return its index if more then one Super hills are there return any one of index .
 //The Super hill is the hill which is taller than its neighbors hills .
 
 // let arr = [1, 2, 1, 3, 5, 6, 4];
@@ -339,3 +338,44 @@
 //     return -1;
 // }
 // console.log(firstUniqChar("loveleetcode"));
+
+
+
+//Determine if a 9 x 9 Sudoku board is valid.
+
+// let isValidSudoku = function (board) {
+//     let rowSets = Array.from({ length: 9 }, () => new Set());
+//     let colSets = Array.from({ length: 9 }, () => new Set());
+//     let boxSets = Array.from({ length: 9 }, () => new Set());
+
+//     for (let i = 0; i < 9; i++) {
+//         for (let j = 0; j < 9; j++) {
+//             let cell = board[i][j];
+
+//             if (cell !== '.') {
+//                 let boxIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3);
+//                 if (rowSets[i].has(cell) || colSets[j].has(cell) || boxSets[boxIndex].has(cell)) {
+//                     return false;
+//                 }
+
+//                 rowSets[i].add(cell);
+//                 colSets[j].add(cell);
+//                 boxSets[boxIndex].add(cell);
+//             }
+//         }
+//     }
+//     return true;
+// };
+
+// const board = [
+//     ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+//     ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+//     [".", "9", "8", ".", ".", ".", ".", "6", "."],
+//     ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+//     ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+//     ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+//     [".", "6", ".", ".", ".", ".", "2", "8", "."],
+//     [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+//     [".", ".", ".", ".", "8", ".", ".", "7", "9"]
+// ];
+// console.log(isValidSudoku(board));

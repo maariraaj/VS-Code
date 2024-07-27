@@ -53,21 +53,14 @@
 
 //find the longest common prefix string amongst an array of strings.If there is no common prefix, return an empty string "".
 
-// let strs=["flower", "flow", "flight"];
-// if(!strs || strs.length === 0){
-//     console.log("");
-// }
-
-// let prefix=strs[0];
-// for (let i=1;i<strs.length;i++){
-//     let j=0;
-//     while(j<prefix.length && j<strs[i].length && prefix[j]===strs[i][j]){
+// let strs = ["flower", "blow", "flight"];
+// let prefix = strs[0];
+// for (let i = 1; i < strs.length; i++) {
+//     let j = 0;
+//     while (j < prefix.length && j < strs[i].length && prefix[j] === strs[i][j]) {
 //         j++;
 //     }
-//     prefix=prefix.slice(0, j);
-//     if(prefix===""){
-//         console.log("");
-//     }
+//     prefix = prefix.slice(0, j);
 // }
 // console.log(prefix);
 
@@ -78,6 +71,23 @@
 // str=str.toLowerCase().replace(/[^a-z0-9]/g,'');
 // let ans=str.split('').reverse().join('');
 // console.log(ans===str);
+
+
+
+//return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+// let strStr = function (haystack, needle) {
+//     for (let i = 0; i <= haystack.length - needle.length; i++) {
+//         if (haystack.substring(i, i + needle.length) === needle) {
+//             return i;
+//         }
+//     }
+//     return -1;
+// };
+// console.log(strStr('butsad', 'sad'));
+// console.log(strStr('leetcode', 'leeto'));
+
+
 
 //Extract numbers from a string
 
@@ -210,25 +220,26 @@
 
 //Given two strings s and t, return true if t is an anagram of s, and false otherwise. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
-// function isAnagram(s, t){
-//     if(s.length !== t.length){
-//       return false;
-//     }
-//     const charCount={};
-//     for(let char of s){
-//       charCount[char]=(charCount[char] || 0) + 1;
-//     }
-//     for(let char of t){
-//       if(!charCount[char]){
+// function isAnagram(s, t) {
+//     if (s.length !== t.length) {
 //         return false;
-//       }
-//       charCount[char]--;
+//     }
+//     const charCount = {};
+//     for (let char of s) {
+//         charCount[char] = (charCount[char] || 0) + 1;
+//     }
+//     console.log(charCount)
+//     for (let char of t) {
+//         if (!charCount[char]) {
+//             return false;
+//         }
+//         charCount[char]--;
 //     }
 //     return true;
-//   }
-//   const s="anagram";
-//   const t="nagaram";
-//   console.log(isAnagram(s, t));
+// }
+// const s = "anagram";
+// const t = "nagaram";
+// console.log(isAnagram(s, t));
 
 
 
