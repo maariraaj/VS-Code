@@ -411,6 +411,94 @@
 
 
 
+//given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively. Merge nums1 and nums2 into a single array sorted in non-decreasing order. The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+
+// function merge(nums1, m, nums2, n) {
+//     let p1 = m - 1; // Pointer for nums1
+//     let p2 = n - 1; // Pointer for nums2
+//     let p = m + n - 1; // Pointer for the end of nums1
+//     // Merge nums1 and nums2 starting from the end
+//     while (p1 >= 0 && p2 >= 0) {
+//         if (nums1[p1] > nums2[p2]) {
+//             nums1[p] = nums1[p1];
+//             p1--;
+//         } else {
+//             nums1[p] = nums2[p2];
+//             p2--;
+//         }
+//         p--;
+//     }
+//     // Copy any remaining elements from nums2
+//     while (p2 >= 0) {
+//         nums1[p] = nums2[p2];
+//         p2--;
+//         p--;
+//     }
+// }
+// const nums1 = [1, 2, 3, 0, 0, 0];
+// const m = 3;
+// const nums2 = [2, 5, 6];
+// const n = 3;
+
+// merge(nums1, m, nums2, n);
+// console.log(nums1);
+
+
+//another method
+
+// var merge = function (nums1, m, nums2, n) {
+//     nums1.splice(m, n, ...nums2)
+//     nums1.sort((a, b) => a - b)
+// };
+
+// const nums1 = [1, 2, 3, 0, 0, 0];
+// const m = 3;
+// const nums2 = [2, 5, 6];
+// const n = 3;
+
+// merge(nums1, m, nums2, n);
+// console.log(nums1);
+
+
+
+//remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+// const nums = [0, 1, 2, 2, 3, 0, 4, 2], val = 2;
+// let i = 0, k = 0;
+// for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== val) {
+//         nums[k] = nums[i];
+//         k++;
+//     }
+// }
+// console.log(k);
+
+
+
+//arrange all the roll numbers in ascending order and Find the number of changes required to do so that number should be minimum
+
+// let arr=[10, 19, 6, 5, 3]
+// let changes=0;
+// for(let i=0;i<arr.length;i++){
+//     let min=arr[i];
+//     let index=i;
+//     for(let j=i+1;j<arr.length;j++){
+//         if(arr[j]<min){
+//             min=arr[j];
+//             index=j;
+//         }
+//     }
+//     if(index !== i){
+//         let temp=arr[i];
+//         arr[i]=arr[index];
+//         arr[index]=temp;
+//         changes++;
+//     }
+// }
+// console.log(changes);
+
+
+
 //Rotate the array to the right by k steps, where k is non-negative.
 //(try to solve in time complexity 0(n) with extra space)
 
@@ -660,6 +748,48 @@
 
 
 
+//return the third distinct maximum number in this array. If the third maximum does not exist, return the maximum number.
+
+// const nums = [3, 1, 1];
+// let first = -Infinity, second = -Infinity, third = -Infinity;
+// for (let num of nums) {
+//     if (num === first || num === second || num === third) {
+//         continue;
+//     }
+//     if (num > first) {
+//         third = second;
+//         second = first;
+//         first = num;
+//     } else if (num > second) {
+//         third = second;
+//         second = num;
+//     } else if (num > third) {
+//         third = num;
+//     }
+// }
+// console.log(third === -Infinity ? first : third);
+
+
+
+//Determine whether the largest element in the array is at least twice as much as every other number in the array. If it is, return the index of the largest element, or return -1 otherwise.
+
+// var dominantIndex = function (nums) {
+//     let maxIndex = 0;
+//     for (let i = 1; i < nums.length; i++) {
+//         if (nums[i] > nums[maxIndex]) {
+//             maxIndex = i;
+//         };
+//     };
+//     for (let i = 0; i < nums.length; i++) {
+//         if (i !== maxIndex && nums[maxIndex] < (2 * nums[i])) {
+//             return -1;
+//         }
+//     } return maxIndex;
+// };
+// console.log(dominantIndex([3, 6, 1, 0]));
+
+
+
 //Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
 
 // const nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
@@ -681,6 +811,43 @@
 //         maxProfit += (prices[i] - prices[i - 1]);
 //     }
 // } console.log(maxProfit);
+
+
+
+//Given a roman numeral, convert it to an integer.
+// const s = "LVIII";
+// let obj = {
+//     'I': 1,
+//     'V': 5,
+//     'X': 10,
+//     'L': 50,
+//     'C': 100,
+//     'D': 500,
+//     'M': 1000
+// };
+// let total = 0;
+// for (let i = 0; i < s.length; i++) {
+//     let currentVal = obj[s[i]], nextVal = obj[s[i + 1]];
+//     if (nextVal && currentVal < nextVal) {
+//         total -= currentVal;
+//     } else {
+//         total += currentVal;
+//     }
+// } console.log(total);
+
+
+
+//given an array prices where prices[i] is the price of a given stock on the ith day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock. Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+// const prices = [7, 1, 5, 3, 6, 4];
+// let min = Infinity, max = 0;
+// for (let i = 0; i < prices.length; i++) {
+//     if (prices[i] < min) {
+//         min = prices[i];
+//     } else if (prices[i] - min > max) {
+//         max = prices[i] - min;
+//     }
+// } console.log(max);
 
 
 

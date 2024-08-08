@@ -131,6 +131,23 @@
 // }console.log(count);
 
 
+
+//Given an array nums of size n, return the majority element. The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+// var majorityElement = function (nums) {
+//     let m = new Map();
+//     for (let num of nums) {
+//         m.set(num, (m.get(num) || 0) + 1)
+//     }
+//     for (let num of nums) {
+//         if (m.get(num) >= Math.ceil(nums.length / 2)) {
+//             return num;
+//         }
+//     }
+// };
+// console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
+
+
 //Return the largest lucky integer in the array. If there is no lucky integer return -1, a lucky integer is an integer that has a frequency in the array equal to its value.
 
 // let x=[2,2,3,3,3,3,3];
@@ -265,30 +282,6 @@
 
 
 
-//arrange all the roll numbers in ascending order and Find the number of changes required to do so that number should be minimum
-
-// let arr=[10, 19, 6, 5, 3]
-// let changes=0;
-// for(let i=0;i<arr.length;i++){
-//     let min=arr[i];
-//     let index=i;
-//     for(let j=i+1;j<arr.length;j++){
-//         if(arr[j]<min){
-//             min=arr[j];
-//             index=j;
-//         }
-//     }
-//     if(index !== i){
-//         let temp=arr[i];
-//         arr[i]=arr[index];
-//         arr[index]=temp;
-//         changes++;
-//     }
-// }
-// console.log(changes);
-
-
-
 //Every student have different id but twins have same id . Task is to find whether twins are present in given array or not.
 
 // let containsTwins = function (nums) {
@@ -379,3 +372,27 @@
 //     [".", ".", ".", ".", "8", ".", ".", "7", "9"]
 // ];
 // console.log(isValidSudoku(board));
+
+
+
+//Starting with any positive integer, replace the number by the sum of the squares of its digits. Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy. Return true if n is a happy number, and false if not.
+
+// var isHappy = function (n) {
+//     const seen = new Set();
+//     while (n !== 1 && !seen.has(n)) {
+//         seen.add(n);
+//         n = getNext(n);
+//     }
+
+//     return n === 1;
+// };
+// function getNext(n) {
+//     let sum = 0;
+//     while (n > 0) {
+//         let digit = n % 10;
+//         sum += digit * digit;
+//         n = Math.floor(n / 10);
+//     }
+//     return sum;
+// };
+// console.log(isHappy(19));

@@ -276,3 +276,104 @@
 //     }
 // }
 // console.log(count);
+
+
+
+//Given a string paragraph and a string array of the banned words banned, return the most frequent word that is not banned. It is guaranteed there is at least one word that is not banned, and that the answer is unique. The words in paragraph are case-insensitive and the answer should be returned in lowercase.
+
+// const paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.", banned = ["hit"];
+// const bannedSet = new Set(banned);
+// const words = paragraph.toLowerCase().match(/\b\w+\b/g);
+// const wordCounts = new Map();
+
+// for (let word of words) {
+//     if (!bannedSet.has(word)) {
+//         wordCounts.set(word, (wordCounts.get(word) || 0) + 1);
+//     }
+// }
+
+// let mostCommon = '';
+// let maxCount = 0;
+
+// for (let [word, count] of wordCounts) {
+//     if (count > maxCount) {
+//         mostCommon = word;
+//         maxCount = count;
+//     }
+// }
+
+// console.log(mostCommon);
+
+
+
+//return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+
+// var canConstruct = function (ransomNote, magazine) {
+//     let charCount = {};
+//     for (let char of magazine) {
+//         if (!charCount[char]) {
+//             charCount[char] = 1;
+//         } else {
+//             charCount[char]++;
+//         }
+//     }
+//     for (let char of ransomNote) {
+//         if (!charCount[char]) {
+//             return false;
+//         } else {
+//             charCount[char]--;
+//         }
+//     }
+//     return true;
+// };
+// console.log(canConstruct("aa", "aab"));
+
+
+
+//Given two strings s and t, determine if they are isomorphic. Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+// var isIsomorphic = function (s, t) {
+//     let mapS = new Map();
+//     let mapT = new Map();
+//     for (let i = 0; i < s.length; i++) {
+//         let charS = s[i];
+//         let charT = t[i];
+//         if (mapS.has(charS) && mapS.get(charS) !== charT) {
+//             return false;
+//         }
+//         if (mapT.has(charT) && mapT.get(charT) !== charS) {
+//             return false;
+//         }
+//         mapS.set(charS, charT);
+//         mapT.set(charT, charS);
+//     } return true;
+// };
+// console.log(isIsomorphic("paper", "title"));
+
+
+
+//Given a pattern and a string s, find if s follows the same pattern.
+
+// var wordPattern = function (pattern, s) {
+//     const words = s.split(' ');
+//     let charToWord = new Map();
+//     let wordToChar = new Map();
+//     if (pattern.length !== words.length) {
+//         return false;
+//     }
+//     for (let i = 0; i < words.length; i++) {
+//         let char = pattern[i];
+//         let word = words[i];
+//         if (charToWord.has(char) && charToWord.get(char) !== word) {
+//             return false;
+//         } else {
+//             charToWord.set(char, word);
+//         }
+//         if (wordToChar.has(word) && wordToChar.get(word) !== char) {
+//             return false;
+//         } else {
+//             wordToChar.set(word, char);
+//         }
+//     } return true;
+// };
+// console.log(wordPattern("abba", "dog cat cat dog"));
