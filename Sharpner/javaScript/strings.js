@@ -190,31 +190,25 @@
 
 //Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
-// function isValid(s){
-//     const stack=[];
-//     const openBrackets=['(', '{', '['];
-//     const closingBrackets=[')', '}', ']'];
-//     const bracketMap={
-//       ')': '(',
-//       '}': '{',
-//       ']': '['
+// var isValid = function (s) {
+//     const stack = [];
+//     const obj = {
+//         ')': '(',
+//         '}': '{',
+//         ']': '['
 //     };
-
-//     for(let i=0; i<s.length; i++){
-//       const char=s[i];
-//       if(openBrackets.includes(char)){
-//         stack.push(char);
-//       }else if(closingBrackets.includes(char)){
-//         if(stack.length===0 || stack.pop() !== bracketMap[char]){
-//           return false;
+//     for (let char of s) {
+//         if (char === '(' || char === '{' || char === '[') {
+//             stack.push(char);
+//         } else if (char === ')' || char === '}' || char === ']') {
+//             if (stack.length === 0 || stack.pop() !== obj[char]) {
+//                 return false;
+//             }
 //         }
-//       }
-//     }
-
-//     return stack.length===0;
-//   }
-//   const inputString="}{";
-//   console.log(isValid(inputString));
+//     } return stack.length === 0;
+// };
+// const inputString = "}{";
+// console.log(isValid(inputString));
 
 
 
@@ -377,3 +371,28 @@
 //     } return true;
 // };
 // console.log(wordPattern("abba", "dog cat cat dog"));
+
+
+
+//Given a string licensePlate and an array of strings words, find the shortest completing word in words. A completing word is a word that contains all the letters in licensePlate. Ignore numbers and spaces in licensePlate, and treat letters as case insensitive. If a letter appears more than once in licensePlate, then it must appear in the word the same number of times or more.
+
+// const licensePlate = "1s3 456", words = ["looks", "pest", "stew", "show"];
+// let result = null;
+
+// const alphabets = licensePlate.toLowerCase().match(/[a-z]/g);
+
+// for (let word of words) {
+//     let target = word;
+//     for (let char of alphabets) {
+//         if (target.includes(char)) {
+//             target = target.replace(char, "0");
+//         } else {
+//             target = null;
+//             break;
+//         }
+//     }
+//     if (target && (!result || target.length < result.length)) {
+//         result = word;
+//     };
+// }
+// console.log(result);

@@ -4,7 +4,7 @@
 
 // let search = function(arr, target) {
 //     let l=0, h=arr.length-1;
-    
+
 //     while(l<=h){
 //         let  mid=Math.floor((l+h)/2);
 //         if(target==arr[mid]){
@@ -62,14 +62,14 @@
 //     let l = findFirstOccurrence(nums, target);
 //     if (l === -1) {
 //         return [-1, -1];
-//     }   
+//     }
 //     let h = findLastOccurrence(nums, target);
 //     return [l, h];
 // }
 // function findFirstOccurrence(nums, target){
 //     let l=0;
 //     let h=nums.length-1;
-//     let firstOccurrence=-1;  
+//     let firstOccurrence=-1;
 //     while(l<=h){
 //         let mid=Math.floor((l+h)/2);
 //         if(target<=nums[mid]){
@@ -99,7 +99,7 @@
 //             h=mid-1;
 //         }
 //     }
-    
+
 //     return lastOccurrence;
 // }
 // console.log(searchRange([5, 7, 7, 8, 8, 10], 8));
@@ -223,7 +223,7 @@
 //     if (sumMap.hasOwnProperty(sum)) {
 //         const indices = sumMap[sum];
 //         for (const index of indices) {
-//             result.push([index + 1, i]); 
+//             result.push([index + 1, i]);
 //         }
 //     } else {
 //         sumMap[sum] = [];
@@ -317,7 +317,7 @@
 
 
 
-//In a class A perfect team is the team where sum of marks of students in the team is divisible by 3 .It can be of two or three students Only . You have to find how many perfect teams can be formed 
+//In a class A perfect team is the team where sum of marks of students in the team is divisible by 3 .It can be of two or three students Only . You have to find how many perfect teams can be formed
 
 // const arr=[3, 6, 7, 2, 9];
 // let count2=0, count3=0;
@@ -350,3 +350,27 @@
 //         }
 //     }arr.push(count);
 // }console.log(arr)
+
+
+
+//Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+
+// var mySqrt = function (x) {
+//     if (x < 2) {
+//         return x;
+//     }
+//     let start = 1, end = Math.floor(x / 2), result = 0;
+//     while (start <= end) {
+//         let mid = Math.floor((start + end) / 2);
+//         let sq = mid * mid;
+//         if (sq === x) {
+//             return mid;
+//         } else if (sq < x) {
+//             start = mid + 1;
+//             result = mid;
+//         } else {
+//             end = mid - 1;
+//         }
+//     } return result;
+// };
+// console.log(mySqrt(4));

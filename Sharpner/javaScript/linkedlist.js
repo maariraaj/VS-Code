@@ -78,3 +78,49 @@
 // display(head);
 
 
+
+
+//Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+
+class ListNode {
+    constructor(val = 0, next = null) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
+// function isPalindrome(head) {
+//     const values = [];
+//     let current = head;
+
+//     // Step 1: Traverse the linked list and store the values in an array
+//     while (current) {
+//         values.push(current.val);
+//         current = current.next;
+//     }
+
+//     // Step 2: Check if the array is a palindrome
+//     let start = 0;
+//     let end = values.length - 1;
+
+//     while (start < end) {
+//         if (values[start] !== values[end]) {
+//             return false;
+//         }
+//         start++;
+//         end--;
+//     }
+
+//     return true;
+// }
+
+// // Example usage:
+// let node1 = new ListNode(1);
+// let node2 = new ListNode(2);
+// let node3 = new ListNode(2);
+// let node4 = new ListNode(1);
+// node1.next = node2;
+// node2.next = node3;
+// node3.next = node4;
+
+// console.log(isPalindrome(node1));  // Output: true

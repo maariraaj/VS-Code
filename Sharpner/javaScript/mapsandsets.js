@@ -396,3 +396,80 @@
 //     return sum;
 // };
 // console.log(isHappy(19));
+
+
+
+//return an array of all characters that show up in all strings within the words (including duplicates). You may return the answer in any order.
+
+// const words = ["cool", "lock", "cook"];
+// let map = new Map();
+// for (let char of words[0]) {
+//     map.set(char, (map.get(char) || 0) + 1);
+// }
+// for (let i = 1; i < words.length; i++) {
+//     let mapX = new Map();
+//     for (let char of words[i]) {
+//         mapX.set(char, (mapX.get(char) || 0) + 1);
+//     }
+//     for (let [char, count] of map) {
+//         if (mapX.has(char)) {
+//             map.set(char, Math.min(count, mapX.get(char)))
+//         } else {
+//             map.set(char, 0);
+//         }
+//     }
+// }
+// let result = [];
+// for (let [char, count] of map) {
+//     for (let i = 0; i < count; i++) {
+//         result.push(char);
+//     }
+// }
+// console.log(result);
+
+
+
+//return the words that can be typed using letters of the alphabet on only one row of American keyboard.
+
+// const words = ["Hello", "Alaska", "Dad", "Peace"];
+
+// let fSet = new Set(['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p']);
+// let sSet = new Set(['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l']);
+// let tSet = new Set(['z', 'x', 'c', 'v', 'b', 'n', 'm']);
+// let result = [];
+// for (let word of words) {
+//     let lowerWord = word.toLowerCase();
+//     if (isInOneRow(lowerWord, fSet) || isInOneRow(lowerWord, sSet) || isInOneRow(lowerWord, tSet)) {
+//         result.push(word);
+//     }
+// }
+// console.log(result);
+// function isInOneRow(word, row) {
+//     for (let char of word) {
+//         if (!row.has(char)) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+
+
+//find the common strings with the least index sum.
+
+// const list1 = ["happy", "sad", "good"], list2 = ["sad", "happy", "good"];
+// let map = new Map();
+// for (let i = 0; i < list1.length; i++) {
+//     map.set(list1[i], i);
+// }
+// let result = [], sum = Infinity;
+// for (let j = 0; j < list2.length; j++) {
+//     if (map.has(list2[j])) {
+//         if ((map.get(list2[j]) + j) < sum) {
+//             sum = map.get(list2[j]) + j;
+//             result = [list2[j]]
+//         } else if ((map.get(list2[j]) + j) === sum) {
+//             result.push(list2[j]);
+//         }
+//     }
+// } console.log(result);

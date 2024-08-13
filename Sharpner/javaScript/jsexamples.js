@@ -693,6 +693,57 @@
 
 
 
+//You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+// var climbStairs = function (n) {
+//     if (n <= 2) {
+//         return n;
+//     };
+//     let oneStBf = 2;
+//     let twoStBf = 1;
+//     let allways = 0;
+
+//     for (let i = 3; i <= n; i++) {
+//         allways = oneStBf + twoStBf;
+//         twoStBf = oneStBf;
+//         oneStBf = allways;
+//     } return allways;
+// };
+// console.log(climbStairs(3));
+
+
+
+//Return the resulting string after removing exactly one occurrence of digit from number such that the value of the resulting string in decimal form is maximized. The test cases are generated such that digit occurs at least once in number.
+
+// const number = "1231", digit = "1";
+// let result = '';
+// for (let i = 0; i < number.length; i++) {
+//     if (number[i] === digit) {
+//         let newNum = number.slice(0, i) + number.slice(i + 1);
+//         if (newNum > result) {
+//             result = newNum;
+//         }
+//     }
+// }
+// console.log(result);
+
+
+
+//1 if x is positive. -1 if x is negative. 0 if x is equal to 0. You are given an integer array nums. Let product be the product of all values in the array nums. Return signFunc(product).
+
+// var arraySign = function (nums) {
+//     let sign = 1;
+//     for (let num of nums) {
+//         if (num === 0) {
+//             return 0;
+//         } else if (num < 0) {
+//             sign = -sign;
+//         }
+//     } return sign;
+// };
+// console.log(arraySign([-1, -2, -3, -4, 3, 2, 1]));
+
+
 //Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 // let nums = [0, 1, 0, 3, 12, 15, 0, 17, 0, 0, 68];
