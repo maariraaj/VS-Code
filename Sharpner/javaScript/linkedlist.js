@@ -82,12 +82,12 @@
 
 //Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
 
-class ListNode {
-    constructor(val = 0, next = null) {
-        this.val = val;
-        this.next = next;
-    }
-}
+// class ListNode {
+//     constructor(val = 0, next = null) {
+//         this.val = val;
+//         this.next = next;
+//     }
+// }
 
 // function isPalindrome(head) {
 //     const values = [];
@@ -124,3 +124,36 @@ class ListNode {
 // node3.next = node4;
 
 // console.log(isPalindrome(node1));  // Output: true
+
+
+
+//Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+// class ListNode {
+//     constructor(val = 0, next = null) {
+//         this.val = val;
+//         this.next = next;
+//     }
+// }
+
+// var deleteDuplicates = function (head) {
+//     let current = head;
+//     while (current !== null && current.next !== null) {
+//         if (current.val === current.next.val) {
+//             current.next = current.next.next;
+//         } else {
+//             current = current.next;
+//         }
+//     } return head;
+// };
+// let node1 = new ListNode(1);
+// let node2 = new ListNode(1);
+// let node3 = new ListNode(2);
+// let node4 = new ListNode(3);
+// let node5 = new ListNode(3);
+// node1.next = node2;
+// node2.next = node3;
+// node3.next = node4;
+// node4.next = node5;
+
+// console.log(deleteDuplicates(node1)); 

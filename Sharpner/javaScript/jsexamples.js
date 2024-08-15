@@ -461,6 +461,51 @@
 
 
 
+//Return a list of the target indices of nums after sorting nums in non-decreasing order. If there are no target indices, return an empty list. The returned list must be sorted in increasing order. (LC 2089)
+
+// let nums = [1, 2, 5, 2, 3], target = 2;
+// nums = nums.sort((a, b) => a - b);
+// let arr = [];
+// for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] === target) {
+//         arr.push(i);
+//     }
+// } console.log(arr);
+
+
+
+//Given a 2D integer array moves where moves[i] = [rowi, coli] indicates that the ith move will be played on grid[rowi][coli]. return the winner of the game if it exists (A or B). In case the game ends in a draw return "Draw". If there are still movements to play return "Pending". You can assume that moves is valid (i.e., it follows the rules of Tic-Tac-Toe), the grid is initially empty, and A will play first.(LC 1275).
+
+// var tictactoe = function (moves) {
+//     const board = Array.from({ length: 3 }, () => Array(3).fill(''));
+//     for (let i = 0; i < moves.length; i++) {
+//         const [row, col] = moves[i];
+//         board[row][col] = i % 2 === 0 ? 'X' : 'O';
+//         if (checkWinner(board, row, col)) {
+//             return i % 2 === 0 ? 'A' : 'B';
+//         }
+//     }
+//     return moves.length === 9 ? 'Draw' : 'Pending';
+// };
+// function checkWinner(board, row, col) {
+//     const player = board[row][col];
+//     if (board[row].every(cell => cell === player)) {
+//         return true
+//     };
+//     if (board.every(r => r[col] === player)) {
+//         return true
+//     };
+//     if (row === col && board.every((r, i) => r[i] === player)) {
+//         return true
+//     };
+//     if (row + col === 2 && board.every((r, i) => r[2 - i] === player)) {
+//         return true
+//     };
+//     return false;
+// }
+// console.log(tictactoe([[0, 0], [1, 1], [2, 0], [1, 0], [1, 2], [2, 1], [0, 1], [0, 2], [2, 2]]));
+
+
 //remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
 
 // const nums = [0, 1, 2, 2, 3, 0, 4, 2], val = 2;
@@ -851,6 +896,20 @@
 //         k++
 //     }
 // } console.log(k);
+
+
+
+//Given an integer numRows, return the first numRows of Pascal's triangle.(LC 118)
+
+// const numRows = 5;
+// let arr = [];
+// for (let i = 0; i < numRows; i++) {
+//     let row = new Array(i + 1).fill(1);
+//     for (let j = 1; j < i; j++) {
+//         row[j] = arr[i - 1][j - 1] + arr[i - 1][j];
+//     }
+//     arr.push(row);
+// } console.log(arr);
 
 
 //On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day. Find and return the maximum profit you can achieve.
