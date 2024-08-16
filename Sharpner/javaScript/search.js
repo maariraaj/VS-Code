@@ -393,3 +393,27 @@
 //     } return start;
 // };
 // console.log(searchInsert([1, 3, 5, 6], 2));
+
+
+//Given a positive integer num, return true if num is a perfect square or false otherwise. (LC 367)
+
+// var isPerfectSquare = function (num) {
+//     if (num < 2) {
+//         return true
+//     };
+//     let left = 2, right = Math.floor(num / 2);
+//     while (left <= right) {
+//         let mid = Math.floor((left + right) / 2);
+//         let guess = mid * mid;
+//         if (guess === num) {
+//             return true
+//         };
+//         if (guess > num) {
+//             right = mid - 1
+//         } else {
+//             left = mid + 1
+//         };
+//     }
+//     return false;
+// };
+// console.log(isPerfectSquare(16));

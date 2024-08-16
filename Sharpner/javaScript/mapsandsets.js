@@ -473,3 +473,46 @@
 //         }
 //     }
 // } console.log(result);
+
+
+
+//Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum frequency of any one of its elements. Your task is to find the smallest possible length of a (contiguous) subarray of nums, that has the same degree as nums. (LC 697)
+
+// const nums = [1, 2, 2, 3, 1, 4, 2];
+// let map = new Map();
+// let degree = 0;
+// let minLength = nums.length;
+// for (let i = 0; i < nums.length; i++) {
+//     if (!map.has(nums[i])) {
+//         map.set(nums[i], [1, i, i]);
+//     } else {
+//         let [freq, fIndex] = map.get(nums[i]);
+//         map.set(nums[i], [freq + 1, fIndex, i]);
+//     }
+//     degree = Math.max(degree, map.get(nums[i])[0]);
+// }
+// for (let [freq, fIndex, lIndex] of map.values()) {
+//     if (freq === degree) {
+//         minLength = Math.min(minLength, lIndex - fIndex + 1);
+//     }
+// } console.log(minLength);
+
+
+
+//Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters. Letters are case sensitive, for example, "Aa" is not considered a palindrome. (LC 409).
+
+// const s = "abccccdd";
+// let map = new Map();
+// let length = 0;
+// let singleCount = 0;
+// for (let char of s) {
+//     map.set(char, (map.get(char) || 0) + 1);
+// }
+// for (let count of map.values()) {
+//     if (count % 2 === 0) {
+//         length += count;
+//     } else {
+//         length += (count - 1);
+//         singleCount = 1;
+//     }
+// } console.log(length + singleCount);

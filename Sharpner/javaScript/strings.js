@@ -396,3 +396,40 @@
 //     };
 // }
 // console.log(result);
+
+
+
+//You are given a 0-indexed string blocks of length n, where blocks[i] is either 'W' or 'B', representing the color of the ith block. The characters 'W' and 'B' denote the colors white and black, respectively.You are also given an integer k, which is the desired number of consecutive black blocks.In one operation, you can recolor a white block such that it becomes a black block. Return the minimum number of operations needed such that there is at least one occurrence of k consecutive black blocks. (LC 2379).
+
+// let blocks = "WBBWWBBWBW", k = 7;
+// let min = k;
+// let whiteCount = 0;
+// for (let i = 0; i < k; i++) {
+//     if (blocks[i] === 'W') {
+//         whiteCount++;
+//     }
+// }
+// min = whiteCount;
+// for (let i = k; i < blocks.length; i++) {
+//     if (blocks[i - k] === 'W') {
+//         whiteCount--;
+//     }
+//     if (blocks[i] === 'W') {
+//         whiteCount++;
+//     }
+//     min = Math.min(min, whiteCount);
+// }
+// console.log(min);
+
+
+
+//Given two strings s and t, return true if s is a subsequence of t, or false otherwise. A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not). (LC 392)
+
+// const s = "abc", t = "ahbgdc";
+// let i = 0, j = 0;
+// while (i < s.length && j < t.length) {
+//     if (s[i] === t[j]) {
+//         i++;
+//     }
+//     j++;
+// } console.log(i === s.length);

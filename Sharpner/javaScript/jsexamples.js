@@ -947,6 +947,43 @@
 
 
 
+//Given an array of integers nums, calculate the pivot index of this array. The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right. If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array. Return the leftmost pivot index. If no such index exists, return -1. (LC 724)
+
+// var pivotIndex = function (nums) {
+//     let totalSum = nums.reduce((acc, num) => acc + num, 0);
+//     let leftSum = 0;
+//     for (let i = 0; i < nums.length; i++) {
+//         if (leftSum === totalSum - leftSum - nums[i]) {
+//             return i;
+//         }
+//         leftSum += nums[i];
+//     }
+//     return -1;
+// };
+// console.log(pivotIndex([1, 7, 3, 6, 5, 6]));
+
+
+
+//A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. A divisor of an integer x is an integer that can divide x evenly. Given an integer n, return true if n is a perfect number, otherwise return false. (LC 507)
+
+// var checkPerfectNumber = function (num) {
+//     if (num <= 1) {
+//         return false
+//     };
+//     let sum = 1;
+//     for (let i = 2; i * i <= num; i++) {
+//         if (num % i === 0) {
+//             sum += i;
+//             if (i !== num / i) {
+//                 sum += num / i;
+//             }
+//         }
+//     }
+//     return sum === num;
+// };
+// console.log(checkPerfectNumber(28));
+
+
 //given an array prices where prices[i] is the price of a given stock on the ith day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock. Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
 // const prices = [7, 1, 5, 3, 6, 4];
@@ -970,6 +1007,17 @@
 //         count += 1;
 //     }
 // }console.log(count);
+
+
+//another method
+
+// let n = 11;
+// let count = 0;
+// while (n !== 0) {
+//     count++;
+//     n &= (n - 1);
+// }
+// console.log(count);
 
 
 
@@ -1051,3 +1099,27 @@
 //     }
 // }
 // console.log(arr);
+
+
+
+//Given two binary strings a and b, return their sum as a binary string. (LC 67)
+
+// const a = "1010", b = "1011";
+// let str = '';
+// let carry = 0;
+// let i = a.length - 1;
+// let j = b.length - 1;
+// while (i >= 0 || j >= 0 || carry) {
+//     let sum = carry;
+//     if (i >= 0) {
+//         sum += (a[i] === '1' ? 1 : 0);
+//         i--;
+//     }
+//     if (j >= 0) {
+//         sum += (b[j] === '1' ? 1 : 0);
+//         j--;
+//     }
+//     str = (sum % 2) + str;
+//     carry = Math.floor(sum / 2);
+// }
+// console.log(str);
