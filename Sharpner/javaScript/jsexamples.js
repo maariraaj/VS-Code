@@ -461,6 +461,27 @@
 
 
 
+//return an array of their intersection. Each element in the result must be unique and you may return the result in any order. (LC 349)
+
+// const nums1 = [4, 9, 5], nums2 = [9, 4, 9, 8, 4];
+// let set = new Set(nums1);
+// let arr = [];
+// for (let num of nums2) {
+//     if (set.has(num) && !arr.includes(num)) {
+//         arr.push(num);
+//     }
+// } console.log(arr);
+
+
+//another method
+
+// const nums1 = [4, 9, 5], nums2 = [9, 4, 9, 8, 4];
+// const set1 = new Set(nums1);
+// const set2 = new Set(nums2);
+// console.log([...set1].filter(num => set2.has(num)));
+
+
+
 //Return a list of the target indices of nums after sorting nums in non-decreasing order. If there are no target indices, return an empty list. The returned list must be sorted in increasing order. (LC 2089)
 
 // let nums = [1, 2, 5, 2, 3], target = 2;
@@ -585,6 +606,17 @@
 //     matrix[i].reverse();
 // }
 // console.log(matrix);
+
+
+
+//Given an integer num, repeatedly add all its digits until the result has only one digit, and return it. (LC 258)
+
+// var addDigits = function (num) {
+//     if (num == 0) {
+//         return 0;
+//     } return (num % 9) === 0 ? 9 : (num % 9);
+// };
+// console.log(addDigits(38));
 
 
 
@@ -1123,3 +1155,15 @@
 //     carry = Math.floor(sum / 2);
 // }
 // console.log(str);
+
+
+
+//Reverse bits of a given 32 bits unsigned integer. (LC 190)
+
+// let n = 00000010100101000001111010011100;
+// let result = 0;
+// for (let i = 0; i < 32; i++) {
+//     result = (result << 1) | (n & 1);
+//     n >>= 1;
+// }
+// console.log(result >>> 0);

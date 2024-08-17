@@ -433,3 +433,32 @@
 //     }
 //     j++;
 // } console.log(i === s.length);
+
+
+
+//Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string. You must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly. (LC 415)
+
+// const num1 = "456", num2 = "77";
+// let carry = 0, result = '';
+// let i = num1.length - 1, j = num2.length - 1;
+// while (i >= 0 || j >= 0 || carry > 0) {
+//     let digit1 = i >= 0 ? num1[i] - '0' : 0;
+//     let digit2 = j >= 0 ? num2[j] - '0' : 0;
+//     let sum = digit1 + digit2 + carry;
+//     carry = Math.floor(sum / 10);
+//     result = (sum % 10) + result;
+//     i--;
+//     j--;
+// } console.log(result);
+
+
+
+//Given two strings s and goal, return true if and only if s can become goal after some number of shifts on s. A shift on s consists of moving the leftmost character of s to the rightmost position. (LC 796)
+
+// var rotateString = function (s, goal) {
+//     if (s.length !== goal.length) {
+//         return false;
+//     }
+//     return (s + s).includes(goal);
+// };
+// console.log(rotateString("abcde", "cdeab"));
