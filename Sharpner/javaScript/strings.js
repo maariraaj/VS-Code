@@ -462,3 +462,208 @@
 //     return (s + s).includes(goal);
 // };
 // console.log(rotateString("abcde", "cdeab"));
+
+
+
+//find the length of the longest substring without repeating characters. (LC 3);
+
+// let s = "pwwkew";
+// let set = new Set();
+// let left = 0, maxLength = 0;
+// for (let right = 0; right < s.length; right++) {
+//     while (set.has(s[right])) {
+//         set.delete(s[left]);
+//         left++;
+//     }
+//     set.add(s[right]);
+//     maxLength = Math.max(maxLength, right - left + 1);
+// } console.log(maxLength);
+
+
+//return the longest palindromic substring in s. (LC 5)
+// var longestPalindrome = function (s) {
+//     let start = 0, end = 0;
+//     function expandAroundCentre(left, right) {
+//         while (left >= 0 && right < s.length && s[left] === s[right]) {
+//             left--;
+//             right++;
+//         };
+//         return right - left - 1;
+//     }
+//     for (let i = 0; i < s.length; i++) {
+//         let len1 = expandAroundCentre(i, i);
+//         let len2 = expandAroundCentre(i, i + 1);
+//         let maxLen = Math.max(len1, len2);
+//         if (maxLen > end - start) {
+//             start = i - Math.floor((maxLen - 1) / 2);
+//             end = i + Math.floor(maxLen / 2)
+//         }
+//     }
+//     return s.substring(start, end + 1);
+// };
+// console.log(longestPalindrome("babad"));
+
+
+
+
+//Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer. The algorithm for myAtoi(string s) is as follows:
+//Whitespace: Ignore any leading whitespace (" ").
+//Signedness: Determine the sign by checking if the next character is '-' or '+', assuming positivity is neither present.
+//Conversion: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.
+//Rounding: If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then round the integer to remain in the range. Specifically, integers less than -231 should be rounded to -231, and integers greater than 231 - 1 should be rounded to 231 - 1.
+//Return the integer as the final result. (LC 8)
+
+// var myAtoi = function (s) {
+//     let INT_MAX = 2 ** 31 - 1;
+//     let INT_MIN = -(2 ** 31);
+//     s = s.trim();
+//     if (s.length === 0) {
+//         return 0;
+//     }
+//     let sign = 1, index = 0;
+//     if (s[0] === '+' || s[0] === '-') {
+//         if (s[0] === '-') {
+//             sign = -1;
+//         }
+//         index++;
+//     }
+//     let result = 0;
+//     while (index < s.length && s[index] >= '0' && s[index] <= '9') {
+//         let digit = s[index] - '0';
+//         if (result > Math.floor(INT_MAX / 10) || (result === Math.floor(INT_MAX / 10) && digit > 7)) {
+//             return sign === 1 ? INT_MAX : INT_MIN;
+//         }
+//         result = result * 10 + digit;
+//         index++;
+//     }
+//     return result * sign;
+// };
+// console.log(myAtoi('69'));
+
+
+
+//Given a roman numeral, convert it to an integer. (LC 13)
+
+// const s = "LVIII";
+// let obj = {
+//     'I': 1,
+//     'V': 5,
+//     'X': 10,
+//     'L': 50,
+//     'C': 100,
+//     'D': 500,
+//     'M': 1000
+// };
+// let total = 0;
+// for (let i = 0; i < s.length; i++) {
+//     let currentVal = obj[s[i]], nextVal = obj[s[i + 1]];
+//     if (nextVal && currentVal < nextVal) {
+//         total -= currentVal;
+//     } else {
+//         total += currentVal;
+//     }
+// } console.log(total);
+
+
+
+//Given an integer, convert it to a Roman numeral. (LC 12)
+
+// let num = 3749;
+// const valueMap = [
+//     { value: 1000, symbol: "M" },
+//     { value: 900, symbol: "CM" },
+//     { value: 500, symbol: "D" },
+//     { value: 400, symbol: "CD" },
+//     { value: 100, symbol: "C" },
+//     { value: 90, symbol: "XC" },
+//     { value: 50, symbol: "L" },
+//     { value: 40, symbol: "XL" },
+//     { value: 10, symbol: "X" },
+//     { value: 9, symbol: "IX" },
+//     { value: 5, symbol: "V" },
+//     { value: 4, symbol: "IV" },
+//     { value: 1, symbol: "I" }
+// ];
+// let result = '';
+// for (let i = 0; i < valueMap.length; i++) {
+//     let { value, symbol } = valueMap[i];
+//     while (num >= value) {
+//         result += symbol;
+//         num -= value;
+//     }
+// } console.log(result);
+
+
+
+//The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+// P   A   H   N
+// A P L S I I G
+// Y   I   R
+//And then read line by line: "PAHNAPLSIIGYIR". (LC 6)
+
+// const s = "PAYPALISHIRING", numRows = 3;
+// if (numRows === 1) {
+//     return s;
+// }
+// const row = new Array(Math.min(numRows, s.length)).fill('');
+// let currentRow = 0;
+// let goingDown = false;
+// for (let char of s) {
+//     row[currentRow] += char;
+//     if (currentRow === 0 || currentRow === numRows - 1) {
+//         goingDown = !goingDown;
+//     }
+//     currentRow += goingDown ? 1 : -1;
+// } console.log(row.join(''));
+
+
+
+//Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order. A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters. (LC 17)
+
+// var letterCombinations = function (digits) {
+//     if (!digits.length) {
+//         return [];
+//     };
+//     const phoneMap = {
+//         "2": "abc",
+//         "3": "def",
+//         "4": "ghi",
+//         "5": "jkl",
+//         "6": "mno",
+//         "7": "pqrs",
+//         "8": "tuv",
+//         "9": "wxyz"
+//     };
+//     let combinations = [''];
+//     for (let digit of digits) {
+//         let temp = [];
+//         for (let combination of combinations) {
+//             for (let letter of phoneMap[digit]) {
+//                 temp.push(combination + letter)
+//             }
+//         }
+//         combinations = temp;
+//     } return combinations;
+// };
+// console.log(letterCombinations('23'));
+
+
+
+//Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses. (LC 22)
+
+// let n = 3;
+// let result = [];
+// let queue = [{ str: '', open: 0, close: 0 }];
+// while (queue.length > 0) {
+//     let { str, open, close } = queue.shift();
+//     if (str.length === n * 2) {
+//         result.push(str);
+//     } else {
+//         if (open < n) {
+//             queue.push({ str: str + '(', open: open + 1, close });
+//         }
+//         if (close < open) {
+//             queue.push({ str: str + ')', open, close: close + 1 });
+//         }
+//     }
+// } console.log(result);

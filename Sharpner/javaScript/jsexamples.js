@@ -956,26 +956,235 @@
 
 
 
-//Given a roman numeral, convert it to an integer.
-// const s = "LVIII";
-// let obj = {
-//     'I': 1,
-//     'V': 5,
-//     'X': 10,
-//     'L': 50,
-//     'C': 100,
-//     'D': 500,
-//     'M': 1000
-// };
-// let total = 0;
-// for (let i = 0; i < s.length; i++) {
-//     let currentVal = obj[s[i]], nextVal = obj[s[i + 1]];
-//     if (nextVal && currentVal < nextVal) {
-//         total -= currentVal;
+//There are n bulbs that are initially off. You first turn on all the bulbs, then you turn off every second bulb. On the third round, you toggle every third bulb (turning on if it's off or turning off if it's on). For the ith round, you toggle every i bulb. For the nth round, you only toggle the last bulb. Return the number of bulbs that are on after n rounds. (LC 319)
+
+// let n = 3;
+// console.log(Math.floor(Math.sqrt(n)));
+
+
+
+//You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container, such that the container contains the most water. Return the maximum amount of water a container can store. Notice that you may not slant the container. (LC 11)
+
+// const height = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+// let left = 0;
+// let right = height.length - 1;
+// let maxArea = 0;
+// while (left < right) {
+//     let width = right - left;
+//     let currentArea = (Math.min(height[left], height[right]) * width);
+//     maxArea = Math.max(currentArea, maxArea);
+//     if (height[left] < height[right]) {
+//         left++;
 //     } else {
-//         total += currentVal;
+//         right--;
 //     }
-// } console.log(total);
+// } console.log(maxArea);
+
+
+
+//Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. Notice that the solution set must not contain duplicate triplets. (LC 15)
+
+// let nums = [-1, 0, 1, 2, -1, -4];
+// let result = [];
+// nums.sort((a, b) => a - b);
+// console.log(nums)
+// for (let i = 0; i < nums.length; i++) {
+//     if (i > 0 && nums[i] === nums[i - 1]) {
+//         continue;
+//     }
+//     let left = i + 1;
+//     let right = nums.length - 1;
+//     while (left < right) {
+//         let sum = nums[i] + nums[left] + nums[right];
+//         if (sum === 0) {
+//             result.push([nums[i], nums[left], nums[right]]);
+//             while (left < right && nums[left] === nums[left + 1]) {
+//                 left++;
+//             }
+//             while (left < right && nums[right] === nums[right - 1]) {
+//                 right--;
+//             }
+//             left++;
+//             right--;
+//         } else if (sum < 0) {
+//             left++;
+//         } else {
+//             right--;
+//         }
+//     }
+// } console.log(result);
+
+
+
+//Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution. (LC 16)
+
+// let nums = [-1, 2, 1, -4], target = 1;
+// nums.sort((a, b) => a - b);
+// let closestSum = Infinity;
+// for (let i = 0; i < nums.length; i++) {
+//     let left = i + 1;
+//     let right = nums.length - 1;
+//     while (left < right) {
+//         let currentSum = nums[i] + nums[left] + nums[right];
+//         if (currentSum === target) {
+//             return currentSum;
+//         }
+//         if (Math.abs(currentSum - target) < Math.abs(closestSum - target)) {
+//             closestSum = currentSum;
+//         }
+//         if (currentSum < target) {
+//             left++;
+//         } else {
+//             right--;
+//         }
+//     }
+// } console.log(closestSum);
+
+
+
+//Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+//0 <= a, b, c, d < n
+//a, b, c, and d are distinct.
+//nums[a] + nums[b] + nums[c] + nums[d] == target
+//You may return the answer in any order. (LC 18)
+
+// let nums = [1, 0, -1, 0, -2, 2], target = 0;
+// let result = [];
+// nums.sort((a, b) => a - b);
+// for (let i = 0; i < nums.length; i++) {
+//     if (i > 0 && nums[i] === nums[i - 1]) {
+//         continue;
+//     }
+//     for (let j = i + 1; j < nums.length - 2; j++) {
+//         if (j > i + 1 && nums[j] === nums[j - 1]) {
+//             continue;
+//         }
+//         let left = j + 1;
+//         let right = nums.length - 1;
+//         while (left < right) {
+//             let sum = nums[i] + nums[j] + nums[left] + nums[right];
+//             if (sum === target) {
+//                 result.push([nums[i], nums[j], nums[left], nums[right]]);
+//                 while (left < right && nums[left] === nums[left + 1]) {
+//                     left++;
+//                 }
+//                 while (left < right && nums[right] === nums[right - 1]) {
+//                     right--;
+//                 }
+//                 left++;
+//                 right--;
+//             } else if (sum < target) {
+//                 left++;
+//             } else {
+//                 right--;
+//             }
+//         }
+//     }
+// } console.log(result);
+
+
+
+//Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order. (LC 347)
+
+// let nums = [1, 1, 1, 2, 2, 3], k = 2;
+// let freqMap = new Map();
+// let arr = [];
+// for (let num of nums) {
+//     freqMap.set(num, (freqMap.get(num) || 0) + 1);
+// }
+// let buckets = Array(nums.length + 1).fill().map(() => []);
+// for (let [num, freq] of freqMap) {
+//     buckets[freq].push(num);
+// }
+// let result = [];
+// for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
+//     if (buckets[i].length > 0) {
+//         result.push(...buckets[i]);
+//     };
+// } console.log(result.slice(0, k));
+
+
+
+//Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input. (LC 56)
+
+// let intervals = [[1, 3], [2, 6], [8, 10], [15, 18]];
+// intervals.sort((a, b) => a[0] - b[0]);
+// let merged = [];
+// for (let interval of intervals) {
+//     if (merged.length === 0 || merged[merged.length - 1][1] < interval[0]) {
+//         merged.push(interval);
+//     } else {
+//         merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1], interval[1]);
+//     }
+// } console.log(merged);
+
+
+
+//A permutation of an array of integers is an arrangement of its members into a sequence or linear order. For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1]. The next permutation of an array of integers is the next lexicographically greater permutation of its integer. More formally, if all the permutations of the array are sorted in one container according to their lexicographical order, then the next permutation of that array is the permutation that follows it in the sorted container. If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
+//For example, the next permutation of arr = [1,2,3] is [1,3,2].
+//Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+//While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+//Given an array of integers nums, find the next permutation of nums.
+//The replacement must be in place and use only constant extra memory. (LC 31)
+
+// let nums = [1, 2, 3];
+// let i = nums.length - 2;
+// while (i >= 0 && nums[i] >= nums[i + 1]) {
+//     i--;
+// }
+// if (i >= 0) {
+//     let j = nums.length - 1;
+//     while (nums[j] <= nums[i]) {
+//         j--;
+//     }
+//     [nums[i], nums[j]] = [nums[j], nums[i]];
+// }
+// let left = i + 1;
+// let right = nums.length - 1;
+// while (left < right) {
+//     [nums[left], nums[right]] = [nums[right], nums[left]];
+//     left++;
+//     right--;
+// }
+// console.log(nums);
+
+
+
+//Given an integer array nums, return true if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or false otherwise. (LC 416).
+
+// let nums = [1, 5, 11, 5];
+// let totalSum = nums.reduce((a, b) => a + b, 0);
+// if (totalSum % 2 !== 0) {
+//     return false;
+// }
+// let target = totalSum / 2;
+// let dp = new Array(target + 1).fill(false);
+// dp[0] = true;
+// for (let num of nums) {
+//     for (let j = target; j >= num; j--) {
+//         dp[j] = dp[j] || dp[j - num];
+//     }
+// } console.log(dp[target]);
+
+
+
+//Given an array of integers arr, return true if it is possible to split it in two subarrays (without reordering the elements), such that the sum of the two subarrays are equal. If it is not possible then return false.
+
+// function canSplit(arr) {
+//     let totalSum = arr.reduce((acc, cur) => acc + cur, 0);
+//     if (totalSum % 2 !== 0) {
+//         return false;
+//     }
+//     let sum = 0;
+//     for (let i = 0; i < arr.length; i++) {
+//         sum += arr[i];
+
+//         if (sum === totalSum / 2) {
+//             return true;
+//         }
+//     } return false;
+// }
+// console.log(canSplit([1, 2, 3, 4, 5, 5]));
 
 
 
