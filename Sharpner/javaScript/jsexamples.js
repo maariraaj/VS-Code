@@ -1188,6 +1188,64 @@
 
 
 
+//Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn]. Return the array in the form [x1,y1,x2,y2,...,xn,yn]. (LC 1470)
+
+// const nums = [2, 5, 1, 3, 4, 7], n = 3;
+// const result = [];
+// for (let i = 0; i < n; i++) {
+//     result.push(nums[i]);
+//     result.push(nums[i + n]);
+// } console.log(result);
+
+
+
+//There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have. Return a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise. Note that multiple kids can have the greatest number of candies. (LC 1431)
+
+// const candies = [2, 3, 5, 1, 3], extraCandies = 3;
+// const maxCandies = Math.max(...candies);
+// console.log(candies.map((candy) => candy + extraCandies >= maxCandies));
+
+
+
+//Given an array of integers nums, return the number of good pairs. A pair (i, j) is called good if nums[i] == nums[j] and i < j. (LC 1512).
+
+// const nums = [1, 2, 3, 1, 1, 3];
+// let countMap = {};
+// let goodPairs = 0;
+// for (let num of nums) {
+//     if (countMap[num]) {
+//         goodPairs += countMap[num];
+//         countMap[num] += 1;
+//     } else {
+//         countMap[num] = 1
+//     }
+// } console.log(goodPairs);
+
+
+
+//Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i]. Return the answer in an array. (LC 1365).
+
+// const nums = [8, 1, 2, 2, 3];
+// let arr = [];
+// for (let i = 0; i < nums.length; i++) {
+//     let count = 0;
+//     for (let j = 0; j < nums.length; j++) {
+//         if (nums[j] < nums[i]) {
+//             count++;
+//         }
+//     } arr.push(count)
+// } console.log(arr);
+
+
+//another method
+
+// const nums = [8, 1, 2, 2, 3];
+// const sorted = [...nums].sort((a, b) => a - b);
+// const result = nums.map((num) => sorted.indexOf(num));
+// console.log(result);
+
+
+
 //Given an array of integers nums, calculate the pivot index of this array. The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right. If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array. Return the leftmost pivot index. If no such index exists, return -1. (LC 724)
 
 // var pivotIndex = function (nums) {
