@@ -1246,6 +1246,44 @@
 
 
 
+//Given a m x n binary matrix mat, find the 0-indexed position of the row that contains the maximum count of ones, and the number of ones in that row. In case there are multiple rows that have the maximum count of ones, the row with the smallest row number should be selected. Return an array containing the index of the row, and the number of ones in it. (LC 2643)
+
+// const mat = [[0, 1], [1, 0]];
+// let index = 0, maxCount = 0;
+// for (let i = 0; i < mat.length; i++) {
+//     let count = mat[i].reduce((acc, cur) => acc + cur, 0);
+//     if (count > maxCount) {
+//         maxCount = count;
+//         index = i;
+//     }
+// } console.log([index, maxCount]);
+
+
+
+//Given a zero-based permutation nums (0-indexed), build an array ans of the same length where ans[i] = nums[nums[i]] for each 0 <= i < nums.length and return it. A zero-based permutation nums is an array of distinct integers from 0 to nums.length - 1 (inclusive).
+
+// const nums = [0, 2, 1, 5, 3, 4];
+// let ans = nums.map(num => nums[num]);
+// console.log(ans);
+
+
+
+// /Given num, the array-form of an integer, and an integer k, return the array-form of the integer num + k. (LC 989)
+
+// const num = [2, 1, 5], k = 806;
+// let result = [];
+// let carry = k, i = num.length - 1;
+// while (carry > 0 || i >= 0) {
+//     if (i >= 0) {
+//         carry += num[i];
+//     }
+//     result.push(carry % 10);
+//     carry = Math.floor(carry / 10);
+//     i--;
+// } console.log(result.reverse());
+
+
+
 //Given an array of integers nums, calculate the pivot index of this array. The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right. If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array. Return the leftmost pivot index. If no such index exists, return -1. (LC 724)
 
 // var pivotIndex = function (nums) {
