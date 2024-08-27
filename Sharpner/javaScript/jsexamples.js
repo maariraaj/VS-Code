@@ -265,22 +265,6 @@
 
 //find the maximum sum subarray
 
-// let arr=[5,2,-4,-5, 3,-1,2,3,1];
-// let max=arr[0];
-// for(let i=0;i<arr.length;i++){
-//     for(let j=i;j<arr.length;j++){
-//         let sum=0;
-//         for( let k=i;k<=j;k++){
-//             sum=sum+arr[k];
-//         }
-//         if(sum>max){
-//             max=sum;
-//         }
-//     }
-// }console.log("Maximum Sum Subarray:",max);
-
-//another method without using j and k loop
-
 // function maxSubarraySum(arr) {
 //     let maxEndingHere = arr[0];
 //     let maxSoFar = arr[0];
@@ -337,22 +321,17 @@
 // console.log(arr);
 
 
-//Find the sum of all possible odd-length subarrays of an array
 
-// let arr = [1,4,2,5,3];
-// let ans = 0;
-// for (let i=0;i<arr.length;i++){
-//     for (let j=i;j<arr.length;j++){
-//         if ((j-i+1)%2==1){
-//             let currentSum=0;
-//             for (let k=i;k<j+1;k++){
-//                 currentSum += arr[k];
-//             }
-//             ans += currentSum;
-//         }
-//     }
-// }
-// console.log(ans);
+//Find the sum of all possible odd-length subarrays of an array. (LC 1588)
+
+// let arr = [1, 2, 3];
+// let totalSum = 0;
+// for (let i = 0; i < arr.length; i++) {
+//     let totalSb = (i + 1) * (arr.length - i);
+//     let oddSb = Math.floor((totalSb + 1) / 2);
+//     totalSum += arr[i] * oddSb;
+// } console.log(totalSum);
+
 
 
 //Bubble Sort
@@ -492,6 +471,32 @@
 //         arr.push(i);
 //     }
 // } console.log(arr);
+
+
+
+//You are given a 0-indexed 2D integer matrix grid of size n * n with values in the range [1, n2]. Each integer appears exactly once except a which appears twice and b which is missing. The task is to find the repeating and missing numbers a and b. Return a 0-indexed integer array ans of size 2 where ans[0] equals to a and ans[1] equals to b. (LC 2965)
+
+// const grid = [[9, 1, 7], [8, 9, 2], [3, 4, 6]];
+// const n = grid.length;
+// const nSqr = n * n;
+// const sumExp = (nSqr * (nSqr + 1)) / 2;
+// const sumSqrExp = (nSqr * (nSqr + 1) * (2 * nSqr + 1)) / 6;
+
+// let sumAct = 0;
+// let sumSqrAct = 0;
+// for (let row of grid) {
+//     for (let num of row) {
+//         sumAct += num;
+//         sumSqrAct += num * num;
+//     }
+// }
+// const diff = sumAct - sumExp;
+// const sumDiff = (sumSqrAct - sumSqrExp) / diff;
+
+// const repeated = (diff + sumDiff) / 2;
+// const missing = sumDiff - repeated;
+
+// console.log([repeated, missing]);
 
 
 
