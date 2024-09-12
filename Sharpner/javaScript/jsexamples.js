@@ -474,6 +474,24 @@
 
 
 
+//return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. (LC 238)
+
+// const nums = [1, 2, 3, 4];
+// const result = new Array(nums.length).fill(1);
+// let leftProduct = 1;
+// for (let i = 0; i < nums.length; i++) {
+//     result[i] = leftProduct;
+//     leftProduct *= nums[i];
+// }
+// let rightProduct = 1;
+// for (let i = nums.length - 1; i >= 0; i--) {
+//     result[i] *= rightProduct;
+//     rightProduct *= nums[i];
+// }
+// console.log(result);
+
+
+
 //You are given a 0-indexed 2D integer matrix grid of size n * n with values in the range [1, n2]. Each integer appears exactly once except a which appears twice and b which is missing. The task is to find the repeating and missing numbers a and b. Return a 0-indexed integer array ans of size 2 where ans[0] equals to a and ans[1] equals to b. (LC 2965)
 
 // const grid = [[9, 1, 7], [8, 9, 2], [3, 4, 6]];
