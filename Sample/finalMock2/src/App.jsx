@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState } from 'react'
 import './App.css'
-import ShoppingItems from '../../../Sharpner/reactProjects/fetch-prod-grid/src/components/ShoppingItems'
 
-function App() {
-
-  return (
-    <>
-      <ShoppingItems />
-    </>
-  )
+const App = () => {
+    const [data, setData] = useState('Accordion 1');
+    const [toggle, setToggle]
+    const handleCLick = () => {
+        setData((prev) => prev === 'Accordion 1' ? 'Accodion 2' : 'Accordion 1');
+    }
+    return (
+        <div className='container'>
+            <div className='list' onClick={handleCLick}>
+                {data}
+            </div>
+        </div>
+    )
 }
+
 export default App
