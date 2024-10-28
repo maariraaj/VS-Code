@@ -4,9 +4,9 @@ import './Accordion.css'
 
 const Accordion = () => {
 
-    const [clickedAccordion, setClickedAccordion] = useState(null)
-  
-    const data = [
+  const [clickedAccordion, setClickedAccordion] = useState(null)
+
+  const data = [
     {
       header: "Header 01",
       content: "Content 01",
@@ -16,12 +16,12 @@ const Accordion = () => {
       content: "Content 02",
     },
     {
-        header: "Header 03",
-        content: "Content 03",
+      header: "Header 03",
+      content: "Content 03",
     },
     {
-        header: "Header 04",
-        content: "Content 04",
+      header: "Header 04",
+      content: "Content 04",
     },
   ];
 
