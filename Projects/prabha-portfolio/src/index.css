@@ -13,12 +13,12 @@
 }
 
 #root {
-  background: linear-gradient(black 25%, rgb(31, 41, 54) 58%, black 15%);
+  background-color: #000;
   min-height: 100vh;
 }
 
 body {
-  background: rgb(31, 41, 55);
+  background-color: #000;
 }
 
 .nav {
@@ -47,28 +47,23 @@ body {
   line-height: 1.2;
 }
 
-.portfolio,
 .contact {
-  margin-top: 8%;
+  margin-top: 15%;
 }
 
 .experience {
   margin-top: 12%;
 }
 
-
 .nav-links {
   text-underline-offset: 1rem;
 }
 
-
 @media screen and (max-width: 900px) {
-
   #root {
-    background: linear-gradient(rgb(31, 41, 55) 20%, black 20%, rgb(31, 41, 55) 65%, black 25%);
+    background-color: #000;
     min-height: 100vh;
   }
-
   .about,
   .contact,
   .portfolio,
@@ -76,12 +71,6 @@ body {
   .home {
     text-align: center;
     height: 100%;
-  }
-
-  .about,
-  .portfolio,
-  .experience {
-    margin-top: 10%;
   }
 
   .home img {
@@ -114,5 +103,4 @@ body {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-
 }

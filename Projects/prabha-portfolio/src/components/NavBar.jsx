@@ -4,43 +4,48 @@ import { Link } from "react-scroll";
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
+  const [activeLink, setActiveLink] = useState("home");
 
   const links = [
-    {
-      id: 1,
-      link: "home",
-    },
-    {
-      id: 2,
-      link: "about",
-    },
-    {
-      id: 3,
-      link: "portfolio",
-    },
-    {
-      id: 4,
-      link: "experience",
-    },
-    {
-      id: 5,
-      link: "contact",
-    },
+    { id: 1, link: "home" },
+    { id: 2, link: "about" },
+    { id: 3, link: "portfolio" },
+    { id: 4, link: "experience" },
+    { id: 5, link: "contact" },
   ];
 
   return (
     <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-black fixed nav">
       <div>
-        <h1 className="text-5xl font-signature ml-2"><a className="link-underline link-underline-black" href="https://rahulkarda.netlify.app" target="_blank" rel="noreferrer">Muthuprabha</a></h1>
+        <h1 className="text-5xl font-signature ml-2">
+          <a
+            className="link-underline link-underline-black"
+            href="https://rahulkarda.netlify.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Muthuprabha
+          </a>
+        </h1>
       </div>
 
       <ul className="hidden md:flex">
         {links.map(({ id, link }) => (
           <li
             key={id}
-            className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline"
+            className={`nav-links px-4 cursor-pointer capitalize font-medium text-gray-500 
+              ${activeLink === link
+                ? "text-blue-500 font-bold underline underline-offset-4 decoration-blue-500"
+                : "hover:text-white"
+              } duration-200`}
           >
-            <Link to={link} smooth duration={500}>
+            <Link
+              to={link}
+              smooth
+              duration={500}
+              spy={true}
+              onSetActive={() => setActiveLink(link)}
+            >
               {link}
             </Link>
           </li>
@@ -59,13 +64,18 @@ const NavBar = () => {
           {links.map(({ id, link }) => (
             <li
               key={id}
-              className="px-4 cursor-pointer capitalize py-6 text-4xl"
+              className={`px-4 cursor-pointer capitalize py-6 text-4xl ${activeLink === link
+                ? "text-blue-500 font-bold underline underline-offset-4 decoration-blue-500"
+                : "text-gray-500"
+                }`}
             >
               <Link
-                onClick={() => setNav(!nav)}
                 to={link}
                 smooth
                 duration={500}
+                spy={true}
+                onClick={() => setNav(!nav)}
+                onSetActive={() => setActiveLink(link)}
               >
                 {link}
               </Link>
