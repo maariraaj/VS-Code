@@ -9,7 +9,7 @@ const Home = () => {
       name="home"
       className="h-screen w-full bg-black home"
     >
-      <div className="max-w-screen-lg mx-auto flex flex-col md:flex-row items-center justify-between h-full px-4">
+      <div className="max-w-screen-lg sm:mx-auto md:mx-auto lg:mx-20 xl:mx-20 flex flex-col md:flex-row items-center justify-between h-full px-4">
         <div className="block md:hidden mb-4">
           <img
             src={HeroImage}
@@ -18,7 +18,7 @@ const Home = () => {
           />
         </div>
         <div className="flex flex-col justify-center h-full md:w-1/2 text-center md:text-left">
-          <h2 className="text-xs sm:text-4xl font-bold text-white">
+          <h2 className="sm:text-xs xl:text-4xl font-bold text-white">
             <Type />
           </h2>
           <p className="text-gray-500 py-4 max-w-md mx-auto md:mx-0">
@@ -40,7 +40,7 @@ const Home = () => {
           <img
             src={HeroImage}
             alt="profile"
-            className="rounded-2xl mx-auto"
+            className="rounded-2xl sm:mx-auto md:mx-auto lg:mx-48 xl:mx-48"
           />
         </div>
       </div>
