@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import useFetch from "./customHooks/useFetch";
 
 function App() {
-  const {data, loading} = useFetch('https://randomuser.me/api/?results=5')
+  const { data, loading } = useFetch('https://randomuser.me/api/?results=5')
 
   return (
     <div className="App">
-      {loading ? ( 
+      {loading ? (
         <div>Loading...</div>
       ) : (
         data.map((item) => {

@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <div
       name="contact"
-      className="contact w-full h-48 bg-black p-4 text-white"
+      className="contact w-screen h-screen bg-black p-4 text-white"
     >
       <div className="p-4 justify-center max-w-screen-lg mx-auto h-full">
         <div className="pb-2">
@@ -15,8 +15,15 @@ const Contact = () => {
             Contact
           </p>
         </div>
-
-        <div className="flex justify-center items-center space-x-6 mt-2">
+        <h2 className="pb-6 pt-12 text-center mt-10 text-3xl tracking-wider lg:text-5xl">
+          Get In Touch
+        </h2>
+        <p className="font-poppins mx-auto mt-5 mb-10 px-2 pb-6 text-center text-xl tracking-wider lg:w-[50%]">
+          I'd love to connect and explore exciting opportunities with you!
+          Whether you have interesting projects, creative ideas, or just want to
+          chat, please don't hesitate to reach out. My inbox is open 24/7!
+        </p>
+        <div className="flex justify-center items-center space-x-6">
           <a
             href="mailto:prabhathangam507@hotmail.com"
             className="hover:text-blue-400 transition duration-200"

@@ -415,73 +415,73 @@
 
 
 
-let obj = {
-    b: 2,
-    a: 1,
-    c_label: 'bye',
-    a_label: 'hello',
-    b_label: 'hi',
-    c: 3,
-};
-let converted = Object.entries(obj).reduce((acc, [key, value]) => {
-    if (!key.endsWith('_label')) {
-        // Find the corresponding label
-        let labelKey = key + '_label';
-        acc[key] = {
-            value: value,
-            label: obj[labelKey],
-        };
-    }
-    return acc;
-}, {});
+// let obj = {
+//     b: 2,
+//     a: 1,
+//     c_label: 'bye',
+//     a_label: 'hello',
+//     b_label: 'hi',
+//     c: 3,
+// };
+// let converted = Object.entries(obj).reduce((acc, [key, value]) => {
+//     if (!key.endsWith('_label')) {
+//         // Find the corresponding label
+//         let labelKey = key + '_label';
+//         acc[key] = {
+//             value: value,
+//             label: obj[labelKey],
+//         };
+//     }
+//     return acc;
+// }, {});
 
-console.log(converted);
-
-
+// console.log(converted);
 
 
-const questions = [
-    {
-        title: 'Question 1',
-        questions: [
-            {
-                title: 'Question 1.1',
-                questions: [
-                    {
-                        title: 'Question 1.1.1',
-                    },
-                    {
-                        title: 'Question 1.1.2',
-                    },
-                ],
-            },
-            {
-                title: 'Question 1.2',
-                questions: [
-                    {
-                        title: 'Question 1.2.1',
-                    },
-                    {
-                        title: 'Question 1.2.2',
-                    },
-                ],
-            },
-        ],
-    },
-];
 
-// Recursive function to print all titles
-function printTitles(questions) {
-    questions.forEach(question => {
-        console.log(question.title); // Print the title
-        if (question.questions) {
-            printTitles(question.questions); // Recursively call for nested questions
-        }
-    });
-}
 
-// Call the function to print all titles
-printTitles(questions);
+// const questions = [
+//     {
+//         title: 'Question 1',
+//         questions: [
+//             {
+//                 title: 'Question 1.1',
+//                 questions: [
+//                     {
+//                         title: 'Question 1.1.1',
+//                     },
+//                     {
+//                         title: 'Question 1.1.2',
+//                     },
+//                 ],
+//             },
+//             {
+//                 title: 'Question 1.2',
+//                 questions: [
+//                     {
+//                         title: 'Question 1.2.1',
+//                     },
+//                     {
+//                         title: 'Question 1.2.2',
+//                     },
+//                 ],
+//             },
+//         ],
+//     },
+// ];
+
+// // Recursive function to print all titles
+// function printTitles(questions) {
+//     questions.forEach(question => {
+//         console.log(question.title); // Print the title
+//         if (question.questions) {
+//             printTitles(question.questions); // Recursively call for nested questions
+//         }
+//     });
+// }
+
+// // Call the function to print all titles
+// printTitles(questions);
 
 
 // function reverseAlphanumeric(str) {
@@ -515,3 +515,91 @@ printTitles(questions);
 // const input = "Hello, World! 123";
 // const output = reverseAlphanumeric(input);
 // console.log(output); // Output: "321dl, roWol! leH"
+
+
+
+// function wakeUp() {
+//     return new Promise((res, rej) => {
+//         setTimeout(() => {
+//             console.log('Waking');
+//             res();
+//         }, 1000);
+//     });
+// }
+
+// function walking() {
+//     return new Promise((res, rej) => {
+//         setTimeout(() => {
+//             console.log('Walking');
+//             rej('Error in walking'); // Rejects this promise
+//         }, 1000);
+//     });
+// }
+
+// function eating() {
+//     return new Promise((res) => {
+//         setTimeout(() => {
+//             console.log('Eating');
+//             res();
+//         }, 1000);
+//     });
+// }
+
+// function work() {
+//     return new Promise((res) => {
+//         setTimeout(() => {
+//             console.log('Go to work');
+//             res();
+//         }, 1000);
+//     });
+// }
+
+// // Using Promise.all
+// Promise.all([wakeUp(), walking(), eating(), work()])
+//     .then(() => {
+//         console.log("All activities are completed");
+//     })
+//     .catch((error) => {
+//         console.error("An error occurred:", error);
+//     });
+
+
+
+// const API_URL = 'https://dummyjson.com/products';
+// fetch(API_URL)
+//     .then(res => {
+//         if (!res.ok) {
+//             throw new Error('Network error', res.statusText);
+//         }
+//         return res.json();
+//     })
+//     .then(data => {
+//         console.log('Data', data)
+//     })
+//     .catch(err => console.log(err))
+
+
+function promise1() {
+    return new Promise((res) => {
+        setTimeout(() => {
+            console.log('First')
+            res()
+        }, 7000)
+    })
+}
+function promise2() {
+    return new Promise((res) => {
+        setTimeout(() => {
+            console.log('Second')
+            res()
+        }, 4000)
+    })
+}
+async function compi() {
+    await promise1();
+    await promise2();
+}
+compi()
+
+
+
