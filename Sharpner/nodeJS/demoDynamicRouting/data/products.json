@@ -1,16 +1,1 @@
-[
-  {
-    "id": "1234H",
-    "title": "A Book",
-    "imageUrl": "https://wikieducator.org/images/5/56/404book.jpg",
-    "description": "This is an awesome book!",
-    "price": "19"
-  },
-  {
-    "title": "Car",
-    "imageUrl": "https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cms.haymarketindia.net/model/uploads/modelimages/Toyota-Innova-Crysta-020320231741.jpg&h=578&w=872&c=1",
-    "description": "A car",
-    "price": "500000",
-    "id": "0.10960113831475704"
-  }
-]
+[{"id":"0.10960113831475704","title":"MPV Car","imageUrl":"https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cms.haymarketindia.net/model/uploads/modelimages/Toyota-Innova-Crysta-020320231741.jpg&h=578&w=872&c=1","description":"A Toyota car","price":"5000"}]
