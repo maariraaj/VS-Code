@@ -6,10 +6,7 @@ function handleFormSubmit(event) {
         phone: event.target.phone.value,
     };
     axios
-        .post(
-            "https://crudcrud.com/api/08c09c00f29e4625ad984b78edbd5e56/appointmentData",
-            userDetails
-        )
+        .post("http://localhost:3000/appointmentData", userDetails)
         .then((response) => displayUserOnScreen(response.data))
         .catch((error) => console.log(error));
 
@@ -19,7 +16,8 @@ function handleFormSubmit(event) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    axios.get("https://crudcrud.com/api/08c09c00f29e4625ad984b78edbd5e56/appointmentData")
+    axios
+        .get("http://localhost:3000/appointmentData")
         .then((response) => {
             for (let i = 0; i < response.data.length; i++) {
                 displayUserOnScreen(response.data[i]);
@@ -28,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
         .catch((error) => {
             console.log(error);
         });
-})
+});
 
 function displayUserOnScreen(userDetails) {
     const userItem = document.createElement("li");
@@ -51,14 +49,16 @@ function displayUserOnScreen(userDetails) {
 
     deleteBtn.addEventListener("click", function (event) {
         userList.removeChild(event.target.parentElement);
-        axios.delete(`https://crudcrud.com/api/08c09c00f29e4625ad984b78edbd5e56/appointmentData/${userDetails._id}`)
+        axios
+            .delete(`http://localhost:3000/appointmentData/${userDetails.id}`)
             .then((response) => console.log(response))
             .catch((error) => console.log(error));
     });
 
     editBtn.addEventListener("click", function (event) {
         userList.removeChild(event.target.parentElement);
-        axios.delete(`https://crudcrud.com/api/08c09c00f29e4625ad984b78edbd5e56/appointmentData/${userDetails._id}`)
+        axios
+            .delete(`http://localhost:3000/appointmentData/${userDetails.id}`)
             .then((response) => console.log(response))
             .catch((error) => console.log(error));
         document.getElementById("username").value = userDetails.username;
