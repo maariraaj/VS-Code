@@ -4,7 +4,9 @@ const User = require("../models/user");
 
 router.post("/signUp", async (req, res) => {
     const { name, email, password } = req.body;
-
+    if (!email || !password || !name) {
+        return res.status(400).json({ error: "All fields are required" });
+    }
     try {
         const existingUser = await User.findOne({ where: { email } });
 
