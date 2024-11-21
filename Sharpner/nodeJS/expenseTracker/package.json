@@ -4,8 +4,22 @@
   "description": "A expense tracker application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "Mariraj",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.4",
+    "postcss": "^8.4.49",
+    "sequelize": "^6.37.5",
+    "tailwindcss": "^3.4.15"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
 }

@@ -1,14 +1,7 @@
 module.exports = {
-  content: [
-    './views/auth/*.html',
-    './views/**/*.html',
-  ],
+  content: ["./views/**/*.html"],
   theme: {
-    extend: {
-      colors: {
-        'teal-600': '#009688',
-      },
-    },
+    extend: {},
   },
   plugins: [],
-}
+};
