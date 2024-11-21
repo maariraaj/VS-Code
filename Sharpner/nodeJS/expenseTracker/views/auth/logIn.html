@@ -4,14 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
-
   <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
       <h1 class="text-2xl font-bold text-center mb-6 text-pink-600">Log In</h1>
-
-      <form action="/user/login" method="POST" class="space-y-4">
+      <form id="login-form" class="space-y-4">
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700"
             >Email</label
@@ -22,7 +20,7 @@
             name="email"
             placeholder="Your Email ID"
             required
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
           />
         </div>
         <div>
@@ -35,7 +33,7 @@
             name="password"
             placeholder="Your Password"
             required
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
           />
         </div>
         <div>
@@ -47,15 +45,16 @@
           </button>
         </div>
       </form>
-
       <div class="text-center mt-4">
         <p class="text-sm text-gray-600">
           New user?
-          <a href="/user/signUp" class="text-pink-600 hover:text-pink-700"
+          <a href="/auth/signUp.html" class="text-pink-600 hover:text-pink-700"
             >Sign Up here</a
           >
         </p>
       </div>
     </div>
   </body>
+  <script defer src="/js/logIn.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </html>

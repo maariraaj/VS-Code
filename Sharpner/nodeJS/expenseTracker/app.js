@@ -5,10 +5,12 @@ const sequelize = require("./util/database");
 const userRoutes = require("./routes/userRoutes");
 
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));
+
 const PORT = 5000;
 
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("views"));
 
 app.get("/", (req, res) => {
