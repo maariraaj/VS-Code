@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
 const router = express.Router();
 const User = require("../models/user");
 
@@ -13,8 +14,8 @@ router.post("/signUp", async (req, res) => {
         if (existingUser) {
             return res.status(409).json({ error: "User already exists" });
         }
-
-        const newUser = await User.create({ name, email, password });
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = await User.create({ name, email, password: hashedPassword });
 
         res.status(201).json({ message: "User created successfully", user: newUser });
     } catch (error) {
@@ -34,8 +35,8 @@ router.post("/logIn", async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: "User not found" });
         }
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
 
-        const isPasswordMatch = password === user.password;
         if (!isPasswordMatch) {
             return res.status(401).json({ error: "User not authorized" });
         }
