@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.status === 201) {
                 alert("Sign-up successful!");
-                form.reset();
+                window.location.href = '/auth/logIn.html';
             } else {
                 alert("Sign-up failed. Please try again.");
             }
