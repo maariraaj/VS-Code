@@ -6,6 +6,9 @@ const expensesTable = document.querySelector("#expenses-table tbody");
 
 const fetchExpenses = async () => {
     const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = '/auth/logIn.html';
+    }
     try {
         const response = await axios.get("/expenses/expenses", {
             headers: { 'Authorization': token }
