@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.status === 200) {
                 alert("User login successful!");
-                form.reset();
+                window.location.href = '/expenses/expenseTrack.html';
             }
         } catch (error) {
             if (error.response) {
