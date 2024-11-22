@@ -5,8 +5,11 @@ const categoryInput = document.querySelector("#category");
 const expensesTable = document.querySelector("#expenses-table tbody");
 
 const fetchExpenses = async () => {
+    const token = localStorage.getItem('token');
     try {
-        const response = await axios.get("/expenses/expenses");
+        const response = await axios.get("/expenses/expenses", {
+            headers: { 'Authorization': token }
+        });
         renderExpenses(response.data);
     } catch (error) {
         console.error("Error fetching expenses:", error);
@@ -32,12 +35,16 @@ const renderExpenses = (expenses) => {
 };
 
 const addExpense = async (amount, description, category) => {
+    const token = localStorage.getItem('token');
     try {
-        const response = await axios.post("/expenses/expense", {
-            amount,
-            description,
-            category,
-        });
+        const response = await axios.post("/expenses/expense",
+            {
+                amount,
+                description,
+                category,
+            },
+            { headers: { 'Authorization': token } }
+        );
         fetchExpenses();
     } catch (error) {
         console.error("Error adding expense:", error);
@@ -45,8 +52,11 @@ const addExpense = async (amount, description, category) => {
 };
 
 async function deleteExpense(expenseId) {
+    const token = localStorage.getItem('token');
     try {
-        const response = await axios.delete(`http://localhost:5000/expenses/${expenseId}`);
+        const response = await axios.delete(`http://localhost:5000/expenses/${expenseId}`, {
+            headers: { 'Authorization': token }
+        });
         if (response.status === 200) {
             alert("Expense deleted successfully!");
             fetchExpenses();

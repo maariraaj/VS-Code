@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.status === 200) {
                 alert("User login successful!");
+                localStorage.setItem('token', response.data.user.token);
                 window.location.href = '/expenses/expenseTrack.html';
             }
         } catch (error) {

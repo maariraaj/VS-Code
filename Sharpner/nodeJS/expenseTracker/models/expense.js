@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
+const User = require('./user');
 
 const Expense = sequelize.define("Expense", {
     id: {
@@ -19,7 +20,10 @@ const Expense = sequelize.define("Expense", {
     category: {
         type: Sequelize.STRING,
         allowNull: false,
-    },
+    }
 });
+
+User.hasMany(Expense);
+Expense.belongsTo(User);
 
 module.exports = Expense;

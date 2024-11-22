@@ -1,9 +1,14 @@
 const Expense = require('../models/expense');
+const User = require('../models/user');
 
 exports.postAddExpense = async (req, res) => {
     try {
+        const user = await await User.findByPk(req.user.id);
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
         const { amount, description, category } = req.body;
-        const newExpense = await Expense.create({ amount, description, category });
+        const newExpense = await Expense.create({ amount, description, category, UserId: req.user.id });
         res.status(201).json(newExpense);
     } catch (error) {
         console.error('Error adding expense:', error);
@@ -13,7 +18,7 @@ exports.postAddExpense = async (req, res) => {
 
 exports.getExpenses = async (req, res) => {
     try {
-        const expenses = await Expense.findAll();
+        const expenses = await Expense.findAll({ where: { userId: req.user.id } });
         res.status(200).json(expenses);
     } catch (error) {
         console.error('Error fetching expenses:', error);
