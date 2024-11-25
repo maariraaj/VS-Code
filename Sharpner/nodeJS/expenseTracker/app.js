@@ -4,6 +4,7 @@ const path = require("path");
 const sequelize = require("./util/database");
 const userRoutes = require("./routes/userRoutes");
 const expenseRoutes = require("./routes/expenseRoutes");
+const purchaseRoutes = require("./routes/purchase");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoutes);
 app.use("/expenses", expenseRoutes);
+app.use("/purchase", purchaseRoutes);
 
 sequelize
     .authenticate()
