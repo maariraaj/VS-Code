@@ -1,46 +1,60 @@
 const Razorpay = require('razorpay');
 const Order = require('../models/orders');
 
-exports.purchasePremium = async (req, res) => {
-    try {
-        const rzp = new Razorpay({
-            key_id: 'rzp_test_A0BOeoNhMQbJ2J',
-            key_secret: 'CAMJe1vWfExPHQfwOeWpqGqt',
+exports.purchasePremium = (req, res) => {
+    const rzp = new Razorpay({
+        key_id: 'rzp_test_A0BOeoNhMQbJ2J',
+        key_secret: 'CAMJe1vWfExPHQfwOeWpqGqt',
+    });
+    const amount = 2500;
+
+    const razorpayPromise = rzp.orders.create({ amount, currency: 'INR' });
+    const orderCreationPromise = razorpayPromise.then(order =>
+        req.user.createOrder({ orderId: order.id, status: 'PENDING' })
+    );
+
+    Promise.all([razorpayPromise, orderCreationPromise])
+        .then(([razorpayOrder]) => {
+            res.status(201).json({ order: razorpayOrder, key_id: rzp.key_id });
+        })
+        .catch(error => {
+            console.error("Error during premium purchase:", error);
+            res.status(500).json({ message: 'Something went wrong', error });
         });
-        const amount = 2500;
-        const order = await rzp.orders.create({ amount, currency: 'INR' });
-
-        await req.user.createOrder({ orderId: order.id, status: 'PENDING' });
-
-        return res.status(201).json({ order, key_id: rzp.key_id });
-    } catch (error) {
-        console.error('Error creating Razorpay order:', error);
-        return res.status(500).json({ message: 'Something went wrong', error });
-    }
 };
 
-exports.updateTransactionStatus = async (req, res) => {
-    try {
-        const { payment_id, order_id, status } = req.body;
-        const order = await Order.findOne({ where: { orderId: order_id } });
-        if (!order) {
-            return res.status(404).json({ success: false, message: 'Order not found' });
-        }
-        const updateFields = status === 'FAILED'
-            ? { status: 'FAILED' }
-            : { paymentId: payment_id, status: 'SUCCESSFUL' };
+exports.updateTransactionStatus = (req, res) => {
+    const { payment_id, order_id, status } = req.body;
 
-        await order.update(updateFields);
+    Order.findOne({ where: { orderId: order_id } })
+        .then(order => {
+            if (!order) {
+                return res.status(404).json({ success: false, message: 'Order not found' });
+            }
+            const updateFields = status === 'FAILED'
+                ? { status: 'FAILED' }
+                : { paymentId: payment_id, status: 'SUCCESSFUL' };
 
-        if (status === 'FAILED') {
-            return res.status(202).json({ success: false, message: 'Transaction Failed' });
-        }
-        await req.user.update({ isPremiumUser: true });
-        return res.status(202).json({ success: true, message: 'Transaction Successful' });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: 'Something went wrong', error });
-    }
+            const orderUpdatePromise = order.update(updateFields);
+
+            if (status === 'FAILED') {
+                return orderUpdatePromise
+                    .then(() => res.status(202).json({ success: false, message: 'Transaction Failed' }));
+            }
+
+            const userUpdatePromise = req.user.update({ isPremiumUser: true });
+
+            return Promise.all([orderUpdatePromise, userUpdatePromise])
+                .then(() => res.status(202).json({ success: true, message: 'Transaction Successful' }))
+                .catch(error => {
+                    console.error("Error during updates:", error);
+                    res.status(500).json({ message: 'Something went wrong', error });
+                });
+        })
+        .catch(error => {
+            console.error("Error finding order:", error);
+            res.status(500).json({ message: 'Something went wrong', error });
+        });
 };
 
 exports.getUserOrders = async (req, res) => {
