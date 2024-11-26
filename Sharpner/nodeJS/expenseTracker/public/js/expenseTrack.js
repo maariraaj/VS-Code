@@ -2,7 +2,8 @@ const expenseForm = document.querySelector("#expense-form");
 const amountInput = document.querySelector("#amount");
 const descriptionInput = document.querySelector("#description");
 const categoryInput = document.querySelector("#category");
-const expensesTable = document.querySelector("#expenses-table tbody");
+const expensesTable = document.getElementById("expenses-table");
+const expensesTableBody = document.querySelector("#expenses-table tbody");
 const premiumButton = document.getElementById("rzp-button1");
 
 const fetchExpenses = async () => {
@@ -21,7 +22,7 @@ const fetchExpenses = async () => {
 };
 
 const renderExpenses = (expenses) => {
-    expensesTable.innerHTML = "";
+    expensesTableBody.innerHTML = "";
     expenses.forEach((expense) => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -34,7 +35,7 @@ const renderExpenses = (expenses) => {
             </button>
         </td>
     `;
-        expensesTable.appendChild(row);
+        expensesTableBody.appendChild(row);
     });
 };
 
@@ -81,13 +82,54 @@ expenseForm.addEventListener("submit", (e) => {
         alert("Please fill in all fields!");
         return;
     }
-
     addExpense(amount, description, category);
     expenseForm.reset();
 });
 
+const leaderboardDiv = document.createElement("div");
+leaderboardDiv.classList.add("mt-8", "max-w-4xl", "mx-auto");
+
+const renderLeaderboard = (leaderboard) => {
+    leaderboardDiv.innerHTML = `
+        <h2 class="text-xl font-bold mb-4">Leaderboard</h2>
+        <table class="w-full bg-white shadow-md rounded-lg">
+            <thead>
+                <tr class="bg-cyan-600 text-white">
+                    <th class="py-2 px-4 text-left">Rank</th>
+                    <th class="py-2 px-4 text-left">User</th>
+                    <th class="py-2 px-4 text-left">Total Expense</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${leaderboard.map((entry, index) => `
+                    <tr>
+                        <td class="border px-4 py-2">${index + 1}</td>
+                        <td class="border px-4 py-2">${entry.User.name}</td>
+                        <td class="border px-4 py-2">${entry.totalExpense}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table> `;
+    expensesTable.parentNode.appendChild(leaderboardDiv);
+};
+
+const showLeaderboard = async () => {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await axios.get('/premium/leaderboard', {
+            headers: { Authorization: token },
+        });
+        if (response.data.success) {
+            renderLeaderboard(response.data.leaderboard);
+        } else {
+            alert("Failed to fetch leaderboard.");
+        }
+    } catch (error) {
+        console.error("Error fetching leaderboard:", error);
+    }
+};
+
 const premiumStatusText = document.createElement("div");
-premiumStatusText.textContent = "You are a premium user!";
 premiumStatusText.classList.add(
     "text-4xl",
     "font-bold",
@@ -98,20 +140,27 @@ premiumStatusText.classList.add(
     "via-pink-500",
     "to-purple-600"
 );
+premiumStatusText.innerHTML = `
+    You are a premium user!
+    <button class="bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white py-2 px-4 rounded-lg hover:from-emerald-600 hover:via-teal-600 hover:to-blue-600 focus:outline-none" onclick="showLeaderboard()">
+        Show Leaderboard
+    </button>`;
+
+const replaceWithPremiumText = () => {
+    premiumButton.replaceWith(premiumStatusText);
+};
 
 const checkPremiumStatus = async () => {
     const token = localStorage.getItem('token');
     try {
         const response = await axios.get('/purchase/orders', {
-            headers: { 'Authorization': token },
+            headers: { Authorization: token },
         });
-
         const orders = response.data.orders;
 
         const isPremiumUser = orders.some(order => order.status === 'SUCCESSFUL');
-
         if (isPremiumUser) {
-            premiumButton.replaceWith(premiumStatusText);
+            replaceWithPremiumText();
         }
     } catch (error) {
         console.error("Error checking premium status:", error);
