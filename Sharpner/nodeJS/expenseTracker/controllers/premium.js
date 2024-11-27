@@ -16,7 +16,7 @@ exports.getLeaderboard = async (req, res) => {
                 }
             ],
             group: ['userId', 'User.id'],
-            order: [[sequelize.fn('SUM', sequelize.col('amount')), 'DESC']]
+            order: [['totalExpense', 'DESC']]
         });
 
         res.status(200).json({ success: true, leaderboard });
