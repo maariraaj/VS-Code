@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const jwt = require('jsonwebtoken');
+const Brevo = require("sib-api-v3-sdk");
+require('dotenv').config();
 
 exports.postSignUp = async (req, res) => {
     const { name, email, password } = req.body;
@@ -47,5 +49,27 @@ exports.postLogIn = async (req, res) => {
     } catch (error) {
         console.error("Error during login:", error);
         res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+exports.postForgotPass = async (req, res) => {
+    const { email } = req.body;
+    try {
+        const defaultClient = Brevo.ApiClient.instance;
+        const apiKey = defaultClient.authentications["api-key"];
+        apiKey.apiKey = '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';
+        const tranEmailApi = new Brevo.TransactionalEmailsApi();
+        const sendSmtpEmail = {
+            to: [{ email }],
+            sender: { email: "test@gmail.com", name: "Hustler" },
+            subject: "Reset Password Request",
+            htmlContent: "<p>Hello</p>",
+        };
+        await tranEmailApi.sendTransacEmail(sendSmtpEmail);
+
+        res.status(200).json({ success: true, message: "Reset email sent successfully!" });
+    } catch (error) {
+        console.error("Error sending reset email:", error);
+        res.status(500).json({ success: false, message: "Failed to send reset email" });
     }
 };
