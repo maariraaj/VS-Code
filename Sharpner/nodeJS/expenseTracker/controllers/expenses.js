@@ -14,7 +14,7 @@ exports.postAddExpense = async (req, res) => {
             category,
             UserId: req.user.id
         });
-        user.totalExpense += parseFloat(amount);
+        user.totalExpense += Number(amount);
         await user.save();
         res.status(201).json(newExpense);
     } catch (error) {
