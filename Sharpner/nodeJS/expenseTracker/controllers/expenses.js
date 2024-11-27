@@ -3,12 +3,19 @@ const User = require('../models/user');
 
 exports.postAddExpense = async (req, res) => {
     try {
-        const user = await await User.findByPk(req.user.id);
+        const user = await User.findByPk(req.user.id);
         if (!user) {
             return res.status(404).json({ error: "User not found" });
         }
         const { amount, description, category } = req.body;
-        const newExpense = await Expense.create({ amount, description, category, UserId: req.user.id });
+        const newExpense = await Expense.create({
+            amount,
+            description,
+            category,
+            UserId: req.user.id
+        });
+        user.totalExpense += parseFloat(amount);
+        await user.save();
         res.status(201).json(newExpense);
     } catch (error) {
         console.error('Error adding expense:', error);

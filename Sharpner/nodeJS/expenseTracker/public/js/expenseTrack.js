@@ -104,8 +104,8 @@ const renderLeaderboard = (leaderboard) => {
                 ${leaderboard.map((entry, index) => `
                     <tr>
                         <td class="border px-4 py-2">${index + 1}</td>
-                        <td class="border px-4 py-2">${entry.User.name}</td>
-                        <td class="border px-4 py-2">${entry.totalExpense}</td>
+                        <td class="border px-4 py-2">${entry.name}</td>
+                        <td class="border px-4 py-2">${entry.totalExpense.toFixed(2)}</td>
                     </tr>
                 `).join('')}
             </tbody>
@@ -117,7 +117,7 @@ const showLeaderboard = async () => {
     const token = localStorage.getItem('token');
     try {
         const response = await axios.get('/premium/leaderboard', {
-            headers: { Authorization: token },
+            headers: { 'Authorization': token },
         });
         if (response.data.success) {
             renderLeaderboard(response.data.leaderboard);
