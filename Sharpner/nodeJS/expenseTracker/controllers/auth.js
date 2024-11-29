@@ -57,7 +57,7 @@ exports.postForgotPass = async (req, res) => {
     try {
         const defaultClient = Brevo.ApiClient.instance;
         const apiKey = defaultClient.authentications["api-key"];
-        apiKey.apiKey = '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';
+        apiKey.apiKey = process.env.BREVO_API;
         const tranEmailApi = new Brevo.TransactionalEmailsApi();
         const sendSmtpEmail = {
             to: [{ email }],
