@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
+const ForgotPasswordRequest = require("./forgotPasswordRequest");
 
 const User = sequelize.define("User", {
     id: {
@@ -28,5 +29,8 @@ const User = sequelize.define("User", {
         allowNull: false
     }
 });
+
+User.hasMany(ForgotPasswordRequest, { foreignKey: 'userId', });
+ForgotPasswordRequest.belongsTo(User, { foreignKey: 'userId' });
 
 module.exports = User;
