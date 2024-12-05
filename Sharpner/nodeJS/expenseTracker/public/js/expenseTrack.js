@@ -129,6 +129,15 @@ const showLeaderboard = async () => {
     }
 };
 
+const goToDownload = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("You are not logged in. Please log in to access this page.");
+        return;
+    }
+    window.location.href = 'http://localhost:5000/expenses/downloadExp.html';
+};
+
 const premiumStatusText = document.createElement("div");
 premiumStatusText.classList.add(
     "text-4xl",
@@ -142,9 +151,13 @@ premiumStatusText.classList.add(
 );
 premiumStatusText.innerHTML = `
     You are a premium user!
+    <div class="py-2 px-4">
     <button class="bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white py-2 px-4 rounded-lg hover:from-emerald-600 hover:via-teal-600 hover:to-blue-600 focus:outline-none" onclick="showLeaderboard()">
         Show Leaderboard
-    </button>`;
+    </button>
+    <button class="bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white py-2 px-4 rounded-lg hover:from-emerald-600 hover:via-teal-600 hover:to-blue-600 focus:outline-none" onclick="goToDownload()">
+        Download Expense
+    </button></div>`;
 
 const replaceWithPremiumText = () => {
     premiumButton.replaceWith(premiumStatusText);
