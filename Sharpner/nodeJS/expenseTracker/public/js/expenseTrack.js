@@ -77,7 +77,7 @@ expenseForm.addEventListener("submit", (e) => {
     const amount = amountInput.value.trim();
     const description = descriptionInput.value.trim();
     const category = categoryInput.value;
-
+    console.log("Amount-form submit", amount)
     if (!amount || !description || !category) {
         alert("Please fill in all fields!");
         return;
@@ -105,7 +105,7 @@ const renderLeaderboard = (leaderboard) => {
                     <tr>
                         <td class="border px-4 py-2">${index + 1}</td>
                         <td class="border px-4 py-2">${entry.name}</td>
-                        <td class="border px-4 py-2">${entry.totalExpense.toFixed(2)}</td>
+                        <td class="border px-4 py-2">${entry.totalExpense}</td>
                     </tr>
                 `).join('')}
             </tbody>

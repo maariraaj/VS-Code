@@ -10,7 +10,7 @@ const Expense = sequelize.define("Expense", {
         primaryKey: true,
     },
     amount: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER,
         allowNull: false,
     },
     description: {
