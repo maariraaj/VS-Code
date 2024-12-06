@@ -34,19 +34,8 @@ exports.postAddExpense = async (req, res) => {
     }
 };
 
-// exports.getExpenses = async (req, res) => {
-//     try {
-//         const expenses = await Expense.findAll({ where: { userId: req.user.id } });
-//         res.status(200).json(expenses);
-//     } catch (error) {
-//         console.error('Error fetching expenses:', error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// }
-
 exports.getExpenses = async (req, res) => {
     const { page = 1, limit = 10 } = req.query;
-
     try {
         const offset = (page - 1) * limit;
         const { count, rows: expenses } = await Expense.findAndCountAll({
@@ -54,19 +43,18 @@ exports.getExpenses = async (req, res) => {
             offset,
             limit: parseInt(limit),
         });
-
         res.status(200).json({
             totalExpenses: count,
             totalPages: Math.ceil(count / limit),
             currentPage: parseInt(page),
-            expenses,
+            limit,
+            expenses
         });
     } catch (error) {
         console.error('Error fetching expenses:', error);
         res.status(500).send('Internal Server Error');
     }
 };
-
 
 exports.deleteExpense = async (req, res) => {
     const { id } = req.params;

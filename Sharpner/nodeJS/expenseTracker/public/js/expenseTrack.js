@@ -6,21 +6,6 @@ const expensesTable = document.getElementById("expenses-table");
 const expensesTableBody = document.querySelector("#expenses-table tbody");
 const premiumButton = document.getElementById("rzp-button1");
 
-// const fetchExpenses = async () => {
-//     const token = localStorage.getItem('token');
-//     if (!token) {
-//         window.location.href = '/auth/logIn.html';
-//     }
-//     try {
-//         const response = await axios.get("/expenses/expenses", {
-//             headers: { 'Authorization': token }
-//         });
-//         renderExpenses(response.data);
-//     } catch (error) {
-//         console.error("Error fetching expenses:", error);
-//     }
-// };
-
 const fetchExpenses = async (page = 1) => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -31,20 +16,20 @@ const fetchExpenses = async (page = 1) => {
             headers: { Authorization: token },
         });
 
-        const { expenses, totalPages, currentPage } = response.data;
-        renderExpenses(expenses);
+        const { expenses, totalPages, currentPage, limit } = response.data;
+        renderExpenses(expenses, currentPage, limit);
         renderPagination(totalPages, currentPage);
     } catch (error) {
         console.error("Error fetching expenses:", error);
     }
 };
 
-
-const renderExpenses = (expenses) => {
+const renderExpenses = (expenses, currentPage, limit) => {
     expensesTableBody.innerHTML = "";
-    expenses.forEach((expense) => {
+    expenses.forEach((expense, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
+        <td class="border px-4 py-2">${(limit * (currentPage - 1)) + index + 1}</td>
         <td class="border px-4 py-2">${expense.amount}</td>
         <td class="border px-4 py-2">${expense.description}</td>
         <td class="border px-4 py-2">${expense.category}</td>
@@ -62,9 +47,7 @@ const renderPagination = (totalPages, currentPage) => {
     const paginationContainer = document.getElementById('pagination-container') || document.createElement('div');
     paginationContainer.id = 'pagination-container';
     paginationContainer.classList.add('mt-4', 'text-center');
-
     paginationContainer.innerHTML = '';
-
     for (let i = 1; i <= totalPages; i++) {
         const button = document.createElement('button');
         button.textContent = i;
@@ -72,11 +55,9 @@ const renderPagination = (totalPages, currentPage) => {
             'px-4', 'py-2', 'm-1', 'border', 'rounded',
             i === currentPage ? 'bg-cyan-600' : 'bg-white'
         );
-
         button.onclick = () => fetchExpenses(i);
         paginationContainer.appendChild(button);
     }
-
     document.querySelector('main').appendChild(paginationContainer);
 };
 
