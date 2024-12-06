@@ -27,7 +27,7 @@ exports.postSignUp = async (req, res) => {
 };
 
 function generateAccessToken(id, name) {
-    return jwt.sign({ userId: id, name }, 'a2b8d9f3e4c5d6a1b7e2c3d4f5e6a7b8c9d0f1e6e7f8a9b0c1d2e3f');
+    return jwt.sign({ userId: id, name }, process.env.JWT_KEY);
 }
 exports.postLogIn = async (req, res) => {
     const { email, password } = req.body;

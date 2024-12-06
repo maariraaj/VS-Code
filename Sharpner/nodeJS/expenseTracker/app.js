@@ -1,15 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const fs = require('fs');
 const sequelize = require("./util/database");
 const userRoutes = require("./routes/userRoutes");
 const expenseRoutes = require("./routes/expenseRoutes");
 const purchaseRoutes = require("./routes/purchase");
 const premiumRoutes = require("./routes/premium");
+const helmet = require('helmet');
+const compression = require('compression');
+const morgan = require('morgan');
+require('dotenv').config();
 
 const app = express();
-
-const PORT = 5000;
 
 app.use(bodyParser.json());
 
@@ -25,6 +28,12 @@ app.use("/expenses", expenseRoutes);
 app.use("/purchase", purchaseRoutes);
 app.use("/premium", premiumRoutes);
 
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+
+app.use(helmet());
+app.use(compression());
+app.use(morgan('combined', { stream: accessLogStream }));
+
 sequelize
     .authenticate()
     .then(() => {
@@ -32,8 +41,8 @@ sequelize
         sequelize.sync({ force: false })
             .then(() => {
                 console.log("Database synced successfully");
-                app.listen(PORT, () => {
-                    console.log(`Server running on http://localhost:${PORT}`);
+                app.listen(process.env.PORT, () => {
+                    console.log(`Server running on http://localhost:${process.env.PORT}`);
                 });
             });
     })
