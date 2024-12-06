@@ -6,20 +6,39 @@ const expensesTable = document.getElementById("expenses-table");
 const expensesTableBody = document.querySelector("#expenses-table tbody");
 const premiumButton = document.getElementById("rzp-button1");
 
-const fetchExpenses = async () => {
+// const fetchExpenses = async () => {
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//         window.location.href = '/auth/logIn.html';
+//     }
+//     try {
+//         const response = await axios.get("/expenses/expenses", {
+//             headers: { 'Authorization': token }
+//         });
+//         renderExpenses(response.data);
+//     } catch (error) {
+//         console.error("Error fetching expenses:", error);
+//     }
+// };
+
+const fetchExpenses = async (page = 1) => {
     const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = '/auth/logIn.html';
     }
     try {
-        const response = await axios.get("/expenses/expenses", {
-            headers: { 'Authorization': token }
+        const response = await axios.get(`/expenses/expenses?page=${page}&limit=10`, {
+            headers: { Authorization: token },
         });
-        renderExpenses(response.data);
+
+        const { expenses, totalPages, currentPage } = response.data;
+        renderExpenses(expenses);
+        renderPagination(totalPages, currentPage);
     } catch (error) {
         console.error("Error fetching expenses:", error);
     }
 };
+
 
 const renderExpenses = (expenses) => {
     expensesTableBody.innerHTML = "";
@@ -37,6 +56,28 @@ const renderExpenses = (expenses) => {
     `;
         expensesTableBody.appendChild(row);
     });
+};
+
+const renderPagination = (totalPages, currentPage) => {
+    const paginationContainer = document.getElementById('pagination-container') || document.createElement('div');
+    paginationContainer.id = 'pagination-container';
+    paginationContainer.classList.add('mt-4', 'text-center');
+
+    paginationContainer.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.classList.add(
+            'px-4', 'py-2', 'm-1', 'border', 'rounded',
+            i === currentPage ? 'bg-cyan-600' : 'bg-white'
+        );
+
+        button.onclick = () => fetchExpenses(i);
+        paginationContainer.appendChild(button);
+    }
+
+    document.querySelector('main').appendChild(paginationContainer);
 };
 
 const addExpense = async (amount, description, category) => {
@@ -77,7 +118,6 @@ expenseForm.addEventListener("submit", (e) => {
     const amount = amountInput.value.trim();
     const description = descriptionInput.value.trim();
     const category = categoryInput.value;
-    console.log("Amount-form submit", amount)
     if (!amount || !description || !category) {
         alert("Please fill in all fields!");
         return;
