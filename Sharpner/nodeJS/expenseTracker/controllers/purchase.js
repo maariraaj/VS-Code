@@ -8,7 +8,6 @@ exports.purchasePremium = (req, res) => {
         key_secret: process.env.RZP_KEY_SECRET
     });
     const amount = 2500;
-    console.log("first", process.env.RZP_KEY_ID)
     const razorpayPromise = rzp.orders.create({ amount, currency: 'INR' });
     const orderCreationPromise = razorpayPromise.then(order =>
         req.user.createOrder({ orderId: order.id, status: 'PENDING' })
