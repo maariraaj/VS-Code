@@ -5,18 +5,38 @@ const categoryInput = document.querySelector("#category");
 const expensesTable = document.getElementById("expenses-table");
 const expensesTableBody = document.querySelector("#expenses-table tbody");
 const premiumButton = document.getElementById("rzp-button1");
+const rowsPerPageInput = document.getElementById("rowsPerPage");
+
+function getRowsPerPage() {
+    const rows = localStorage.getItem("rowsPerPage");
+    return rows ? parseInt(rows, 10) : 10;
+}
+
+function setRowsPerPage(rows) {
+    localStorage.setItem("rowsPerPage", rows);
+}
+
+rowsPerPageInput.addEventListener("input", (e) => {
+    const rows = parseInt(e.target.value, 10);
+    if (rows > 0) {
+        setRowsPerPage(rows);
+        fetchExpenses();
+    }
+});
 
 const fetchExpenses = async (page = 1) => {
     const token = localStorage.getItem('token');
+    const rows = localStorage.getItem("rowsPerPage");
+    const limit = rows ? parseInt(rows, 10) : 10;
     if (!token) {
         window.location.href = '/auth/logIn.html';
     }
     try {
-        const response = await axios.get(`/expenses/expenses?page=${page}&limit=10`, {
-            headers: { Authorization: token },
+        const response = await axios.get(`/expenses/expenses?page=${page}&limit=${limit}`, {
+            headers: { 'Authorization': token },
         });
 
-        const { expenses, totalPages, currentPage, limit } = response.data;
+        const { expenses, totalPages, currentPage } = response.data;
         renderExpenses(expenses, currentPage, limit);
         renderPagination(totalPages, currentPage);
     } catch (error) {
@@ -237,6 +257,7 @@ premiumButton.onclick = async (e) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+    rowsPerPageInput.value = getRowsPerPage();
     fetchExpenses();
     checkPremiumStatus();
 });

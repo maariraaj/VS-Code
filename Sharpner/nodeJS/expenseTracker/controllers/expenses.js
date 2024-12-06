@@ -35,7 +35,7 @@ exports.postAddExpense = async (req, res) => {
 };
 
 exports.getExpenses = async (req, res) => {
-    const { page = 1, limit = 10 } = req.query;
+    const { page, limit } = req.query;
     try {
         const offset = (page - 1) * limit;
         const { count, rows: expenses } = await Expense.findAndCountAll({

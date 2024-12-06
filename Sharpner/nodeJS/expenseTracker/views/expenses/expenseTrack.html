@@ -81,7 +81,21 @@
         </button>
       </div>
       <div class="mt-8 max-w-4xl mx-auto">
-        <h2 class="text-xl font-bold mb-4">Expenses</h2>
+        <div class="flex flex-wrap justify-between items-center mb-4">
+          <h2 class="text-xl font-bold mb-2 sm:mb-0">Expenses</h2>
+          <div class="flex items-center">
+            <label for="rowsPerPage" class="mr-2 text-gray-700"
+              >Rows per page:</label
+            >
+            <input
+              type="number"
+              id="rowsPerPage"
+              class="border border-gray-300 rounded px-2 py-1 w-20"
+              placeholder="Enter rows"
+              min="1"
+            />
+          </div>
+        </div>
         <table class="w-full bg-white shadow-md rounded-lg" id="expenses-table">
           <thead>
             <tr class="bg-cyan-600 text-white">
