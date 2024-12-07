@@ -15,3 +15,10 @@ form.addEventListener("submit", async (e) => {
         alert("An error occurred while sending the reset email.");
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        window.location.href = '/expenses/expenseTrack.html';
+    }
+});

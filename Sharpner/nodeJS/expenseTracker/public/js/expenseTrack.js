@@ -6,6 +6,7 @@ const expensesTable = document.getElementById("expenses-table");
 const expensesTableBody = document.querySelector("#expenses-table tbody");
 const premiumButton = document.getElementById("rzp-button1");
 const rowsPerPageInput = document.getElementById("rowsPerPage");
+const logoutButton = document.getElementById('logout-btn');
 
 function getRowsPerPage() {
     const rows = localStorage.getItem("rowsPerPage");
@@ -25,12 +26,10 @@ rowsPerPageInput.addEventListener("input", (e) => {
 });
 
 const fetchExpenses = async (page = 1) => {
-    const token = localStorage.getItem('token');
     const rows = localStorage.getItem("rowsPerPage");
     const limit = rows ? parseInt(rows, 10) : 10;
-    if (!token) {
-        window.location.href = '/auth/logIn.html';
-    }
+    const token = localStorage.getItem('token');
+
     try {
         const response = await axios.get(`/expenses/expenses?page=${page}&limit=${limit}`, {
             headers: { 'Authorization': token },
@@ -256,7 +255,16 @@ premiumButton.onclick = async (e) => {
     razorpay.open();
 };
 
+logoutButton.onclick = () => {
+    localStorage.clear();
+    window.location.href = '/auth/logIn.html';
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return window.location.href = '/auth/logIn.html';
+    }
     rowsPerPageInput.value = getRowsPerPage();
     fetchExpenses();
     checkPremiumStatus();

@@ -71,3 +71,10 @@ downloadHistoryButton.onclick = async (e) => {
         console.error("Error fetching download history:", error);
     }
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = '/auth/logIn.html';
+    }
+});
