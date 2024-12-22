@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("views"));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join("views", "auth", "signup.html"));
+    res.sendFile(path.join(__dirname, "views", "auth", "signup.html"));
 });
 
 app.use("/user", userRoutes);
