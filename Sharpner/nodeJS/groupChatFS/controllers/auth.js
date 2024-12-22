@@ -12,9 +12,10 @@ exports.postSignUp = async (req, res) => {
         return res.status(400).json({ error: "All fields are required" });
     }
     try {
-        const existingUser = await User.findOne({ where: { email } });
+        const existingEmail = await User.findOne({ where: { email } });
+        const existingMobile = await User.findOne({ where: { mobile } });
 
-        if (existingUser) {
+        if (existingEmail || existingMobile) {
             return res.status(409).json({ error: "User already exists" });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
