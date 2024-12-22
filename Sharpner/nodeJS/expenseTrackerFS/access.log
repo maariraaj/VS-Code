@@ -8,3 +8,4 @@
 ::1 - - [12/Dec/2024:12:18:20 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:5000/expenses/expenseTrack.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 ::1 - - [14/Dec/2024:15:55:00 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:5000/expenses/expenseTrack.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 ::1 - - [19/Dec/2024:15:56:41 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:5000/expenses/expenseTrack.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+::1 - - [22/Dec/2024:07:10:20 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:5000/expenses/expenseTrack.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
