@@ -15,8 +15,11 @@ exports.postSignUp = async (req, res) => {
         const existingEmail = await User.findOne({ where: { email } });
         const existingMobile = await User.findOne({ where: { mobile } });
 
-        if (existingEmail || existingMobile) {
-            return res.status(409).json({ error: "User already exists" });
+        if (existingEmail) {
+            return res.status(409).json({ error: "Email ID already exists." });
+        }
+        if (existingMobile) {
+            return res.status(409).json({ error: "Mobile number already exists." });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await User.create({ name, email, mobile, password: hashedPassword });
@@ -24,6 +27,6 @@ exports.postSignUp = async (req, res) => {
         res.status(201).json({ message: "User created successfully", user: newUser });
     } catch (error) {
         console.error("Error creating user:", error);
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ error: "An error occurred. Please try again." });
     }
 };

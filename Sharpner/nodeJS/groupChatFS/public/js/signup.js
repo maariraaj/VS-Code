@@ -12,18 +12,63 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
             if (response.status === 201) {
-                alert("Account created successfully");
+                Toastify({
+                    text: response.data.message,
+                    style: {
+                        background: "green",
+                    },
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    duration: 3000,
+                }).showToast();
                 form.reset();
             } else {
-                alert('Signup failed. Please try again.')
+                Toastify({
+                    text: "Signup failed. Please try again.",
+                    style: {
+                        background: "green",
+                    },
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    duration: 3000,
+                }).showToast();
             }
         } catch (error) {
             if (error.response && error.response.status === 409) {
-                alert("User already exists, Please Login!");
+                Toastify({
+                    text: error.response.data.error,
+                    style: {
+                        background: "red",
+                    },
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    duration: 3000,
+                }).showToast();
             } else if (error.response && error.response.status === 400) {
-                alert(error.response.data.error);
+                Toastify({
+                    text: error.response.data.error,
+                    style: {
+                        background: "red",
+                    },
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    duration: 3000,
+                }).showToast();
             } else {
-                alert("An error occurred. Please try again.");
+                Toastify({
+                    text: error.response.data.error,
+                    style: {
+                        background: "red",
+                    },
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    duration: 3000,
+                }).showToast();
             }
         }
     });
