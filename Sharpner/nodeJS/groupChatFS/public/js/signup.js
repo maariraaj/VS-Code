@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: 3000,
                 }).showToast();
                 form.reset();
+                window.location.href = '/user/login';
             } else {
                 Toastify({
                     text: "Signup failed. Please try again.",
