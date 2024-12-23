@@ -30,3 +30,7 @@ exports.postSignUp = async (req, res) => {
         res.status(500).json({ error: "An error occurred. Please try again." });
     }
 };
+
+exports.getLogin = (req, res) => {
+    res.sendFile(path.join(__dirname, '../views/auth/login.html'));
+};
