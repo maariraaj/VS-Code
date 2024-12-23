@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt");
 const path = require('path');
 const User = require("../models/user");
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 exports.getSignup = (req, res) => {
     res.sendFile(path.join(__dirname, '../views/auth/signup.html'));
@@ -33,4 +35,29 @@ exports.postSignUp = async (req, res) => {
 
 exports.getLogin = (req, res) => {
     res.sendFile(path.join(__dirname, '../views/auth/login.html'));
+};
+
+const generateAccessToken = (id, name) => {
+    return jwt.sign({ userId: id, name }, process.env.JWT_KEY);
+};
+
+exports.postLogin = async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res.status(400).json({ error: "Email and password are required." });
+    }
+    try {
+        const user = await User.findOne({ where: { email } });
+        if (!user) {
+            return res.status(404).json({ error: "User not found." });
+        }
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) {
+            return res.status(401).json({ error: "Incorrect password. User not authorized to login." });
+        }
+        return res.status(200).json({ message: "User login successful.", user: { id: user.id, name: user.name, token: generateAccessToken(user.id, user.name) } });
+    } catch (error) {
+        console.log("Error during login:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
 };
