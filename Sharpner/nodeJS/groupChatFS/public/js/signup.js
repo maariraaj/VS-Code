@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: 3000,
                 }).showToast();
                 form.reset();
-                window.location.href = '/user/login';
+                setTimeout(() => {
+                    window.location.href = '/user/login';
+                }, 2000);
             } else {
                 Toastify({
                     text: "Signup failed. Please try again.",

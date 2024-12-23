@@ -25,11 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     close: true,
                     gravity: "top",
                     position: "right",
-                    duration: 3000,
+                    duration: 2000,
                 }).showToast();
                 localStorage.setItem('token', response.data.user.token);
                 form.reset();
-                window.location.href = '/';
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 2000);
             }
         } catch (error) {
             if (error.response && error.response.status === 401 || error.response.status === 404 || error.response.status === 400) {
