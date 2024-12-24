@@ -3,6 +3,7 @@ const sequelize = require("./util/database");
 const bodyParser = require('body-parser');
 const path = require('path');
 const userRoutes = require("./routes/user");
+const chatRoutes = require("./routes/chat");
 require('dotenv').config();
 
 const app = express();
@@ -13,10 +14,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("views"));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "chat", "chat.html"));
+    res.redirect('/chats');
 });
 
 app.use("/user", userRoutes);
+app.use("/chats", chatRoutes);
 
 sequelize
     .authenticate()

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: 2000,
                 }).showToast();
                 localStorage.setItem('token', response.data.user.token);
-                localStorage.setItem('username', response.data.user.name);
+                localStorage.setItem('userId', response.data.user.id);
                 form.reset();
                 setTimeout(() => {
                     window.location.href = '/';
