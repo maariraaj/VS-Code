@@ -39,4 +39,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     loadChats();
+    setInterval(loadChats, 1000);
 });
