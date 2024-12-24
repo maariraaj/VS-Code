@@ -8,7 +8,7 @@ exports.getChat = (req, res) => {
 
 exports.getChats = async (req, res) => {
   try {
-    const chats = await Chat.findAll({ include: User, order: [['createdAt', 'ASC']] });
+    const chats = await Chat.findAll({ include: User, order: [['createdAt', 'DESC']] });
     res.json(chats);
   } catch (error) {
     console.error('Error fetching chats:', error);

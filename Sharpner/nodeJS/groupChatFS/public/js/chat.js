@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const chatForm = document.getElementById("chatForm");
-    const chatsUl = document.getElementById("chats");
+    const chatsDiv = document.getElementById("chats");
 
     const token = localStorage.getItem('token');
     if (!token) {
@@ -10,11 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadChats = async () => {
         try {
             const response = await axios.get("/chats/chat");
-            chatsUl.innerHTML = "";
+            chatsDiv.innerHTML = "";
             response.data.forEach(chat => {
-                const li = document.createElement("li");
-                li.textContent = `${chat.User.name}: ${chat.message}`;
-                chatsUl.appendChild(li);
+                const chatBox = document.createElement("div");
+                chatBox.className = "p-4 bg-emerald-100 rounded-lg shadow-md border border-emerald-300 break-words";
+                chatBox.innerHTML = `
+                <span class="text-emerald-800 font-semibold">${chat.User.name}:</span>
+                <span class="ml-2">${chat.message}</span>
+            `;
+                chatsDiv.appendChild(chatBox);
             });
         } catch (error) {
             console.error("Error loading chats:", error);
