@@ -8,11 +8,13 @@ const modalCloseBtn = document.getElementById("modalCloseButton");
 const createGroupFrom = document.getElementById('createGroupForm');
 const user_list = document.getElementById('userList');
 const logoutBtn = document.getElementById("logoutButton");
+const groupHeading = document.getElementById("groupHead");
+const groupChatDesc = document.getElementById("groupDesc");
 const token = localStorage.getItem("token");
 
 const LOCAL_STORAGE_KEY = "groupChatMessages";
 const MAX_LOCAL_STORAGE_CHATS = 10;
-let group_id = 1;
+let group_id = 1, group_name = "Common Group", group_desc = 'This is the common group.';
 let timerId = null;
 
 const loadChatsFromLocalStorage = () => {
@@ -20,7 +22,7 @@ const loadChatsFromLocalStorage = () => {
     chatsDiv.innerHTML = "";
     storedChats.forEach(chat => {
         const chatBox = document.createElement("div");
-        chatBox.className = "p-4 bg-emerald-100 rounded-lg shadow-md border border-emerald-300 break-words";
+        chatBox.className = "p-4 bg-emerald-200 rounded-lg shadow-md border border-emerald-600 break-words";
         chatBox.innerHTML = `
                 <span class="text-emerald-800 font-semibold">${chat.user}:</span>
                 <span class="ml-2">${chat.message}</span>
@@ -178,7 +180,7 @@ async function showGroup() {
             class="p-3 border border-emerald-500 rounded-lg cursor-pointer hover:bg-emerald-100 flex items-center justify-between"
             id="0"
         >
-            <div class="flex items-center space-x-3" onclick="showGroupChats(1)">
+            <div class="flex items-center space-x-3" onclick="showGroupChats(1, 'Common Group','This is the common group.')">
             <strong class="text-gray-700">Common-group</strong>
             </div>
             <small class="text-gray-500">All Members</small>
@@ -187,7 +189,7 @@ async function showGroup() {
             groupList.innerHTML += `
             <div
             class="p-3 border border-emerald-500 rounded-lg cursor-pointer hover:bg-emerald-100 flex items-center justify-between"
-            id="${group.id}" onclick="showGroupChats(${group.id})"
+            id="${group.id}" onclick="showGroupChats('${group.id}', '${group.name}', '${group.description}')"
             >
                 <div class="flex items-center space-x-3">
                     <strong class="text-gray-700">${group.name}</strong>
@@ -200,15 +202,18 @@ async function showGroup() {
     }
 }
 
-async function showGroupChats(groupId) {
+async function showGroupChats(groupId, groupName, groupDesc) {
     group_id = groupId;
+    group_name = groupName;
+    group_desc = groupDesc;
     try {
         const APIresponse = await axios.get(`chats/get-group-messages?groupId=${groupId}`, {
             headers: { "Authorization": token }
         });
         const apiChats = APIresponse.data.chats
         formHiddenInput.setAttribute("id", groupId);
-
+        groupHeading.textContent = group_name;
+        groupChatDesc.textContent = group_desc;
         const updatedChats = apiChats.slice(0, MAX_LOCAL_STORAGE_CHATS);
 
         saveChatsToLocalStorage(updatedChats);
@@ -234,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     timerId = setInterval(() => {
-        showGroupChats(group_id);
+        showGroupChats(group_id, group_name, group_desc);
         showGroup();
     }, 1000);
 });
