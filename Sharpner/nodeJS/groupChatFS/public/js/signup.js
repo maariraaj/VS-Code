@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        window.location.href = '/';
+    }
     const form = document.querySelector("form");
     form.addEventListener("submit", async (event) => {
         event.preventDefault();

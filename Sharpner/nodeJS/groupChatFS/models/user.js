@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 const Chat = require('./chat');
+const Groups = require('./group');
+const GroupMember = require('./groupMember');
 
 const User = sequelize.define("User", {
     id: {
@@ -34,5 +36,9 @@ const User = sequelize.define("User", {
 
 User.hasMany(Chat, { foreignKey: 'userId' });
 Chat.belongsTo(User, { foreignKey: 'userId' });
+
+User.belongsToMany(Groups, { through: GroupMember });
+Groups.belongsToMany(User, { through: GroupMember });
+Groups.belongsTo(User, { foreignKey: 'AdminId', constraints: true, onDelete: 'CASCADE' });
 
 module.exports = User;
