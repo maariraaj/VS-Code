@@ -11,11 +11,40 @@
     />
   </head>
   <body class="bg-emerald-300 min-h-screen flex flex-col">
-    <nav class="sticky top-0 bg-slate-950 text-white p-4 z-10">
+    <!-- <nav class="sticky top-0 bg-slate-950 text-white p-4 z-10">
       <div class="container mx-auto">
         <h1 class="text-2xl font-bold font-sans hover:font-serif">
           Shadow Chat
         </h1>
+      </div>
+    </nav> -->
+    <nav
+      class="sticky top-0 bg-slate-950 text-white p-4 z-10 flex justify-between items-center"
+    >
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold font-sans hover:font-serif">
+          Shadow Chat
+        </h1>
+        <button
+          class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-900 focus:outline-none"
+          id="logoutButton"
+          title="Logout"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H5a3 3 0 01-3-3V7a3 3 0 013-3h5a3 3 0 013 3v1"
+            />
+          </svg>
+        </button>
       </div>
     </nav>
 

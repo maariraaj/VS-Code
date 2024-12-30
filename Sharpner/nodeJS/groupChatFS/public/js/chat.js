@@ -7,12 +7,13 @@ const createGroupBtn = document.getElementById("createGroupButton");
 const modalCloseBtn = document.getElementById("modalCloseButton");
 const createGroupFrom = document.getElementById('createGroupForm');
 const user_list = document.getElementById('userList');
+const logoutBtn = document.getElementById("logoutButton");
 const token = localStorage.getItem("token");
 
 const LOCAL_STORAGE_KEY = "groupChatMessages";
 const MAX_LOCAL_STORAGE_CHATS = 10;
-
 let group_id = 1;
+let timerId = null;
 
 const loadChatsFromLocalStorage = () => {
     const storedChats = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
@@ -129,13 +130,31 @@ modalSubmitBtn.addEventListener("click", async (e) => {
             await axios.post('/chats/create-group', data,
                 { headers: { "Authorization": token } }
             );
-            alert("Group successfully created")
+            Toastify({
+                text: "Group successfully created",
+                style: {
+                    background: "green",
+                },
+                close: true,
+                gravity: "top",
+                position: "right",
+                duration: 2000,
+            }).showToast();
 
             createGroupFrom.reset();
             groupModal.classList.add("hidden");
             showGroup();
         } else {
-            alert('fill all details ')
+            Toastify({
+                text: 'Fill all details',
+                style: {
+                    background: "red",
+                },
+                close: true,
+                gravity: "top",
+                position: "right",
+                duration: 3000,
+            }).showToast();
         }
 
     } catch (error) {
@@ -200,14 +219,22 @@ async function showGroupChats(groupId) {
     }
 }
 
+logoutBtn.addEventListener("click", () => {
+    clearInterval(timerId);
+    localStorage.removeItem("groupChatMessages");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("username");
+    window.location.href = "/user/login";
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     if (!token) {
         window.location.href = "/user/login";
     }
 
-    setInterval(() => {
+    timerId = setInterval(() => {
         showGroupChats(group_id);
         showGroup();
-        console.log("FETCHED", group_id)
     }, 1000);
 });
