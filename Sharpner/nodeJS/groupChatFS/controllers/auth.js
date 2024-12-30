@@ -2,7 +2,6 @@ const bcrypt = require("bcrypt");
 const path = require('path');
 const User = require("../models/user");
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 exports.getSignup = (req, res) => {
     res.sendFile(path.join(__dirname, '../views/auth/signup.html'));

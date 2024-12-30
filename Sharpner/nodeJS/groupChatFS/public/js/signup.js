@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Toastify({
                     text: "Signup failed. Please try again.",
                     style: {
-                        background: "green",
+                        background: "red",
                     },
                     close: true,
                     gravity: "top",
