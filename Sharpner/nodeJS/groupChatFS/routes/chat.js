@@ -15,4 +15,8 @@ router.get('/get-group-messages', authController.authorization, chatController.g
 
 router.get("/get-users", authController.authorization, chatController.getAllUser);
 
+router.get("/get-users-group", authController.authorization, chatController.getUsersInGroups);
+
+router.post("/update-group", authController.authorization, chatController.postUpdateGroup);
+
 module.exports = router;

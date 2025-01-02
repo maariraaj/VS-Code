@@ -58,10 +58,35 @@
       <section
         class="bg-white shadow-md rounded-lg p-8 flex flex-col w-full max-w-2xl"
       >
-        <h2
-          class="text-2xl font-bold text-center text-emerald-700 mb-4"
-          id="groupHead"
-        ></h2>
+        <div class="flex justify-between items-center mb-4">
+          <h2
+            class="text-2xl font-bold text-center text-emerald-700"
+            id="groupHead"
+          ></h2>
+          <button
+            type="button"
+            class="ml-4 p-2 bg-emerald-100 text-emerald-700 rounded-full hover:bg-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-700"
+            id="editGroup"
+            aria-label="Edit Group"
+            hidden
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.232 5.232l3.536 3.536m-2.036-2.036a2.5 2.5 0 113.536 3.536L9 21H5v-4L16.732 6.732z"
+              />
+            </svg>
+          </button>
+        </div>
+
         <p
           id="groupDesc"
           class="bg-emerald-50 text-emerald-700 border border-emerald-500 rounded-2xl p-4 mb-6"

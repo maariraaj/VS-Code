@@ -1,6 +1,8 @@
 const path = require('path');
 const Chat = require('../models/chat');
 const User = require('../models/user');
+const GroupMember = require("../models/groupMember");
+const Group = require("../models/group");
 const { Op } = require("sequelize");
 
 exports.getChat = (req, res) => {
@@ -77,7 +79,7 @@ exports.getAllUser = async (req, res) => {
   try {
     const user = req.user;
     const users = await User.findAll({
-      attributes: ['id', 'name'],
+      attributes: ['id', 'name', 'email', 'mobile'],
       where: {
         id: {
           [Op.not]: user.id
@@ -105,7 +107,7 @@ exports.getGroupChatHistory = async (req, res) => {
     const chatHistories = await Chat.findAll({
       include: [
         {
-          model: User,
+          model: User
         }
       ],
       order: [['date_time', 'DESC']],
@@ -129,3 +131,71 @@ exports.getGroupChatHistory = async (req, res) => {
     return res.status(500).json({ message: 'Internal Server error!' })
   }
 }
+
+exports.getUsersInGroups = async (req, res) => {
+  const { groupId } = req.query;
+
+  try {
+    const groupMembers = await GroupMember.findAll({
+      where: { GroupId: groupId },
+      attributes: ['UserId'],
+    });
+
+    const userIds = groupMembers.map(member => member.UserId);
+
+    const users = await User.findAll({
+      where: {
+        id: userIds,
+      },
+      attributes: ['id', 'name', 'email', 'mobile'],
+    });
+
+    return res.status(200).json({ users });
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    return res.status(500).json({ message: 'An error occurred.', error });
+  }
+};
+
+exports.postUpdateGroup = async (req, res) => {
+  const { groupId } = req.query;
+  const { name, membersNo, description, membersIds, adminId } = req.body;
+
+  try {
+    const group = await Group.findByPk(groupId);
+
+    if (!group) {
+      return res.status(404).json({ message: 'Group not found.' });
+    }
+
+    await group.update({
+      name: name,
+      membersNo: membersNo,
+      description: description,
+      AdminId: adminId
+    });
+    membersIds.push(adminId);
+
+    if (membersIds && Array.isArray(membersIds)) {
+      const validUsers = await User.findAll({
+        where: { id: membersIds },
+      });
+
+      const validUserIds = validUsers.map(user => user.id);
+
+      await GroupMember.destroy({ where: { GroupId: groupId } });
+
+      const groupMemberEntries = validUserIds.map(userId => ({
+        UserId: userId,
+        GroupId: groupId,
+      }));
+
+      await GroupMember.bulkCreate(groupMemberEntries);
+    }
+
+    return res.status(200).json({ message: 'Group updated successfully.', group, });
+  } catch (error) {
+    console.error('Error updating group:', error);
+    return res.status(500).json({ message: 'An error occurred while updating the group.', error, });
+  }
+};
