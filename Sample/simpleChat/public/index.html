@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Chat App</title>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        margin: 0;
+      }
+      #group-list {
+        width: 200px;
+        padding: 10px;
+        border-right: 1px solid #ccc;
+        overflow-y: auto;
+      }
+      #messages {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border-left: 1px solid #ccc;
+        overflow-y: auto;
+      }
+      #form {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+      }
+      #input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      #send {
+        margin-left: 10px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      #group-selection {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      #group-name {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      #create-group {
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="group-list">
+      <div id="group-selection">
+        <input id="group-name" placeholder="Enter group name" />
+        <button id="create-group">Create Group</button>
+      </div>
+      <h3>Groups:</h3>
+      <ul id="groups"></ul>
+    </div>
+    <div id="messages">
+      <ul id="message-list"></ul>
+      <form id="form">
+        <input id="input" autocomplete="off" placeholder="Type a message..." />
+        <button id="send" type="submit">Send</button>
+      </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
