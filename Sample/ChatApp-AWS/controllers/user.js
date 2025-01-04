@@ -138,7 +138,7 @@ exports.getAlluser = async (request, response, next) => {
                 }
             }
         });
-        return response.status(200).json({ users, message: "All users succesfully fetched" })
+        return response.status(200).json({ users, message: "All users successfully fetched" })
 
     } catch (error) {
         console.log(error);
@@ -193,7 +193,7 @@ exports.updateGroup = async (request, response, next) => {
 exports.getAllgroups = async (request, response, next) => {
     try {
         const groups = await Group.findAll();
-        return response.status(200).json({ groups, message: "All groups succesfully fetched" })
+        return response.status(200).json({ groups, message: "All groups successfully fetched" })
 
     } catch (error) {
         console.log(error);
@@ -239,7 +239,7 @@ exports.getGroupbyId = async (request, response, next) => {
     try {
         const { groupId } = request.query;
         const group = await Group.findOne({ where: { id: Number(groupId) } });
-        response.status(200).json({ group, message: "Group details succesfully fetched" })
+        response.status(200).json({ group, message: "Group details successfully fetched" })
     } catch (error) {
         console.log(error);
         return response.status(500).json({ message: 'Internal Server error!' })
@@ -250,7 +250,7 @@ exports.getMygroups = async (request, response, next) => {
     try {
         const user = request.user;
         const groups = await user.getGroups();
-        return response.status(200).json({ groups, message: "All groups succesfully fetched" })
+        return response.status(200).json({ groups, message: "All groups successfully fetched" })
 
     } catch (error) {
         console.log(error);
@@ -270,7 +270,7 @@ exports.getGroupMembersbyId = async (request, response, next) => {
             }
         })
 
-        response.status(200).json({ users, message: "Group members name succesfully fetched" })
+        response.status(200).json({ users, message: "Group members name successfully fetched" })
     } catch (error) {
         console.log(error);
         return response.status(500).json({ message: 'Internal Server error!' })
@@ -282,6 +282,7 @@ exports.saveChatImages = async (request, response, next) => {
         const user = request.user;
         const image = request.file;
         const { GroupId } = request.body;
+        //console.log("PHOTTOO", image, GroupId)
         const filename = `chat-images/group${GroupId}/user${user.id}/${Date.now()}_${image.originalname}`;
         const imageUrl = await awsService.uploadToS3(image.buffer, filename)
         if (GroupId == 0) {
@@ -297,7 +298,7 @@ exports.saveChatImages = async (request, response, next) => {
             })
         }
 
-        return response.status(200).json({ message: "image saved to database succesfully" })
+        return response.status(200).json({ message: "image saved to database successfully" })
 
     } catch (error) {
         console.log(error);

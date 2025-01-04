@@ -16,9 +16,9 @@ socket.on('group-message', (groupId) => {
 const formElements = {
     messageInput: message_form.querySelector('input[name="Message"]'),
     message_btn: message_form.querySelector('input[type="submit"]'),
-    flexSwitch:message_form.querySelector('#flexSwitch'),
-    flexLabel:message_form.querySelector('label'),
-    flexInput:message_form.querySelector('#flexInput')
+    flexSwitch: message_form.querySelector('#flexSwitch'),
+    flexLabel: message_form.querySelector('label'),
+    flexInput: message_form.querySelector('#flexInput')
 }
 const modelElements = {
     groupName: group_model.querySelector('input[name="group_name"]'),
@@ -27,24 +27,24 @@ const modelElements = {
     editStatus: group_model.querySelector('input[name="edit_status"]')
 }
 const profileModel = {
-    name:profile_modal.querySelector('#profile_name'),
-    email:profile_modal.querySelector('#profile_email'),
-    phoneNumber:profile_modal.querySelector('#profile_number'),
-    image:profile_modal.querySelector('#profile_image')
-    
+    name: profile_modal.querySelector('#profile_name'),
+    email: profile_modal.querySelector('#profile_email'),
+    phoneNumber: profile_modal.querySelector('#profile_number'),
+    image: profile_modal.querySelector('#profile_image')
+
 }
 
 const group_editbtn = group_headContainer.querySelector('input[type="submit"]');
 
-formElements.flexSwitch.addEventListener('change',()=>{
-    if(formElements.flexLabel.innerText === "text"){
+formElements.flexSwitch.addEventListener('change', () => {
+    if (formElements.flexLabel.innerText === "text") {
         formElements.flexLabel.innerText = "image";
-        formElements.flexInput.setAttribute('accept','image/*');
-        formElements.flexInput.type="file"
-    }else{
+        formElements.flexInput.setAttribute('accept', 'image/*');
+        formElements.flexInput.type = "file"
+    } else {
         formElements.flexLabel.innerText = "text"
         formElements.flexInput.removeAttribute('accept');
-        formElements.flexInput.type="text"
+        formElements.flexInput.type = "text"
     }
 })
 
@@ -64,8 +64,8 @@ function showChatOnScreen(chatHistory, userId) {
         const formattedDate = date.toLocaleString('en-US', options);
 
         if (ele.userId == userId) {
-            if(ele.isImage){
-                messageText+=`      
+            if (ele.isImage) {
+                messageText += `      
             <div class="col-12 mb-2 pe-0">
                 <div class="card p-2 float-end rounded-4 self-chat-class">
                     <p class="text-primary my-0"><small>${ele.name}</small></p>
@@ -76,7 +76,7 @@ function showChatOnScreen(chatHistory, userId) {
                 </div>
             </div>
                 `
-            }else{
+            } else {
                 messageText += `                            
                 <div class="col-12 mb-2 pe-0">
                     <div class="card p-2 float-end rounded-4 self-chat-class">
@@ -87,7 +87,7 @@ function showChatOnScreen(chatHistory, userId) {
                 </div>`
             }
         } else {
-            if(ele.isImage){
+            if (ele.isImage) {
                 messageText += `                            
                 <div class="col-12 mb-2 pe-0">
                     <div class="card p-2 float-start rounded-4 chat-class">
@@ -99,7 +99,7 @@ function showChatOnScreen(chatHistory, userId) {
                     </div>
                 </div>`
 
-            }else{
+            } else {
                 messageText += `                            
                 <div class="col-12 mb-2 pe-0">
                     <div class="card p-2 float-start rounded-4 chat-class">
@@ -174,23 +174,23 @@ async function on_SendMessage(e) {
         if (e.target && message_form.checkValidity()) {
             e.preventDefault();
             const groupId = e.target.id;
-            if(formElements.flexLabel.innerText === "text"){
+            if (formElements.flexLabel.innerText === "text") {
                 const data = {
                     message: formElements.messageInput.value,
                     GroupId: groupId
                 }
                 await axios.post('user/post-message', data);
-            }else{
+            } else {
                 const file = formElements.messageInput.files[0]
-                if (file && file.type.startsWith('image/')){
+                if (file && file.type.startsWith('image/')) {
                     const formData = new FormData();
                     formData.append('image', file);
-                    formData.append('GroupId',groupId)
-                    const imageResponse = await axios.post('user/post-image',formData)
-                }else{
+                    formData.append('GroupId', groupId)
+                    const imageResponse = await axios.post('user/post-image', formData)
+                } else {
                     alert('Please select a valid image file.');
-                }              
-            }           
+                }
+            }
             message_form.reset();
             if (groupId == 0) {
                 socket.emit('new-common-message')
@@ -214,7 +214,7 @@ async function ShowCommonChats() {
     try {
         let savingChats
         const chats = localStorage.getItem('chatHistory');
-        if (chats && chats.length!=2) {
+        if (chats && chats.length != 2) {
             const parsedChatHistory = JSON.parse(chats);
             const lastMessageId = parsedChatHistory[parsedChatHistory.length - 1].messageId;
             const APIresponse = await axios(`user/get-messages?lastMessageId=${lastMessageId}`);
@@ -431,11 +431,11 @@ async function setupGroup(groupId, userId) {
 async function setupProfile() {
     try {
         const getUserResponse = await axios.get('/user/get-user');
-        const {name,email,phonenumber,imageUrl} = getUserResponse.data.user;
+        const { name, email, phonenumber, imageUrl } = getUserResponse.data.user;
         profileModel.name.innerText = name,
-        profileModel.email.innerText = email,
-        profileModel.phoneNumber.innerText = phonenumber,
-        profileModel.image.src = `https://picsum.photos/seed/${imageUrl}/200`
+            profileModel.email.innerText = email,
+            profileModel.phoneNumber.innerText = phonenumber,
+            profileModel.image.src = `https://picsum.photos/seed/${imageUrl}/200`
     } catch (error) {
         console.log(error);
         alert(error.response.data.message);
