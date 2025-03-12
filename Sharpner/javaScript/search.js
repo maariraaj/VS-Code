@@ -1,62 +1,62 @@
-//BINARY SEARCH
+// BINARY SEARCH
 
-//binary search for a sorted array(Ascending)
+// binary search for a sorted array(Ascending)
 
-// let search = function(arr, target) {
-//     let l=0, h=arr.length-1;
+// let search = function (arr, target) {
+//         let l = 0, h = arr.length - 1;
 
-//     while(l<=h){
-//         let  mid=Math.floor((l+h)/2);
-//         if(target==arr[mid]){
-//            return(mid);
-//         }else if(target<arr[mid]){
-//             h=mid-1;
-//         }else{
-//             l=mid+1;
-//         }
-//     }return(-1);
-// };
-// console.log(search([1,3,6,12,14,17,25,29,31,36,42,47,53,55,62],42));
-
-
-//binary search for a sorted array(Dscending)
-
-// let search=function(nums, target){
-//     let l=0,h=nums.length-1;
-//     while(l<=h){
-//         let mid=Math.floor((l+h)/2);
-//         if(target==nums[mid]){
-//             return mid;
-//         }else if(target<nums[mid]){
-//             l=mid+1;
-//         }else{
-//             h=mid-1;
-//         }
-//     }return -1;
-// }
-// console.log(search([9,5,3, 2,1],5));
+//         while (l <= h) {
+//             let mid = Math.floor((l + h) / 2);
+//             if (target == arr[mid]) {
+//                 return (mid);
+//             } else if (target < arr[mid]) {
+//                 h = mid - 1;
+//             } else {
+//                 l = mid + 1;
+//             }
+//         } return (-1);
+//     };
+// console.log(search([1, 3, 6, 12, 14, 17, 25, 29, 31, 36, 42, 47, 53, 55, 62], 42));
 
 
-//find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+// binary search for a sorted array(Dscending)
 
-// function findPeakElement(nums){
-//     let l=0, h=nums.length-1;
-//     while(l<h){
-//         let mid=Math.floor((l+h)/2);
-//         if(nums[mid]>nums[mid+1]){
-//             h=mid;
-//         }else{
-//             l=mid+1;
+// let search = function (nums, target) {
+//         let l = 0, h = nums.length - 1;
+//         while (l <= h) {
+//             let mid = Math.floor((l + h) / 2);
+//             if (target == nums[mid]) {
+//                 return mid;
+//             } else if (target < nums[mid]) {
+//                 l = mid + 1;
+//             } else {
+//                 h = mid - 1;
+//             }
+//         } return -1;
+//     }
+// console.log(search([9, 5, 3, 2, 1], 5));
+
+
+// find a peak element, and return its index.If the array contains multiple peaks, return the index to any of the peaks.
+
+// function findPeakElement(nums) {
+//     let l = 0, h = nums.length - 1;
+//     while (l < h) {
+//         let mid = Math.floor((l + h) / 2);
+//         if (nums[mid] > nums[mid + 1]) {
+//             h = mid;
+//         } else {
+//             l = mid + 1;
 //         }
 //     }
 //     // At the end of the loop, l==h and points to a peak
 //     return l;
 // }
-// const nums = [1,2,1,3,5,6,4];
+// const nums = [1, 2, 1, 3, 5, 6, 4];
 // console.log(findPeakElement(nums));
 
 
-//Find the Starting and ending Position of a given Target value
+// Find the Starting and ending Position of a given Target value
 
 // function searchRange(nums, target) {
 //     let l = findFirstOccurrence(nums, target);
@@ -66,37 +66,37 @@
 //     let h = findLastOccurrence(nums, target);
 //     return [l, h];
 // }
-// function findFirstOccurrence(nums, target){
-//     let l=0;
-//     let h=nums.length-1;
-//     let firstOccurrence=-1;
-//     while(l<=h){
-//         let mid=Math.floor((l+h)/2);
-//         if(target<=nums[mid]){
-//             if(nums[mid]===target){
-//                 firstOccurrence=mid;
+// function findFirstOccurrence(nums, target) {
+//     let l = 0;
+//     let h = nums.length - 1;
+//     let firstOccurrence = -1;
+//     while (l <= h) {
+//         let mid = Math.floor((l + h) / 2);
+//         if (target <= nums[mid]) {
+//             if (nums[mid] === target) {
+//                 firstOccurrence = mid;
 //             }
-//             h=mid-1;
-//         }else{
-//             l=mid+1;
+//             h = mid - 1;
+//         } else {
+//             l = mid + 1;
 //         }
 //     }
 //     return firstOccurrence;
 // }
 
-// function findLastOccurrence(nums, target){
-//     let l=0;
-//     let h=nums.length-1;
-//     let lastOccurrence=-1;
-//     while (l<=h) {
-//         let mid=Math.floor((l+h)/2);
-//         if(target>=nums[mid]){
-//             if(nums[mid]===target){
-//                 lastOccurrence=mid;
+// function findLastOccurrence(nums, target) {
+//     let l = 0;
+//     let h = nums.length - 1;
+//     let lastOccurrence = -1;
+//     while (l <= h) {
+//         let mid = Math.floor((l + h) / 2);
+//         if (target >= nums[mid]) {
+//             if (nums[mid] === target) {
+//                 lastOccurrence = mid;
 //             }
-//             l=mid+1;
-//         }else{
-//             h=mid-1;
+//             l = mid + 1;
+//         } else {
+//             h = mid - 1;
 //         }
 //     }
 
@@ -105,59 +105,60 @@
 // console.log(searchRange([5, 7, 7, 8, 8, 10], 8));
 
 
-//Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
 
-// function search(nums, target){
-//     let l=0;
-//     let h=nums.length-1;
+// Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or - 1 if it is not in nums.
 
-//     while(l<=h) {
-//         let mid=Math.floor((l+h)/2);
+// function search(nums, target) {
+//     let l = 0;
+//     let h = nums.length - 1;
 
-//         if(nums[mid]===target){
+//     while (l <= h) {
+//         let mid = Math.floor((l + h) / 2);
+
+//         if (nums[mid] === target) {
 //             return mid;
 //         }
-//         if(nums[l]<=nums[mid]){
-//             if(target>=nums[l] && target<=nums[mid]){
-//                 h=mid-1;
-//             }else{
-//                 l=mid+1;
+//         if (nums[l] <= nums[mid]) {
+//             if (target >= nums[l] && target <= nums[mid]) {
+//                 h = mid - 1;
+//             } else {
+//                 l = mid + 1;
 //             }
-//         }else{
-//             if(target>nums[mid] && target<=nums[h]){
-//                 l=mid+1;
-//             }else{
-//                 h=mid-1;
+//         } else {
+//             if (target > nums[mid] && target <= nums[h]) {
+//                 l = mid + 1;
+//             } else {
+//                 h = mid - 1;
 //             }
 //         }
 //     }
 //     return -1;
 // }
 
-// console.log(search([6,7,0,1,2,4,5], 6));
+// console.log(search([6, 7, 0, 1, 2, 4, 5], 6));
 
 
-//The task is to permute both arrays such that sum of their corresponding element is greater than or equal to k i.e a[i] + b[i] >= k. The task is to print “Yes” if any such permutation exists, otherwise print “No”.
+// The task is to permute both arrays such that sum of their corresponding element is greater than or equal to k i.e a[i] + b[i] >= k.The task is to print “Yes” if any such permutation exists, otherwise print “No”.
 
-// const arr1=[2,3,8,6];
-// const arr2=[4,1,9,7];
-// const k=17;
-// arr1.sort((a,b)=>a-b);
-// arr2.sort((a,b)=>a-b);
-// let i=0, j=0;
-// while(i<arr1.length && j<arr2.length){
-//     if(arr1[i]+arr2[j] >=k){
+// const arr1 = [2, 3, 8, 6];
+// const arr2 = [4, 1, 9, 7];
+// const k = 17;
+// arr1.sort((a, b) => a - b);
+// arr2.sort((a, b) => a - b);
+// let i = 0, j = 0;
+// while (i < arr1.length && j < arr2.length) {
+//     if (arr1[i] + arr2[j] >= k) {
 //         console.log("Yes");
 //         return;
 //     }
 //     i++;
 //     j++;
-// }console.log("No");
+// } console.log("No");
 
 
-//Counting Sort
+// Counting Sort
 
-// const arr = [2,5,3,0,2,3,0,3];
+// const arr = [2, 5, 3, 0, 2, 3, 0, 3];
 // const max = Math.max(...arr);
 // const min = Math.min(...arr);
 // const range = max - min + 1;
@@ -184,7 +185,7 @@
 
 
 
-//Given three Sorted arrays in non-decreasing order, print all common elements in these arrays.
+// Given three Sorted arrays in non - decreasing order, print all common elements in these arrays.
 
 // const arr1 = [1, 5, 10, 20, 40, 80];
 // const arr2 = [6, 7, 20, 80, 100];
@@ -198,11 +199,11 @@
 //         i++;
 //         j++;
 //         k++;
-//     }else if (arr1[i] < arr2[j] || arr1[i] < arr3[k]) {
+//     } else if (arr1[i] < arr2[j] || arr1[i] < arr3[k]) {
 //         i++;
-//     }else if (arr2[j] < arr1[i] || arr2[j] < arr3[k]) {
+//     } else if (arr2[j] < arr1[i] || arr2[j] < arr3[k]) {
 //         j++;
-//     }else {
+//     } else {
 //         k++;
 //     }
 // }
@@ -210,7 +211,7 @@
 
 
 
-//Given an array, return indices of all subarrays in the array which has sum 0.
+// Given an array, return indices of all subarrays in the array which has sum 0.
 
 // const arr = [6, 3, -1, -3, 4, -2, 2, 4, 6, -12, -7];
 // const result = [];
@@ -235,10 +236,10 @@
 
 
 
-//A step array is an array of integers where each element has a difference of at most k with its neighbor. Given a key x, we need to find the index value of x if multiple-element exist to return the first occurrence of the key.
+// A step array is an array of integers where each element has a difference of at most k with its neighbor.Given a key x, we need to find the index value of x if multiple - element exist to return the first occurrence of the key.
 
 // function findFirstOccurrence(arr, x, k) {
-//     for (let i = 0; i < arr.length; ) {
+//     for (let i = 0; i < arr.length;) {
 //         if (arr[i] === x) {
 //             return i;
 //         }
@@ -258,7 +259,7 @@
 
 
 
-//find the floor and ceiling of x. The ceiling of x is the smallest element in an array greater than or equal to x, and the floor is the greatest element smaller than or equal to x.
+// find the floor and ceiling of x.The ceiling of x is the smallest element in an array greater than or equal to x, and the floor is the greatest element smaller than or equal to x.
 
 // function findFloor(arr, x) {
 //     let left = 0;
@@ -303,34 +304,34 @@
 
 
 
-//Each packet can have a variable number of chocolates. There are m students, the task is to distribute chocolate packets such that: 1. Each student gets one packet. 2. The difference between the number of chocolates in the packet with maximum chocolates and the packet with minimum chocolates given to the students is minimum.
+// Each packet can have a variable number of chocolates.There are m students, the task is to distribute chocolate packets such that: 1. Each student gets one packet. 2. The difference between the number of chocolates in the packet with maximum chocolates and the packet with minimum chocolates given to the students is minimum.
 
 // const c = [3, 4, 1, 9, 56, 7, 9, 12];
 // const m = 5;
 // c.sort((a, b) => a - b);
 // let minDiff = Infinity;
-// for (let i = 0; i+m-1 < c.length; i++) {
-//     const diff = c[i+m-1] - c[i];
+// for (let i = 0; i + m - 1 < c.length; i++) {
+//     const diff = c[i + m - 1] - c[i];
 //     minDiff = Math.min(minDiff, diff);
 // }
 // console.log("Minimum difference:", minDiff);
 
 
 
-//In a class A perfect team is the team where sum of marks of students in the team is divisible by 3 .It can be of two or three students Only . You have to find how many perfect teams can be formed
+// In a class A perfect team is the team where sum of marks of students in the team is divisible by 3 .It can be of two or three students Only.You have to find how many perfect teams can be formed
 
-// const arr=[3, 6, 7, 2, 9];
-// let count2=0, count3=0;
-// for(let i=0;i<arr.length-1;i++){
-//     for(let j=i+1;j<arr.length;j++){
-//         let sum2=arr[i]+arr[j];
-//         if(sum2 % 3 ===0){
-//             count2 ++;
+// const arr = [3, 6, 7, 2, 9];
+// let count2 = 0, count3 = 0;
+// for (let i = 0; i < arr.length - 1; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//         let sum2 = arr[i] + arr[j];
+//         if (sum2 % 3 === 0) {
+//             count2++;
 //         }
-//         for(let k=j+1;k<arr.length;k++){
-//             let sum3=sum2+arr[k];
-//             if(sum3 % 3 ===0){
-//                 count3 ++;
+//         for (let k = j + 1; k < arr.length; k++) {
+//             let sum3 = sum2 + arr[k];
+//             if (sum3 % 3 === 0) {
+//                 count3++;
 //             }
 //         }
 //     }
@@ -338,22 +339,22 @@
 // console.log(count2 + count3);
 
 
-//For each element check how many numbers are greater than it.
+// For each element check how many numbers are greater than it.
 
-// let nums= [10,12,6,4,16,1];
-// let arr=[];
-// for(let i=0;i<nums.length;i++){
-//     let max=nums[i], count=0;
-//     for(let j=0;j<nums.length;j++){
-//         if(nums[j]>max){
+// let nums = [10, 12, 6, 4, 16, 1];
+// let arr = [];
+// for (let i = 0; i < nums.length; i++) {
+//     let max = nums[i], count = 0;
+//     for (let j = 0; j < nums.length; j++) {
+//         if (nums[j] > max) {
 //             count++;
 //         }
-//     }arr.push(count);
-// }console.log(arr)
+//     } arr.push(count);
+// } console.log(arr)
 
 
 
-//Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+// Given a non - negative integer x, return the square root of x rounded down to the nearest integer.The returned integer should be non - negative as well.
 
 // var mySqrt = function (x) {
 //     if (x < 2) {
@@ -377,7 +378,7 @@
 
 
 
-//Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. (LC 35)
+// Given a sorted array of distinct integers and a target value, return the index if the target is found.If not, return the index where it would be if it were inserted in order. (LC 35)
 
 // var searchInsert = function (nums, target) {
 //     let start = 0, end = nums.length - 1;
@@ -395,7 +396,7 @@
 // console.log(searchInsert([1, 3, 5, 6], 2));
 
 
-//Given a positive integer num, return true if num is a perfect square or false otherwise. (LC 367)
+// Given a positive integer num, return true if num is a perfect square or false otherwise. (LC 367)
 
 // var isPerfectSquare = function (num) {
 //     if (num < 2) {
